@@ -2,11 +2,11 @@
 This is the source code for MainDab's UI. I think it's pretty self explanatory on where all the files are located, etc. MainDab's UI is made in WPF. In my opinion, this is a pretty nice UI I made... 
 
 ## Background Information
-MainDab is a Roblox Exploit/Cheat/whatever you want to call it. This is the code for the UI/Frontend itself. It is currently being developed by Main_EX (me), as it's a solo team doing it all.
+MainDab is a Roblox Exploit/Cheat/whatever you want to call it. This is the code for the UI/Frontend itself. It is currently being developed by Avaluate (me), as it's a solo team doing it all.
 
 If you want to join MainDab, you can join the Discord server at https://discord.io/maindab
 
-If you want to contact me on Discord, my tag is Main_EX#3898
+If you want to contact me on Discord, my tag is Avaluate#0001
 
 ## Can I contribute? 
 Absolutely. If you find anything mildly annoying that you think is worth changing, feel free to make a pull request. 
