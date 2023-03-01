@@ -6,7 +6,7 @@ MainDab is a free Roblox Exploit (Cheat) with multiple APIs to choose from. This
 
 If you want to join MainDab, you can join the Discord server at https://discord.io/maindab
 
-If you want to contact me on Discord, my tag is Avaluate#0001 (but remember I will not help you if you want to just copy off the entire MainDab) 
+If you want to contact me on Discord, my tag is `Avaluate#0001` (but remember I will not help you if you want to just copy off the entire MainDab) 
 
 ## Can I use this?
 Not exactly. You can go on and use some parts of MainDab's Source Code, **but please don't straight off copy the entire exploit.** 
