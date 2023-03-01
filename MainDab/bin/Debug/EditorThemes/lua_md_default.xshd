@@ -1,0 +1,776 @@
+<?xml version="1.0"?>
+<!-- Default highlighting used by MainDab | Updated Feb 7 2023 -->
+<!-- well actually all the colours were just taken from Roblox Studio's dark theme except I changed it slightly (shhh don't tell ANYONE!) -->
+
+<SyntaxDefinition name="Lua" extensions=".lua" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	
+	<!-- Just some colour settings -->
+<Color name="Bool" foreground="#ffc600"/> <!-- "Yes/No" type of thing -->
+<Color name="Comment" foreground="#9c9c9c"/> <!-- Self explanatory -->
+<Color name="Functions" foreground="#84d6f7"/> <!-- Should be mostly covered by now -->
+<Color name="Keywrds" foreground="#f86d7c" fontWeight="bold"/> <!-- Def not all covered -->
+<Color name="Methods" foreground="#fdfbac"/> <!-- Mostly covered -->
+<Color name="Numbers" foreground="#ffc600"/> <!-- Self explanatory -->
+<Color name="Punctuation" foreground="#cccccc"/> <!-- Self explanatory -->
+<Color name="Strings" foreground="#adf195"/> <!-- Extremely self explanatory -->
+<Color name="LocalPropertyKeywrds" foreground="#61a1f1"/> <!-- There's quite a lot to fill in -->
+	<RuleSet>
+	
+		<!-- Bool -->
+		<Keywords color="Bool">
+			<Word>true</Word>
+			<Word>false</Word>
+			<Word>nil</Word>
+		</Keywords>
+
+		<!-- Comments -->
+		<!-- This is for multiline comments -->
+		<Span color="Comment" multiline="true">
+			<Begin>--\[[=]*\[</Begin>
+			<End>\][=]*\]</End>
+		</Span>
+		
+		<!-- Single line comments -->
+		<Span color="Comment">
+			 <Begin>--</Begin>
+		</Span>
+		
+		<!-- Functions, may not be completely covering everything -->
+		<!-- Honestly I just grabbed it from Synapse's documentation found at docs.synapse.to and lua.org/manual/5.1 -->
+		<!-- Some of these functions probably don't exist in free APIs -->
+		<!-- Also these aren't in any particular order -->
+		<Keywords color="Functions">
+			<Word>getgenv</Word>
+			<Word>getrenv</Word>
+			<Word>getreg</Word>
+			<Word>request</Word>
+			<Word>getgc</Word>
+			<Word>collectgarbage</Word>
+			<Word>getinstances</Word>
+			<Word>getnilinstances</Word>
+			<Word>getloadedmodules</Word>
+			<Word>getconnections</Word>
+			<Word>firesignal</Word>
+			<Word>fireclickdetector</Word>
+			<Word>fireproximityprompt</Word>
+			<Word>firetouchinterest</Word>
+			<Word>isnetworkowner</Word>
+			<Word>gethiddenproperty</Word>
+			<Word>sethiddenproperty</Word>
+			<Word>setsimulationradius</Word>
+			<Word>isccclosure</Word>
+			<Word>getmetatable</Word>
+			<Word>setmetatable</Word>
+			<Word>replaceclosure</Word>
+			<Word>getsenv</Word>
+			<Word>getscriptclosure</Word>
+			<Word>getcallingscript</Word>
+			<Word>settflag</Word>
+			<Word>getnamecallmethod</Word>
+			<Word>setnamecallmethod</Word>
+			<Word>getspecialinfo</Word>
+			<Word>isreadonly</Word>
+			<Word>setreadonly</Word>
+			<Word>dumpstring</Word>
+			<Word>getscripts</Word>
+			<Word>getconstants</Word>
+			<Word>getconstant</Word>
+			<Word>setconstant</Word>
+			<Word>getupvalue</Word>
+			<Word>setupvalue</Word>
+			<Word>getupvalues</Word>
+			<Word>getproto</Word>
+			<Word>getprotos</Word>
+			<Word>setproto</Word>
+			<Word>getstack</Word>
+			<Word>setstack</Word>
+			<Word>getinfo</Word>
+			<Word>makefolder</Word>
+			<Word>listfiles</Word>
+			<Word>writefile</Word>
+			<Word>readfile</Word>
+			<Word>appendfile</Word>
+			<Word>loadfile</Word>
+			<Word>delfile</Word>
+			<Word>Drawing</Word>
+			<Word>table</Word>
+			<Word>syn</Word>
+			<Word>saveinstance</Word>
+			<Word>iscclosure</Word>
+			<Word>iswindowactive</Word>
+			<Word>keypress</Word>
+			<Word>keyrelease</Word>
+			<Word>mouse1click</Word>
+			<Word>mouse1press</Word>
+			<Word>mouse1release</Word>
+			<Word>mouse2click</Word>
+			<Word>mouse2press</Word>
+			<Word>mouse2release</Word>
+			<Word>mousescroll</Word>
+			<Word>mousemoverel</Word>
+			<Word>mousemoveabs</Word>
+			<Word>getregistry</Word>
+			<Word>hookfunction</Word>
+			<Word>hookmetamethod</Word>
+			<Word>newcclosure</Word>
+			<Word>setfflag</Word>
+			<Word>checkcaller</Word>
+			<Word>islclosure</Word>
+			<Word>decompile</Word>
+			<Word>syn_setfflag</Word>
+			<Word>syn_newcclosure</Word>
+			<Word>syn_islclosure</Word>
+			<Word>syn_iscclosure</Word>
+			<Word>loadstring</Word>
+
+			<Word>GetObjects</Word>
+			<Word>require</Word>
+			
+			<Word>print</Word>
+			<Word>error</Word>
+			<Word>warn</Word>
+			
+			<Word>wait</Word>
+			<Word>game</Word>
+			<Word>tostring</Word>
+			<Word>tonumber</Word>
+
+			<Word>getmenv</Word>
+			<Word>getrawmetatable</Word>
+			<Word>getfenv</Word>
+			<Word>getreg</Word>
+			<Word>setfenv</Word>
+			<Word>setmetatable</Word>
+			
+			<Word>script</Word>
+
+			<Word>_G</Word>
+			<Word>assert</Word>
+			<Word>next</Word>
+			<Word>pairs</Word>
+			<Word>pcall</Word>
+			<Word>type</Word>
+			<Word>xpcall</Word>
+			
+			<Word>coroutine</Word>
+			<Word>coroutine.create</Word>
+			<Word>coroutine.resume</Word>
+			<Word>coroutine.running</Word>
+			<Word>coroutine.status</Word>
+			<Word>coroutine.wrap</Word>
+			<Word>coroutine.yield</Word>
+			
+			<Word>debug</Word>
+			<Word>io</Word>
+			<Word>math</Word>
+			
+			<Word>UDim</Word>
+			<Word>UDim2</Word>
+		</Keywords>
+		
+		<!-- Keywords -->
+		<!-- lua.org/manual/5.1/manual.html -->
+		<Keywords color="Keywrds">
+			<Word>and</Word>
+			<Word>break</Word>
+			<Word>do</Word>
+			<Word>else</Word>
+			<Word>elseif</Word>
+			<Word>end</Word>
+			<Word>false</Word>
+			<Word>for</Word>
+			<Word>function</Word>
+			
+			<Word>if</Word>
+			<Word>in</Word>
+			<Word>local</Word>
+			<Word>nil</Word>
+			<Word>not</Word>
+			<Word>or</Word>
+			<Word>repeat</Word>
+			<Word>ReplicatedStorage</Word>
+			<Word>return</Word>
+			<Word>then</Word>
+			<Word>true</Word>
+			<Word>until</Word>
+			<Word>while</Word>
+			<Word>workspace</Word>
+			<Word>Instance</Word>
+			<Word>Instance.new</Word>
+			<Word>self</Word>
+		</Keywords>
+
+		<!-- Local properties -->
+		<!-- https://roblox.fandom.com/wiki/List_of_properties_by_category -->
+		<Keywords color="LocalPropertyKeywrds">
+			<Word>HumanoidDescription</Word>
+			<Word>AccessoryBlob</Word>
+			<Word>HumanoidDescription.BackAccessory</Word>
+			<Word>FaceAccessory</Word>
+			<Word>FrontAccessory</Word>
+			<Word>HairAccessory</Word>
+			<Word>HatAccessory</Word>
+			<Word>NeckAccessory</Word>
+			<Word>ShouldersAccessory</Word>
+			<Word>WaistAccessory</Word>
+			
+			<Word>AlignOrientation</Word>
+			<Word>AlignType</Word>
+			<Word>PrimaryAxisOnly</Word>
+			<Word>ReactionTorqueEnabled</Word>
+			<Word>RigidityEnabled</Word>
+			<Word>AlignPosition.ApplyAtCenterOfMass</Word>
+			<Word>ApplyAtCenterOfMass</Word>
+			<Word>Position</Word>
+			<Word>ReactionForceEnabled</Word>
+			<Word>RigidityEnabled</Word>
+			<Word>AlignOrientation</Word>
+			<Word>Mode</Word>
+			<Word>AlignPosition</Word>
+			
+			<Word>HumanoidDescription</Word>
+			<Word>FallAnimation</Word>
+			<Word>IdleAnimation</Word>
+			<Word>JumpAnimation</Word>
+			<Word>MoodAnimation</Word>
+			<Word>NumberEmotesLoaded</Word>
+			<Word>RunAnimation</Word>
+			<Word>SwimAnimation</Word>
+			<Word>WalkAnimation</Word>
+			<Word>IdleAnimation</Word>
+			<Word>JumpAnimation</Word>
+			<Word>LeftArm</Word>
+			<Word>LeftLeg</Word>
+			<Word>RightArm</Word>
+			<Word>RightLeg</Word>
+			<Word>Torso</Word>
+			
+			<Word>HttpPost</Word>
+			<Word>HttpGet</Word>
+			
+			<Word>Atmosphere</Word>
+			<Word>Density</Word>
+			<Word>Offset</Word>
+			<Word>Tool</Word>
+			<Word>ToolTip</Word>
+			
+			<Word>CoreGui</Word>
+			<Word>PlayerGui</Word>
+			<Word>SelectionImageObject</Word>
+			
+			<Word>BaseWrap</Word>
+			<Word>CageMeshId</Word>
+			<Word>CageOrigin</Word>
+			<Word>ImportOrigin</Word>
+			
+			<Word>Beam</Word>
+			<Word>Brightness</Word>
+			<Word>Color</Word>
+			<Word>Enabled</Word>
+			<Word>LightEmission</Word>
+			<Word>LightInfluence</Word>
+			<Word>Texture</Word>
+			<Word>TextureLength</Word>
+			<Word>TextureMode</Word>
+			<Word>TextureSpeed</Word>
+			<Word>Transparency</Word>
+			<Word>ZOffset</Word>
+			
+			<Word>BodyColors</Word>
+			<Word>HeadColor</Word>
+			<Word>HeadColor3</Word>
+			<Word>LeftArmColor</Word>
+			<Word>LeftArmColor3</Word>
+			<Word>LeftLegColor</Word>
+			<Word>LeftLegColor3</Word>
+			<Word>RightArmColor</Word>
+			<Word>RightArmColor3</Word>
+			<Word>RightLegColor</Word>
+			<Word>RightLegColor3</Word>
+			<Word>TorsoColor</Word>
+			<Word>TorsoColor3</Word>
+			
+			<Word>Clothing</Word>
+			<Word>Color3</Word>
+			<Word>Pants</Word>
+			<Word>PantsTemplate</Word>
+			<Word>Shirt</Word>
+			<Word>ShirtTemplate</Word>
+			<Word>ShirtGraphic</Word>
+			<Word>Graphic</Word>
+			<Word>Skin</Word>
+			<Word>SkinColor</Word>
+			
+			<Word>Decal</Word>
+			<Word>Texture</Word>
+			<Word>LocalTransparencyModifier</Word>
+			<Word>Transparency</Word>
+			<Word>ZIndex</Word>
+			<Word>OffsetStudsU</Word>
+			<Word>OffsetStudsV</Word>
+			<Word>StudsPerTileU</Word>
+			<Word>StudsPerTileV</Word>
+			<Word>SelectionBox</Word>
+			<Word>LineThickness</Word>
+			<Word>SurfaceColor3</Word>
+			<Word>SurfaceTransparency</Word>
+			<Word>SurfaceColor3</Word>
+			<Word>SurfaceTransparency</Word>
+			
+			<Word>Light</Word>
+			<Word>Enabled</Word>
+			<Word>Shadows</Word>
+			<Word>SpotLight</Word>
+			<Word>SurfaceLight</Word>
+			<Word>Angle</Word>
+			<Word>Face</Word>
+			<Word>Range</Word>
+			
+			<Word>Lighting</Word>
+			<Word>Ambient</Word>
+			<Word>Brightness</Word>
+			<Word>ColorShift_Bottom</Word>
+			<Word>ColorShift_Top</Word>
+			<Word>EnvironmentDiffuseScale</Word>
+			<Word>EnvironmentSpecularScale</Word>
+			<Word>GlobalShadows</Word>
+			<Word>OutdoorAmbient</Word>
+			<Word>ShadowSoftness</Word>
+			<Word>Technology</Word>
+			<Word>TempUseNewSkyRemovalBehaviour</Word>
+			
+			<Word>MaterialVariant</Word>
+			<Word>BaseMaterial</Word>
+			<Word>ColorMap</Word>
+			<Word>MaterialPattern</Word>
+			<Word>MetalnessMap</Word>
+			<Word>NormalMap</Word>
+			<Word>RoughnessMap</Word>
+			<Word>StudsPerTile</Word>
+			
+			<Word>Message</Word>
+			<Word>Text</Word>
+			
+			<Word>BasePart</Word>
+			<Word>BrickColor</Word>
+			<Word>CastShadow</Word>
+			<Word>Color</Word>
+			<Word>Material</Word>
+			
+			<Word>MeshPart</Word>
+			<Word>DoubleSided</Word>
+			<Word>HasJointOffset</Word>
+			<Word>HasSkinnedMesh</Word>
+			<Word>MeshId</Word>
+			<Word>RenderFidelity</Word>
+			<Word>TextureID</Word>
+			
+			<Word>UICorner</Word>
+			<Word>UIGradient</Word>
+			<Word>UIGridLayout</Word>
+			<Word>UIListLayout</Word>
+			<Word>UIPageLayout</Word>
+			<Word>UITableLayout</Word>
+			<Word>UIStroke</Word>
+			<Word>CornerRadius</Word>
+			<Word>Offset</Word>
+			<Word>Rotation</Word>
+			<Word>CellPadding</Word>
+			<Word>CellSize</Word>
+			<Word>Padding</Word>
+			<Word>Animated</Word>
+			<Word>Circular</Word>
+			<Word>EasingDirection</Word>
+			<Word>EasingStyle</Word>
+			<Word>Padding</Word>
+			<Word>TweenTime</Word>
+			<Word>FillEmptySpaceColumns</Word>
+			<Word>FillEmptySpaceRows</Word>
+			<Word>ApplyStrokeMode</Word>
+			<Word>LineJoinMode</Word>
+			<Word>Thickness</Word>
+			
+			<Word>Index</Word>
+			
+			<Word>UserGameSettings</Word>
+			<Word>GraphicsQualityLevel</Word>
+			<Word>SavedQualityLevel</Word>
+			
+			<Word>Archivable</Word>
+			
+			<Word>Tool</Word>
+			<Word>CanBeDropped</Word>
+			<Word>ManualActivationOnly</Word>
+			<Word>RequiresHandle</Word>
+			
+			<Word>StarterGui</Word>
+			<Word>ProcessUserInput</Word>
+			<Word>VirtualCursorMode</Word>
+			
+			<Word>SpawnLocation</Word>
+			
+			<Word>Workspace</Word>
+			<Word>AllowThirdPartySales</Word>
+			<Word>AnimationWeightedBlendFix</Word>
+			<Word>ClientAnimatorThrottling</Word>
+			<Word>FallenPartsDestroyHeight</Word>
+			<Word>GlobalWind</Word>
+			<Word>Gravity</Word>
+			<Word>HumanoidOnlySetCollisionsOnStateChange</Word>
+			<Word>InterpolationThrottling</Word>
+			<Word>MeshPartHeadsAndAccessories</Word>
+			<Word>PhysicsSteppingMethod</Word>
+			<Word>ReplicateInstanceDestroySetting</Word>
+			<Word>Retargeting</Word>
+			<Word>SignalBehavior</Word>
+			<Word>Terrain</Word>
+			<Word>TouchesUseCollisionGroups</Word>
+			<Word>UnionsScaleNonuniformly</Word>
+			
+			<Word>Player</Word>
+			<Word>CanLoadCharacterAppearance</Word>
+			<Word>GameplayPaused</Word>
+			<Word>CharacterAutoLoads</Word>
+			
+			<Word>Sound</Word>
+			<Word>PlayOnRemove</Word>
+			<Word>UsageContextPermission</Word>
+			
+			<Word>BubbleChatConfiguration</Word>
+			<Word>ChatInputBarConfiguration</Word>
+			<Word>ChatWindowConfiguration</Word>
+			<Word>AdorneeName</Word>
+			<Word>BubbleDuration</Word>
+			<Word>BubblesSpacing</Word>
+			<Word>LocalPlayerStudsOffset</Word>
+			<Word>MaxDistance</Word>
+			<Word>MinimizeDistance</Word>
+			<Word>VerticalStudsOffset</Word>
+			
+			<Word>UIAspectRatioConstraint</Word>
+			<Word>AspectRatio</Word>
+			<Word>AspectType</Word>
+			<Word>DominantAxis</Word>
+			<Word>UISizeConstraint</Word>
+			<Word>MaxSize</Word>
+			<Word>MinSize</Word>
+			<Word>UITextSizeConstraint</Word>
+			<Word>MaxTextSize</Word>
+			<Word>MinTextSize</Word>
+			<Word>UIGridStyleLayout</Word>
+			<Word>FillDirection</Word>
+			<Word>HorizontalAlignment</Word>
+			<Word>SortOrder</Word>
+			<Word>VerticalAlignment</Word>
+			<Word>FillDirectionMaxCells</Word>
+			<Word>StartCorner</Word>
+			<Word>MajorAxis</Word>
+			<Word>PaddingBottom</Word>
+			<Word>PaddingLeft</Word>
+			<Word>PaddingRight</Word>
+			<Word>PaddingTop</Word>
+			<Word>UIScale</Word>
+			<Word>Scale</Word>
+			
+			<Word>UserInputService</Word>
+			<Word>LegacyInputEventsEnabled</Word>
+			
+			<Word>Camera</Word>
+			<Word>CameraSubject</Word>
+			<Word>CameraType</Word>
+			<Word>DiagonalFieldOfView</Word>
+			<Word>FieldOfView</Word>
+			<Word>FieldOfViewMode</Word>
+			<Word>MaxAxisFieldOfView</Word>
+			
+			<Word>CameraMaxZoomDistance</Word>
+			<Word>CameraMinZoomDistance</Word>
+			<Word>CameraMode</Word>
+			<Word>DevCameraOcclusionMode</Word>
+			<Word>DevComputerCameraMovementMode</Word>
+			<Word>DevTouchCameraMovementMode</Word>
+			
+			<Word>StarterPlayer</Word>
+			<Word>AllowCustomAnimations</Word>
+			<Word>CharacterMaxSlopeAngle</Word>
+			<Word>CharacterWalkSpeed</Word>
+			<Word>EnableDynamicHeads</Word>
+			<Word>GameSettingsAssetIDFace</Word>
+			<Word>GameSettingsAssetIDHead</Word>
+			<Word>GameSettingsAssetIDLeftArm</Word>
+			<Word>GameSettingsAssetIDLeftLeg</Word>
+			<Word>GameSettingsAssetIDPants</Word>
+			<Word>GameSettingsAssetIDRightArm</Word>
+			<Word>GameSettingsAssetIDRightLeg</Word>
+			<Word>GameSettingsAssetIDShirt</Word>
+			<Word>GameSettingsAssetIDTeeShirt</Word>
+			<Word>GameSettingsAssetIDTorso</Word>
+			<Word>GameSettingsAvatar</Word>
+			<Word>GameSettingsR15Collision</Word>
+			<Word>GameSettingsScaleRangeBodyType</Word>
+			<Word>GameSettingsScaleRangeHead</Word>
+			<Word>GameSettingsScaleRangeHeight</Word>
+			<Word>GameSettingsScaleRangeProportion</Word>
+			<Word>GameSettingsScaleRangeWidth</Word>
+			<Word>LoadCharacterAppearance</Word>
+			<Word>LoadCharacterLayeredClothing</Word>
+			<Word>UserEmotesEnabled</Word>
+			<Word>CharacterJumpHeight</Word>
+			<Word>CharacterJumpPower</Word>
+			<Word>CharacterUseJumpPower</Word>
+			<Word>GraphicTShirt</Word>
+			
+			<Word>CanCollide</Word>
+			<Word>CanQuery</Word>
+			<Word>CanTouch</Word>
+			<Word>CollisionGroup</Word>
+			<Word>CollisionGroupId</Word>
+			
+			<Word>Humanoid</Word>
+			<Word>AutoRotate</Word>
+			<Word>FloorMaterial</Word>
+			<Word>Jump</Word>
+			<Word>MoveDirection</Word>
+			<Word>PlatformStand</Word>
+			<Word>SeatPart</Word>
+			<Word>Sit</Word>
+			<Word>TargetPoint</Word>
+			<Word>WalkToPart</Word>
+			<Word>WalkToPoint</Word>
+			
+			<Word>ClassName</Word>
+			<Word>Name</Word>
+			<Word>Parent</Word>
+			<Word>RobloxLocked</Word>
+			<Word>SourceAssetId</Word>
+			
+			<Word>Accessory</Word>
+			<Word>AccessoryType</Word>
+			
+			<Word>Animation</Word>
+			<Word>AnimationId</Word>
+			<Word>AnimationClip</Word>
+			<Word>Loop</Word>
+			<Word>Priority</Word>
+			<Word>KeyframeSequence</Word>
+			<Word>AuthoredHipHeight</Word>
+			<Word>AnimationStreamTrack</Word>
+			<Word>IsPlaying</Word>
+			<Word>WeightCurrent</Word>
+			<Word>WeightTarget</Word>
+			<Word>AnimationTrack</Word>
+			<Word>Length</Word>
+			<Word>Looped</Word>
+			<Word>Speed</Word>
+			<Word>TimePosition</Word>
+			<Word>WeightCurrent</Word>
+			<Word>WeightTarget</Word>
+			
+			<Word>CoreGui</Word>
+			<Word>Version</Word>
+			<Word>CFrame</Word>
+			<Word>GuiBase2d</Word>
+			<Word>AbsolutePosition</Word>
+			<Word>AbsoluteRotation</Word>
+			<Word>AbsoluteSize</Word>
+			<Word>GuiObject</Word>
+			<Word>Active</Word>
+			<Word>AnchorPoint</Word>
+			<Word>AutomaticSize</Word>
+			<Word>BackgroundColor</Word>
+			<Word>BackgroundColor3</Word>
+			<Word>BackgroundTransparency</Word>
+			<Word>BorderColor</Word>
+			<Word>BorderColor3</Word>
+			<Word>BorderMode</Word>
+			<Word>BorderSizePixel</Word>
+			<Word>LayoutOrder</Word>
+			<Word>Position</Word>
+			<Word>Rotation</Word>
+			<Word>Size</Word>
+			<Word>SizeConstraint</Word>
+			<Word>Frame</Word>
+			<Word>Style</Word>
+			<Word>GuiButton</Word>
+			<Word>Modal</Word>
+			<Word>Selected</Word>
+			<Word>TextButton</Word>
+			<Word>LocalizedText</Word>
+			<Word>TextLabel</Word>
+			<Word>Text</Word>
+			<Word>TextBox</Word>
+			<Word>ClearTextOnFocus</Word>
+			<Word>CursorPosition</Word>
+			<Word>ManualFocusRelease</Word>
+			<Word>MultiLine</Word>
+			<Word>OverlayNativeInput</Word>
+			<Word>ReturnKeyType</Word>
+			<Word>SelectionStart</Word>
+			<Word>ShowNativeInput</Word>
+			<Word>TextEditable</Word>
+			<Word>TextInputType</Word>
+			
+			<Word>Enum</Word>
+			<Word>AutoButtonColor</Word>
+			<Word>AccountAge</Word>
+			<Word>AutoJumpEnabled</Word>
+			<Word>Character</Word>
+			<Word>CharacterAppearanceId</Word>
+			<Word>ChatMode</Word>
+			<Word>DisplayName</Word>
+			<Word>FollowUserId</Word>
+			<Word>Guest</Word>
+			<Word>LocaleId</Word>
+			<Word>MaximumSimulationRadius</Word>
+			<Word>MembershipType</Word>
+			<Word>OsPlatform</Word>
+			<Word>PlatformName</Word>
+			<Word>ReplicationFocus</Word>
+			<Word>RespawnLocation</Word>
+			<Word>SimulationRadius</Word>
+			<Word>Teleported</Word>
+			<Word>TeleportedIn</Word>
+			<Word>UnfilteredChat</Word>
+			<Word>UserId</Word>
+			<Word>VRDevice</Word>
+			<Word>BubbleChat</Word>
+			<Word>ClassicChat</Word>
+			<Word>LocalPlayer</Word>
+			<Word>MaxPlayers</Word>
+			<Word>MaxPlayersInternal</Word>
+			<Word>PreferredPlayers</Word>
+			<Word>PreferredPlayersInternal</Word>
+			<Word>RespawnTime</Word>
+			
+			<Word>Gui</Word>
+			<Word>VisibleSpace</Word>
+			<Word>TotalSpace</Word>
+			<Word>Increment</Word>
+			<Word>Markers</Word>
+			<Word>CanvasSize</Word>
+			<Word>ScrollBarThickness</Word>
+			<Word>MouseWheelForward</Word>
+			<Word>MouseWheelBackward</Word>
+			<Word>scrollUpEvent</Word>
+			<Word>scrollDownEvent</Word>
+			<Word>FogColor</Word>
+			<Word>FogStart</Word>
+			<Word>FogEnd</Word>
+			
+			<Word>Health</Word>
+			<Word>HipHeight</Word>
+			<Word>MaxHealth</Word>
+			<Word>MaxHealth</Word>
+			<Word>WalkSpeed</Word>
+			<Word>CreatorId</Word>
+			<Word>CreatorType</Word>
+			<Word>GameId</Word>
+			<Word>DataModel</Word>
+			<Word>Genre</Word>
+			<Word>PlaceId</Word>
+			<Word>PlaceVersion</Word>
+			
+			<Word>KeyUp</Word>
+			<Word>KeyDown</Word>
+
+			<Word>Icon</Word>
+			<Word>Shortcut</Word>
+			<Word>OnClick</Word>
+			<Word>OnHover</Word>
+			<Word>Disabled</Word>
+			<Word>DisabledIcon</Word>
+			<Word>Content</Word>
+			<Word>Indent</Word>
+			<Word>EntryName</Word>
+			<Word>Control</Word>
+			<Word>ContentText</Word>
+			<Word>Font</Word>
+			<Word>FontFace</Word>
+			<Word>LineHeight</Word>
+			<Word>MaxVisibleGraphemes</Word>
+			<Word>RichText</Word>
+			<Word>TextBounds</Word>
+			<Word>TextColor3</Word>
+			<Word>TextFits</Word>
+			<Word>TextScaled</Word>
+			<Word>TextSize</Word>
+			<Word>Players</Word>
+			<Word>TextStrokeColor3</Word>
+			<Word>TextStrokeTransparency</Word>
+			<Word>TextTransparency</Word>
+			<Word>TextTruncate</Word>
+			<Word>TextWrapped</Word>
+			<Word>TextXAlignment</Word>
+			<Word>TextYAlignment</Word>
+			<Word>Vector3</Word>
+			<Word>Service</Word>
+			<Word>CoreGuiType</Word>
+			<Word>Chat</Word>
+			<Word>Value</Word>
+			<Word>CurrentCamera</Word>
+			<Word>CoordinateFrame</Word>
+			<Word>Chatted</Word>
+			<Word>lookVector</Word>
+			<Word>KeyCode</Word>
+			<Word>maxTorque</Word>
+			<Word>maxForce</Word>
+			<Word>velocity</Word>
+		</Keywords>
+
+		<!-- Numbers -->
+		<Rule color="Numbers">
+			\b0[xX][0-9a-fA-F]+	
+			|
+			(	\b\d+(\.[0-9]+)?	 
+			|	\.[0-9]+			 
+			)
+			([eE][+-]?[0-9]+)?
+		</Rule>
+		
+		<Keywords color="Numbers">
+			<Word>*</Word>
+			<Word>/</Word>
+			<Word>-</Word>
+			<Word>+</Word>
+		</Keywords>
+		
+		<!-- Strings -->
+		<!-- Either ' ' or " " -->
+		<Span color="Strings">
+			<Begin color="Strings">'</Begin>
+			<End color="Strings">'</End>
+		</Span>
+		
+		<Span color="Strings">
+			<Begin>"</Begin>
+            <End>"</End>
+		</Span>
+		
+		<!-- For the ones that are like [""] -->
+		<Span color="Strings" multiline="true">
+			<Begin>\[[=]*\[</Begin>
+			<End>\][=]*]</End>
+		</Span>
+		
+		<!-- Punctuation -->
+		<Rule color="Punctuation">
+			[\)\(*\&amp;\^\%\$\#@!\\\]\[;':",/&lt;&gt;?\{\}\|\-\=\+]+
+		</Rule>
+		
+		<!-- Methods highlighting -->
+		<!-- This MUST go last btw -->
+		<Rule color="Methods">
+			\b
+			[\d\w_]+	# an identifier
+			(?=\s*\() # followed by (
+		</Rule>
+		
+		<Keywords color="Comment">
+			<Word>.</Word>
+			<Word>=</Word>
+			<Word>,</Word>
+			<Word>:</Word>
+		</Keywords>
+		
+	</RuleSet>
+</SyntaxDefinition>

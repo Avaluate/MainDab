@@ -1,0 +1,232 @@
+﻿<Window x:Class="MainDab_Bootstrapper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:MainDab_Bootstrapper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="326.533" Width="564.8" ResizeMode="NoResize" WindowStyle="None" Background="{x:Null}" Foreground="{x:Null}" AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="NoHighlightBut" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+
+
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#4C464646"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="Foreground" Value="#4C464646"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="{x:Type TextBoxBase}" TargetType="{x:Type TextBoxBase}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="true">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RichTextBoxStyle1" TargetType="{x:Type RichTextBox}">
+            <Style.Resources>
+                <Style x:Key="{x:Type FlowDocument}" TargetType="{x:Type FlowDocument}">
+                    <Setter Property="OverridesDefaultStyle" Value="true"/>
+                </Style>
+                <Style x:Key="{x:Type Hyperlink}" BasedOn="{StaticResource {x:Type Hyperlink}}" TargetType="{x:Type Hyperlink}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="Blue"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+            <Setter Property="MinWidth" Value="10"/>
+            <Style.BasedOn>
+                <StaticResource ResourceKey="{x:Type TextBoxBase}"/>
+            </Style.BasedOn>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="326" Margin="0,0,-0.2,0" VerticalAlignment="Top" Width="565">
+        <Border x:Name="MainBorder" CornerRadius="4" BorderBrush="#FF797979" BorderThickness="1" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="565" Background="#FF141414" Loaded="LoadedAsync"/>
+        <Image x:Name="DownloadBG" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="325" Margin="-2,0,0,0" VerticalAlignment="Top" Width="565" Source="Untitled drawing - 2023-01-09T193406.617.png" Opacity="0" Stretch="UniformToFill"/>
+        <Grid x:Name="Startup" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="565">
+            <Image x:Name="MainDabIcon"  RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="310" Margin="128,14,0,0" VerticalAlignment="Top" Width="303" Source="MainDabIcon.png" Opacity="0.8" RenderTransformOrigin="0.5,0.25" Stretch="Fill">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Label x:Name="MainDabTitle" HorizontalContentAlignment="Center" Content="Welcome to MainDab" HorizontalAlignment="Left" Height="42" Margin="0,203,0,0" VerticalAlignment="Top" Width="565" Foreground="#FFC5C5C5" FontFamily="/MainDab Bootstrapper;component/#Chakra Petch Light" FontSize="25"/>
+        </Grid>
+        <Grid x:Name="DownloadMainDab" Margin="1,1,1,0" Visibility="Hidden">
+            <Label x:Name="InstallUpdateText" HorizontalContentAlignment="Center" Content="MainDab Bootstrapper" HorizontalAlignment="Left" Height="42" Margin="0,139,-2.2,0" VerticalAlignment="Top" Width="565" Foreground="#FFC5C5C5" FontFamily="/MainDab Bootstrapper;component/#Chakra Petch Light" FontSize="25" RenderTransformOrigin="0.5,1"/>
+            <Label x:Name="LatestUpdate" HorizontalContentAlignment="Center" Content="MainDab version here" HorizontalAlignment="Left" Height="44" Margin="-2,218,-0.2,0" VerticalAlignment="Top" Width="565" Foreground="#FF918F8F" FontFamily="Calibri Light" FontSize="15" RenderTransformOrigin="0.5,1"/>
+            <Button x:Name="InstallButton" Template ="{DynamicResource NoHighlightBut}" Content="Install MainDab" HorizontalAlignment="Left" Margin="216,182,0,0" VerticalAlignment="Top" Width="132" Background="#03FFFFFF" Foreground="White" Opacity="0.75" Height="34" RenderTransformOrigin="0.5,1" Click="InstallButton_MouseDown"/>
+        </Grid>
+        <Grid x:Name="InstallMainDab" HorizontalAlignment="Left" Height="324" Margin="1,1,0,0" VerticalAlignment="Top" Width="563" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image x:Name="Gif1Completed" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,119,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" RenderTransformOrigin="0.316,-0.333" Opacity="0.8" Source="accept.png" Visibility="Hidden"/>
+            <Image x:Name="Gif2Completed" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,148,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" RenderTransformOrigin="0.316,-0.333" Opacity="0.8" Source="accept.png" Visibility="Hidden"/>
+            <Image x:Name="Gif3Completed" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,177,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" RenderTransformOrigin="0.316,-0.333" Opacity="0.8" Source="accept.png" Visibility="Hidden"/>
+            <Image x:Name="Gif4Completed" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,206,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" RenderTransformOrigin="0.316,-0.333" Opacity="0.8" Source="accept.png" Visibility="Hidden"/>
+            <Image x:Name="Gif2" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,148,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" gif:ImageBehavior.AnimatedSource="Rolling-1s-800px.gif" RenderTransformOrigin="0.316,-0.333" Opacity="0.8"/>
+            <Label x:Name="InstallUpdateText_Copy" HorizontalContentAlignment="Center" Content="Download Progress" HorizontalAlignment="Left" Height="42" Margin="0,1,0,0" VerticalAlignment="Top" Width="563" Foreground="#FFC5C5C5" FontFamily="Calibri Light" FontSize="25" RenderTransformOrigin="0.5,1" Grid.RowSpan="2"/>
+            <Label x:Name="DeletingFilesLabel" Content="Deleting files" HorizontalAlignment="Left" Height="42" Margin="35,140,0,0" VerticalAlignment="Top" Width="138" Foreground="#FFC5C5C5" FontFamily="Calibri Light" FontSize="20" RenderTransformOrigin="0.5,1" Grid.RowSpan="2"/>
+            <Image x:Name="Gif3" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,177,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" gif:ImageBehavior.AnimatedSource="Rolling-1s-800px.gif" RenderTransformOrigin="0.316,-0.333" Opacity="0.8"/>
+            <Label x:Name="CreatingFoldersLabel" Content="Creating folders" HorizontalAlignment="Left" Height="42" Margin="35,169,0,0" VerticalAlignment="Top" Width="138" Foreground="#FFC5C5C5" FontFamily="Calibri Light" FontSize="20" RenderTransformOrigin="0.5,1" Grid.RowSpan="2"/>
+            <Image x:Name="Gif4" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,206,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" gif:ImageBehavior.AnimatedSource="Rolling-1s-800px.gif" RenderTransformOrigin="0.316,-0.333" Opacity="0.8"/>
+            <Label x:Name="DownloadingMainDabLabel" Content="Downloading MainDab" HorizontalAlignment="Left" Height="42" Margin="35,198,0,0" VerticalAlignment="Top" Width="195" Foreground="#FFC5C5C5" FontFamily="Calibri Light" FontSize="20" RenderTransformOrigin="0.5,1" Grid.RowSpan="2"/>
+            <Image x:Name="Gif1" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="246,119,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="21" gif:ImageBehavior.AnimatedSource="Rolling-1s-800px.gif" RenderTransformOrigin="0.316,-0.333" Opacity="0.8"/>
+            <Label x:Name="CheckingRequirementsLabel" Content="Checking requirements" HorizontalAlignment="Left" Height="42" Margin="35,111,0,0" VerticalAlignment="Top" Width="202" Foreground="#FFC5C5C5" FontFamily="Calibri Light" FontSize="20" RenderTransformOrigin="0.5,1" Grid.RowSpan="2"/>
+            <Grid x:Name="RequirementCheck" HorizontalAlignment="Left" Height="159" Margin="301,95,0,0" VerticalAlignment="Top" Width="242" Grid.RowSpan="2">
+                <RichTextBox x:Name="CheckRequireTitle" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="0,3,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFEAEAEA" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="19" FontFamily="Calibri" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" Style="{DynamicResource RichTextBoxStyle1}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Checking Requirements"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox x:Name="CheckRequireText" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource RichTextBoxStyle1}" Height="46" Margin="0,29,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFC5C5C5" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="16" FontFamily="Calibri Light" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="MainDab needs to check whether MainDab can be downloaded."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <Image  RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="78" Margin="73,72,0,0" VerticalAlignment="Top" Width="99" Source="list.png" Opacity="0.55"/>
+            </Grid>
+            <Grid x:Name="DeletingFiles" HorizontalAlignment="Left" Height="159" Margin="301,100,0,0" VerticalAlignment="Top" Width="242" Grid.RowSpan="2" Visibility="Hidden">
+                <RichTextBox x:Name="DeletingFilesTItle" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="0,3,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFEAEAEA" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="19" FontFamily="Calibri" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Deleting files"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox x:Name="DeletingFilesText" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="46" Margin="0,29,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFC5C5C5" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="16" FontFamily="Calibri Light" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="We are now deleting old files, alongside DLL files not needed."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <Image  RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="63" Margin="90,78,0,0" VerticalAlignment="Top" Width="78" Source="bin.png" Opacity="0.55"/>
+            </Grid>
+            <Grid x:Name="CreatingFolders" HorizontalAlignment="Left" Height="168" Margin="301,91,0,0" VerticalAlignment="Top" Width="242" Grid.RowSpan="2" Visibility="Hidden">
+                <RichTextBox x:Name="CreatingFoldersTitle" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="0,3,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFEAEAEA" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="19" FontFamily="Calibri" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Creating folders"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox x:Name="CreatingFilesText" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="0,29,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFC5C5C5" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="16" FontFamily="Calibri Light" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="If this is your first time using MainDab, a folder called MainDab will be made."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <Image  RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="73" Margin="84,92,0,-6" VerticalAlignment="Top" Width="101" Source="icons8-folder-250.png" Opacity="0.55" RenderTransformOrigin="0.508,0.379"/>
+            </Grid>
+            <Grid x:Name="DownloadingMainDab" HorizontalAlignment="Left" Height="110" Margin="301,117,0,0" VerticalAlignment="Top" Width="242" Grid.RowSpan="2" Visibility="Hidden">
+                <RichTextBox x:Name="DownloadingTitle" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="0,3,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFEAEAEA" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="19" FontFamily="Calibri" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Downloading MainDab"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox x:Name="DownloadingText" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="64" Margin="0,29,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFC5C5C5" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="16" FontFamily="Calibri Light" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="It shouldn't take long to download MainDab, as it's a single .exe file."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <ProgressBar x:Name="DownloadBar" HorizontalAlignment="Left" Height="20" Margin="10,79,0,0" VerticalAlignment="Top" Width="222" Background="{x:Null}" Foreground="#7FABABAB" BorderBrush="#FFE5E5E5" BorderThickness="0.5" Value="-1"/>
+            </Grid>
+            <Grid x:Name="ContinueToMainDab" HorizontalAlignment="Left" Height="164" Margin="301,90,0,0" VerticalAlignment="Top" Width="242" Grid.RowSpan="2" Visibility="Hidden">
+                <RichTextBox x:Name="ContinueToMainDabTitle" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="0,3,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFEAEAEA" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="19" FontFamily="Calibri" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Download completed"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <RichTextBox x:Name="ContinueToMainDabText" Style="{DynamicResource RichTextBoxStyle1}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="47" Margin="0,29,0,0" VerticalAlignment="Top" Width="235" Background="{x:Null}" Foreground="#FFC5C5C5" TextChanged="RichTextBox_TextChanged" BorderBrush="{x:Null}" FontSize="16" FontFamily="Calibri Light" IsReadOnly="True" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" IsEnabled="False">
+                    <FlowDocument TextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="MainDab has been successfully downloaded. Feel free to use it."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="106" Margin="64,67,0,-14" VerticalAlignment="Top" Width="123" Source="download (1).png" Opacity="0.8"/>
+            </Grid>
+        </Grid>
+        <Image x:Name="JoinDiscord" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="16" Margin="7,306,0,0" VerticalAlignment="Top" Width="20" Source="5761437_discord_logo_icon.png" Opacity="0.5" Visibility="Hidden"/>
+        <Label x:Name="JoinOurDiscord"  Content="discord.io/maindab" HorizontalAlignment="Left" Height="24" Margin="22,301.5,0,0" VerticalAlignment="Top" Width="107" Foreground="#FF938E8E" FontFamily="Calibri Light" RenderTransformOrigin="0.5,1" FontStyle="Italic" Visibility="Hidden"/>
+    </Grid>
+</Window>

@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<!-- Default highlighting used by MainDab -->
+<!-- well actually all the colours were just taken from Roblox Studio's dark theme except I changed it slightly (shhh don't tell ANYONE!) -->
+
+<SyntaxDefinition name="Lua" extensions=".lua" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	
+	<!-- Just some colour settings -->
+	<Color name="Bool" foreground="#ffc600"/>
+	<Color name="Comment" foreground="#9c9c9c"/>
+	<Color name="Functions" foreground="#84d6f7"/>
+	<Color name="Keywrds" foreground="#f86d7c" fontWeight="bold"/>
+	<Color name="Methods" foreground="#fdfbac"/>
+	<Color name="Numbers" foreground="#ffc600"/>
+	<Color name="Punctuation" foreground="#cccccc"/>
+	<Color name="Strings" foreground="#adf195"/>
+
+	<RuleSet>
+	
+		<!-- Bool -->
+		<Keywords color="Bool">
+			<Word>true</Word>
+			<Word>false</Word>
+			<Word>nil</Word>
+		</Keywords>
+
+		<!-- Comments -->
+		<!-- This is for multiline comments -->
+		<Span color="Comment" multiline="true">
+			<Begin>--\[[=]*\[</Begin>
+			<End>\][=]*\]</End>
+		</Span>
+		
+		<!-- Single line comments -->
+		<Span color="Comment">
+			 <Begin>--</Begin>
+		</Span>
+		
+		<!-- Functions, may not be completely covering everything -->
+		<!-- Honestly I just grabbed it from Synapse's documentation found at docs.synapse.to and lua.org/manual/5.1 -->
+		<!-- Some of these functions probably don't exist in free APIs -->
+		<!-- Also these aren't in any particular order -->
+		<Keywords color="Functions">
+			<Word>getgenv</Word>
+			<Word>getrenv</Word>
+			<Word>getreg</Word>
+			<Word>getgc</Word>
+			<Word>collectgarbage</Word>
+			<Word>getinstances</Word>
+			<Word>getnilinstances</Word>
+			<Word>getloadedmodules</Word>
+			<Word>getconnections</Word>
+			<Word>firesignal</Word>
+			<Word>fireclickdetector</Word>
+			<Word>fireproximityprompt</Word>
+			<Word>firetouchinterest</Word>
+			<Word>isnetworkowner</Word>
+			<Word>gethiddenproperty</Word>
+			<Word>sethiddenproperty</Word>
+			<Word>setsimulationradius</Word>
+
+			<Word>getmetatable</Word>
+			<Word>setmetatable</Word>
+
+			<Word>getsenv</Word>
+			<Word>getscriptclosure</Word>
+			<Word>getcallingscript</Word>
+			
+			<Word>iswindowactive</Word>
+			<Word>keypress</Word>
+			<Word>keyrelease</Word>
+			<Word>mouse1click</Word>
+			<Word>mouse1press</Word>
+			<Word>mouse1release</Word>
+			<Word>mouse2click</Word>
+			<Word>mouse2press</Word>
+			<Word>mouse2release</Word>
+			<Word>mousescroll</Word>
+			<Word>mousemoverel</Word>
+			<Word>mousemoveabs</Word>
+			
+			<Word>hookfunction</Word>
+			<Word>hookmetamethod</Word>
+			<Word>newcclosure</Word>
+			
+			<Word>checkcaller</Word>
+			<Word>islclosure</Word>
+			<Word>decompile</Word>
+			
+			<Word>loadstring</Word>
+			<Word>HttpPost</Word>
+			<Word>HttpGet</Word>
+			<Word>GetObjects</Word>
+			<Word>require</Word>
+			
+			<Word>print</Word>
+			<Word>error</Word>
+			<Word>warn</Word>
+			
+			<Word>wait</Word>
+			
+			<Word>tostring</Word>
+			<Word>tonumber</Word>
+
+			<Word>getmenv</Word>
+			<Word>getrawmetatable</Word>
+			<Word>getfenv</Word>
+			<Word>getreg</Word>
+			<Word>setfenv</Word>
+			<Word>setmetatable</Word>
+			
+			<Word>script</Word>
+
+			<Word>_G</Word>
+			<Word>assert</Word>
+			<Word>next</Word>
+			<Word>pairs</Word>
+			<Word>pcall</Word>
+			<Word>type</Word>
+			<Word>xpcall</Word>
+			
+			<Word>coroutine</Word>
+			<Word>coroutine.create</Word>
+			<Word>coroutine.resume</Word>
+			<Word>coroutine.running</Word>
+			<Word>coroutine.status</Word>
+			<Word>coroutine.wrap</Word>
+			<Word>coroutine.yield</Word>
+			
+			<Word>debug</Word>
+			<Word>io</Word>
+			<Word>math</Word>
+			
+		</Keywords>
+		
+		<!-- Keywords -->
+		<!-- lua.org/manual/5.1/manual.html -->
+		<Keywords color="Keywrds">
+			<Word>and</Word>
+			<Word>break</Word>
+			<Word>do</Word>
+			<Word>else</Word>
+			<Word>elseif</Word>
+			<Word>end</Word>
+			<Word>false</Word>
+			<Word>for</Word>
+			<Word>function</Word>
+			<Word>if</Word>
+			<Word>in</Word>
+			<Word>local</Word>
+			<Word>nil</Word>
+			<Word>not</Word>
+			<Word>or</Word>
+			<Word>repeat</Word>
+			<Word>return</Word>
+			<Word>then</Word>
+			<Word>true</Word>
+			<Word>until</Word>
+			<Word>while</Word>
+		</Keywords>
+		
+		<!-- Numbers -->
+		<Rule color="Numbers">
+			\b0[xX][0-9a-fA-F]+	
+			|
+			(	\b\d+(\.[0-9]+)?	 
+			|	\.[0-9]+			 
+			)
+			([eE][+-]?[0-9]+)?
+		</Rule>
+		
+		<!-- Strings -->
+		<!-- Either ' ' or " " -->
+		<Span color="Strings">
+			<Begin color="Strings">'</Begin>
+			<End color="Strings">'</End>
+		</Span>
+		
+		<Span color="Strings">
+			<Begin>"</Begin>
+            <End>"</End>
+		</Span>
+		
+		<!-- For the ones that are like [""] -->
+		<Span color="Strings" multiline="true">
+			<Begin>\[[=]*\[</Begin>
+			<End>\][=]*]</End>
+		</Span>
+		
+		<!-- Punctuation -->
+		<Rule color="Punctuation">
+			[\)\(*\&amp;\^\%\$\#@!\\\]\[;':",./&lt;&gt;?\{\}\|\-\=\+]+
+		</Rule>
+		
+		<!-- Methods highlighting -->
+		<!-- This MUST go last btw -->
+		<Rule color="Methods">
+			\b
+			[\d\w_]+	# an identifier
+			(?=\s*\() # followed by (
+		</Rule>
+		
+	</RuleSet>
+</SyntaxDefinition>

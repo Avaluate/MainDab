@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ItemGroup>
+    <SourceLinkGitHubHost Include="github.com" ContentUrl="https://raw.githubusercontent.com"/>
+  </ItemGroup>
+</Project>

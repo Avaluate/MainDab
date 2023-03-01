@@ -1,0 +1,24 @@
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\MainDab Bootstrapper.exe.config
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\MainDab Bootstrapper.exe
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\MainDab Bootstrapper.pdb
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\System.Reactive.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.csproj.AssemblyReference.cache
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainWindow.g.cs
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\App.g.cs
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper_MarkupCompile.cache
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper_MarkupCompile.lref
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainWindow.baml
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.g.resources
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab_Bootstrapper.Properties.Resources.resources
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.csproj.GenerateResource.cache
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.csproj.CoreCompileInputs.cache
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.sourcelink.json
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.csproj.Fody.CopyLocal.cache
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.csproj.CopyComplete
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.exe
+C:\Users\Main_EX\Desktop\MainDabSrc\MainDab Bootstrapper\obj\Debug\MainDab Bootstrapper.pdb

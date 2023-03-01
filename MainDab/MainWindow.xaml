@@ -1,0 +1,2482 @@
+﻿<Window
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:MainDabRedo"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" x:Name="MainWin" x:Class="MainDabRedo.MainWindow"
+    
+        mc:Ignorable="d"
+        Title="MainDab" ResizeMode="NoResize" Height="416.65" Width="699.896" Background="{x:Null}" Foreground="#FF939292" Closing="MainWin_Closing" AllowsTransparency="True" WindowStyle="None" Icon="Untitled drawing (40).png" KeyDown="MainWin_KeyDown">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Unloaded">
+            <BeginStoryboard>
+                <Storyboard Name="FormFadeOut"
+                        Completed="CloseWindow">
+                    <DoubleAnimation  Name="FormFadeOutAnimation"
+                                  Storyboard.TargetName="MainWin"
+                                  Storyboard.TargetProperty="(Window.Opacity)"
+                                  From="1.0"
+                                  To="0.0"
+                                  Duration="0:0:0.5"
+                                  AutoReverse="False"
+                                  RepeatBehavior="1x" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
+        <SolidColorBrush x:Key="StandardBackgroundBrush" Color="Black" />
+        <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
+        <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Gray" />
+        <SolidColorBrush x:Key="SelectedForegroundBrush" Color="White" />
+        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+        <SolidColorBrush x:Key="GlyphBrush" Color="#444" />
+        <SolidColorBrush x:Key="NormalBrush" Color="#888" />
+        <SolidColorBrush x:Key="NormalBorderBrush" Color="#888" />
+        <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#FF686868" />
+        <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#888" />
+        <Style x:Key="{x:Type ToolTip}"
+       TargetType="{x:Type ToolTip}">
+            <Setter Property="Background"
+            Value="#FF111315" />
+            <Setter Property="Foreground"
+            Value="#FFD7D7D7" />
+        </Style>
+        <Storyboard x:Key="APISelection1">
+            <DoubleAnimation  Name="APISelection1"
+                              Storyboard.TargetName="APISelection"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="GeneralOptions1">
+            <DoubleAnimation  Name="GeneralOptions1"
+                              Storyboard.TargetName="GeneralOptions"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="ThemeSelection1">
+            <DoubleAnimation  Name="ThemeSelection1"
+                              Storyboard.TargetName="ThemeSelection"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="HomeButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="HomeGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path3">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="HomeButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="Path3">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ExecutorButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="ExecutorGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ExecutorPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ExecutorButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ExecutorPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ScriptHubButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="ScriptHubGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ScriptHubPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ScriptHubPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ScriptHubButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ScriptHubPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ScriptHubPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="GameHubButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="GameHubGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="GameHubPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="GameHubButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="GameHubPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ToolsButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="ToolsGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ToolsPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ToolsPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="ToolsButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ToolsPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ToolsPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="SettingsButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="SettingsPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="SettingsPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="SettingsButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="SettingsPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="SettingsPath2">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+        <Storyboard x:Key="FadeInListBox">
+            <DoubleAnimation  Name="FadeInListBox"
+                              Storyboard.TargetName="DownloadMessage"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.25"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="FadeOutListBox">
+            <DoubleAnimation  Name="FadeOutListBox"
+                              Storyboard.TargetName="DownloadMessage"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="1.0"
+                              To="0.0"
+                              Duration="0:0:0.25"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="HomeOpen">
+            <DoubleAnimation  Name="HomeGridOpen"
+                              Storyboard.TargetName="HomeGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="ExecutionOpen">
+            <DoubleAnimation  Name="ExecutionGridOpen"
+                              Storyboard.TargetName="ExecutorGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="ScriptHubOpen">
+            <DoubleAnimation  Name="SCGridOpen"
+                              Storyboard.TargetName="ScriptHubGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="GameHubOpen">
+            <DoubleAnimation  Name="GSCGridOpen"
+                              Storyboard.TargetName="GameHubGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="ToolsOpen">
+            <DoubleAnimation  Name="ToolGridOpen"
+                              Storyboard.TargetName="ToolsGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <Storyboard x:Key="SettingsOpen">
+            <DoubleAnimation  Name="SetGridOpen"
+                              Storyboard.TargetName="SettingsGrid"
+                              Storyboard.TargetProperty="(Window.Opacity)"
+                              From="0.0"
+                              To="1.0"
+                              Duration="0:0:0.5"
+                              AutoReverse="False"
+                              RepeatBehavior="1x" />
+        </Storyboard>
+        <LinearGradientBrush x:Key="ListBoxBackgroundBrush" StartPoint="0,0" EndPoint="1,0.001">
+            <LinearGradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0" />
+                    <GradientStop Color="White" Offset="0.6" />
+                    <GradientStop Color="#DDDDDD" Offset="1.2"/>
+                </GradientStopCollection>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="StandardBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#FFF" Offset="0.0"/>
+                    <GradientStop Color="#CCC" Offset="1.0"/>
+                </GradientStopCollection>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#BBB" Offset="0.0"/>
+                    <GradientStop Color="#EEE" Offset="0.1"/>
+                    <GradientStop Color="#EEE" Offset="0.9"/>
+                    <GradientStop Color="#FFF" Offset="1.0"/>
+                </GradientStopCollection>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border x:Name="Border" Margin="0" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" BorderThickness="0">
+                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" Fill="{StaticResource GlyphBrush}" Data="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="Black" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border CornerRadius="3" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"  Width="8" Margin="8,0,-2,0"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="0"/>
+                    <RowDefinition Height="0.00001*"/>
+                    <RowDefinition MaxHeight="0"/>
+                </Grid.RowDefinitions>
+                <Border Grid.RowSpan="3"  Background="Transparent" />
+                <RepeatButton Grid.Row="0" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineUpCommand" Content="M 0 4 L 8 4 L 4 0 Z" Background="{x:Null}" />
+                <Track x:Name="PART_Track" Grid.Row="1" IsDirectionReversed="true">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageUpCommand" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0.5,0,0.5,0" Background="#33525252" BorderBrush="#7F7C7C7C" />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageDownCommand" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+                <RepeatButton Grid.Row="3" Style="{StaticResource ScrollBarLineButton}" Height="18" Command="ScrollBar.LineDownCommand" Content="M 0 0 L 4 4 L 8 0 Z"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="HorizontalScrollBar" TargetType="{x:Type ScrollBar}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MaxWidth="18"/>
+                    <ColumnDefinition Width="0.00001*"/>
+                    <ColumnDefinition MaxWidth="18"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.ColumnSpan="3" Background="Transparent"/>
+                <RepeatButton Grid.Column="0"  Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineLeftCommand" Content="M 4 0 L 4 8 L 0 4 Z" />
+                <Track x:Name="PART_Track" Grid.Column="1" IsDirectionReversed="False">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageLeftCommand" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,1,0,1" Background="{StaticResource NormalBrush}" BorderBrush="{StaticResource NormalBorderBrush}" />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource ScrollBarPageButton}" Command="ScrollBar.PageRightCommand" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+                <RepeatButton Grid.Column="3" Style="{StaticResource ScrollBarLineButton}" Width="18" Command="ScrollBar.LineRightCommand" Content="M 0 0 L 4 4 L 0 8 Z"/>
+            </Grid>
+        </ControlTemplate>
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Height" Value="18" />
+                    <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}" />
+                </Trigger>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Width" Value="18"/>
+                    <Setter Property="Height" Value="Auto" />
+                    <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="FavsScrollViewer" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ScrollContentPresenter Grid.Column="1"/>
+                            <ScrollBar x:Name="PART_VerticalScrollBar" Value="{TemplateBinding VerticalOffset}" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                            <ScrollBar x:Name="PART_HorizontalScrollBar" Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Value="{TemplateBinding HorizontalOffset}" Maximum="{TemplateBinding ScrollableWidth}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="NoHighlightBut" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+
+
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#4C464646"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#4C464646"/>
+                    <Setter Property="Foreground" Value="#4C464646"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style
+            TargetType="{x:Type Button}"
+            x:Key="SystemButton">
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter
+                Property="Background"
+                Value="#00FFFFFF" />
+            <Setter
+                Property="Foreground"
+                Value="#FFFFFFFF" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="Padding"
+                Value="6 1" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type Button}">
+                        <Border
+                            x:Name="border"
+                            Background="#00FFFFFF"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="1">
+                            <ContentPresenter
+                                x:Name="ContentPres"
+                                Focusable="False"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger
+                                Property="IsMouseOver"
+                                Value="True">
+                                <Setter
+                                    TargetName="border"
+                                    Property="Background"
+                                    Value="#FFB61616" />
+                            </Trigger>
+                            <Trigger
+                                Property="IsPressed"
+                                Value="True">
+                                <Setter
+                                    TargetName="border"
+                                    Property="Background"
+                                    Value="#FFF13737" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            TargetType="{x:Type TabItem}"
+            x:Key="Tab">
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter
+                Property="Foreground"
+                Value="#FFB7B7B7" />
+            <Setter
+                Property="Margin"
+                Value="0" />
+            <Setter
+                Property="Padding"
+                Value="6,2,6,2" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Stretch" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Stretch" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type TabItem}">
+                        <Grid
+                            x:Name="templateRoot"
+                            SnapsToDevicePixels="True"
+                            Background="#FF151515">
+                            <Border
+                                x:Name="mainBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="3 3 0 0"
+                                BorderThickness="0"
+                                Background="#FF151515"
+                                Margin="0" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    ContentSource="Header"
+                                    Focusable="False"
+                                    Margin="{TemplateBinding Padding}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                    VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                                <Button
+                                    x:Name="CloseButton"
+                                    Margin="-3 3 3 3"
+                                    Padding="0"
+                                    Height="13"
+                                    Width="13"
+                                    Style="{DynamicResource SystemButton}">
+                                    <Grid>
+                                        <Path
+                                            Stroke="#FFB7B7B7"
+                                            StrokeThickness="1"
+                                            Data="M0,0 L5,5" />
+                                        <Path
+                                            Stroke="#FFB7B7B7"
+                                            StrokeThickness="1"
+                                            Data="M0,5 L5,0" />
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition
+                                        Value="true"
+                                        Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="false"
+                                        Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="Top"
+                                        Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter
+                                    TargetName="mainBorder"
+                                    Property="Background"
+                                    Value="#181818" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition
+                                        Value="true"
+                                        Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="Top"
+                                        Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter
+                                    Property="Panel.ZIndex"
+                                    Value="1" />
+                                <Setter
+                                    TargetName="mainBorder"
+                                    Property="Background"
+                                    Value="#1F1F1F" />
+                            </MultiDataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            TargetType="{x:Type TabControl}"
+            x:Key="Tabs">
+            <Setter
+                Property="Padding"
+                Value="2" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="BorderThickness"
+                Value="0" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type TabControl}">
+                        <Grid
+                            x:Name="templateRoot"
+                            ClipToBounds="True"
+                            SnapsToDevicePixels="True"
+                            KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    x:Name="ColumnDefinition0" />
+                                <ColumnDefinition
+                                    x:Name="ColumnDefinition1"
+                                    Width="0" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    x:Name="RowDefinition0"
+                                    Height="Auto" />
+                                <RowDefinition
+                                    x:Name="RowDefinition1"
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <ScrollViewer
+                                x:Name="TabScrollViewer"
+                                VerticalScrollBarVisibility="Disabled"
+                                Background="#00FFFFFF"
+                                HorizontalScrollBarVisibility="Hidden"
+                                ClipToBounds="True">
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <TabPanel
+                                        x:Name="headerPanel"
+                                        Background="#00FFFFFF"
+                                        IsItemsHost="True"
+                                        KeyboardNavigation.TabIndex="1"
+                                        Panel.ZIndex="1"
+                                        Margin="0 2 0 0" />
+                                    <Button
+                                        x:Name="AddTabButton"
+                                        Width="15"
+                                        Height="15"
+                                        Margin="4"
+                                        Padding="0"
+                                        Style="{DynamicResource SystemButton}">
+                                        <Grid>
+                                            <Path
+                                                Stroke="#FFB7B7B7"
+                                                StrokeThickness="1"
+                                                Data="M0,4.5 L9,4.5" />
+                                            <Path
+                                                Stroke="#FFB7B7B7"
+                                                StrokeThickness="1"
+                                                Data="M4.5,0 L4.5,9" />
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </ScrollViewer>
+                            <Border
+                                x:Name="contentPanel"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Grid.Column="0"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                Grid.Row="1"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter
+                                    x:Name="PART_SelectedContentHost"
+                                    ContentSource="SelectedContent"
+                                    Margin="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TextEditorStyle1" TargetType="{x:Type avalonedit:TextEditor}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type avalonedit:TextEditor}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ScrollViewer" CanContentScroll="True" Content="{Binding TextArea, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" HorizontalContentAlignment="Left" HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" VerticalContentAlignment="Top"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="WordWrap" Value="True">
+                                <Setter Property="HorizontalScrollBarVisibility" TargetName="PART_ScrollViewer" Value="Disabled"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush
+            Color="#00ffffff"
+            x:Key="Button.Static.Background" />
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush
+            Color="#ff181818"
+            x:Key="Button.Disabled.Background" />
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#4C131517"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#4C131517"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            TargetType="{x:Type TabItem}"
+            x:Key="Tab2">
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter
+                Property="Foreground"
+                Value="#FFB7B7B7" />
+            <Setter
+                Property="Margin"
+                Value="0" />
+            <Setter
+                Property="Padding"
+                Value="6,2,6,2" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Stretch" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Stretch" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type TabItem}">
+                        <Grid
+                            x:Name="templateRoot"
+                            SnapsToDevicePixels="True"
+                            Background="{x:Null}">
+                            <Border
+                                x:Name="mainBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="0 0 0 0"
+                                BorderThickness="0"
+                                Background="#0F858585"
+                                Margin="0" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    ContentSource="Header"
+                                    Focusable="False"
+                                    Margin="{TemplateBinding Padding}"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                    HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                    VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                                <Button
+                                    x:Name="CloseButton"
+                                    Margin="-3 4 3 3"
+                                    Padding="0"
+                                    Height="13"
+                                    Width="13"
+                                    Style="{DynamicResource ButtonStyle2}" Background="Transparent" BorderBrush="Transparent">
+                                    <Grid>
+                                        <Path
+                                            Stroke="#FFB7B7B7"
+                                            StrokeThickness="1"
+                                            Data="M0,0 L5,5" />
+                                        <Path
+                                            Stroke="#FFB7B7B7"
+                                            StrokeThickness="1"
+                                            Data="M0,5 L5,0" />
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition
+                                        Value="true"
+                                        Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="false"
+                                        Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="Top"
+                                        Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter
+                                    TargetName="mainBorder"
+                                    Property="Background"
+                                    Value="#0F858585" />
+                            </MultiDataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition
+                                        Value="true"
+                                        Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}" />
+                                    <Condition
+                                        Value="Top"
+                                        Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter
+                                    Property="Panel.ZIndex"
+                                    Value="1" />
+                                <Setter
+                                    TargetName="mainBorder"
+                                    Property="Background"
+                                    Value="#0F5A5A5A" />
+                            </MultiDataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            TargetType="{x:Type TabControl}"
+            x:Key="Tabs4">
+            <Setter
+                Property="Padding"
+                Value="2" />
+            <Setter
+                Property="HorizontalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center" />
+            <Setter
+                Property="BorderThickness"
+                Value="0" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type TabControl}">
+                        <Grid
+                            x:Name="templateRoot"
+                            ClipToBounds="True"
+                            SnapsToDevicePixels="True"
+                            KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    x:Name="ColumnDefinition0" />
+                                <ColumnDefinition
+                                    x:Name="ColumnDefinition1"
+                                    Width="0" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    x:Name="RowDefinition0"
+                                    Height="Auto" />
+                                <RowDefinition
+                                    x:Name="RowDefinition1"
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <ScrollViewer
+                                x:Name="TabScrollViewer"
+                                VerticalScrollBarVisibility="Visible"
+                                Background="Transparent"
+                                HorizontalScrollBarVisibility="Hidden"
+                                ClipToBounds="True">
+                                <StackPanel
+                                    Orientation="Horizontal">
+                                    <TabPanel
+                                        x:Name="headerPanel"
+                                        Background="#022D2D2D"
+                                        IsItemsHost="True"
+                                        KeyboardNavigation.TabIndex="1"
+                                        Panel.ZIndex="1"
+                                        Margin="0 2 0 0" />
+                                    <Button
+                                        x:Name="AddTabButton"
+                                        Width="12"
+                                        Height="12"
+                                        Margin="3 3 4 .67"
+                                        Padding="0"
+                                        Style="{DynamicResource ButtonStyle2}" Background="Transparent" BorderBrush="Transparent" FontSize="9" FontStretch="Condensed">
+                                        <Grid>
+                                            <Path
+                                                Stroke="#FFB7B7B7"
+                                                StrokeThickness=".7"
+                                                Data="M0,4.5 L9,4.5" />
+                                            <Path
+                                                Stroke="#FFB7B7B7"
+                                                StrokeThickness=".7"
+                                                Data="M4.5,0 L4.5,9" />
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </ScrollViewer>
+                            <Border
+                                x:Name="contentPanel"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Grid.Column="0"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                Grid.Row="1"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter
+                                    x:Name="PART_SelectedContentHost"
+                                    ContentSource="SelectedContent"
+                                    Margin="{TemplateBinding Padding}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="ProgressBar.Progress" Color="#FF06B025"/>
+        <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="ProgressBar.Border" Color="#FFBCBCBC"/>
+        <Style x:Key="ProgressBarStyle1" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="{StaticResource ProgressBar.Progress}"/>
+            <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate"/>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+                            <Rectangle x:Name="PART_Track" Margin="1,1,0,0" RadiusX="1" RadiusY="1" StrokeThickness="2"/>
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
+                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" Margin="1,1,-189.8,0.2"/>
+                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsIndeterminate" Value="true">
+                                <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="FocusVisual2">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeDashArray="1 2" StrokeThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF" />
+        <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070" />
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- Every skid has a tab open to Stack Overflow! -->
+        <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121" />
+        <Style x:Key="CringeRadioButtonStyling" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+            <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}" />
+            <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}" />
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="BorderThickness" Value="0" />
+
+            <!-- template -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <ControlTemplate.Resources>
+                            <ResourceDictionary>
+
+                                <!-- Anims -->
+                                <Storyboard x:Key="CheckRadio">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Rect">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                                <Storyboard x:Key="UncheckRadio">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Rect">
+                                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </ResourceDictionary>
+                        </ControlTemplate.Resources>
+
+                        <!-- bugs caused if no snap -->
+                        <Grid x:Name="templateRoot" Background="#00FFFFFF" SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="radioButtonBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Visibility="Hidden">
+                                <Grid x:Name="markGrid" Margin="2">
+                                    <Ellipse x:Name="optionMark" MinWidth="6" MinHeight="6" Opacity="0" Fill="#00FFFFFF" />
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                            <!-- Colour for the rectangle -->
+                            <Rectangle x:Name="Rect" Grid.ColumnSpan="1" Fill="#FFABABAB" HorizontalAlignment="Left" Height="21" Margin="0,4,0,0" VerticalAlignment="Top" Width="2" Opacity="0" Stroke="{x:Null}" RenderTransformOrigin="0.5,0.5" >
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform AngleY="-1.432"/>
+                                        <RotateTransform/>
+                                        <TranslateTransform Y="-0.013"/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasContent" Value="True">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}" />
+                                <Setter Property="Padding" Value="4,-1,0,0" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="UncheckRadio_BeginStoryboard" Storyboard="{StaticResource UncheckRadio}" />
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource CheckRadio}" />
+                                </Trigger.EnterActions>
+                                <Setter TargetName="optionMark" Property="Opacity" Value="1" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border x:Name="WindowBorder" BorderThickness="3" CornerRadius = "1" HorizontalAlignment="Left" Height="417" Margin="0" VerticalAlignment="Top" Width="700" Background="#FF141414">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F1F1F" Offset="0"/>
+                <GradientStop Color="#FF1F1F1F" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="411" VerticalAlignment="Top" Width="694" Loaded="ThemeLoading" Margin="0">
+
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation 
+                Storyboard.TargetName="MainGrid"
+                Storyboard.TargetProperty="(UIElement.Opacity)" 
+                From="0" To="1" Duration="0:0:2" AutoReverse="False"  />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="107*"/>
+                <ColumnDefinition Width="57*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="121*"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="246*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="27*"/>
+                <RowDefinition Height="22*"/>
+                <RowDefinition Height="22*"/>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="108*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <WebBrowser x:Name="Counter" HorizontalAlignment="Left" Height="1" Margin="65,7,0,0" VerticalAlignment="Top" Width="4" Source="{x:Null}" Loaded="WebBrowser_Loaded" Opacity="0.965" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+                <WebBrowser.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </WebBrowser.RenderTransform>
+            </WebBrowser>
+            <Rectangle x:Name="Topbar" Fill="#4C131517" HorizontalAlignment="Left" Height="30" Stroke="Transparent" VerticalAlignment="Top" Width="694" Grid.ColumnSpan="11" StrokeThickness="0" MouseDown="Rectangle_MouseDown" Margin="0,0,-1.2,0"/>
+            <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="481*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="111" Margin="234.8,69,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="1" BorderBrush="#FF565656" Opacity="0.6"/>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="234.8,228,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="1" BorderBrush="#FF565656" Opacity="0.6"/>
+                <Viewbox x:Name="JoinMainDab" Grid.ColumnSpan="2" Margin="18,169,498.2,181" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="30" Width="139">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Border_MouseDown" BorderBrush="#FF383A3C"/>
+                        <Image  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="6,6,0,0" VerticalAlignment="Top" Width="20" Source="/ImageResources/DiscordIcon.png" Opacity="0.75"/>
+                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Join MainDab" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Border_MouseDown">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-0.674"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-4.365"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                </Viewbox>
+                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="234.8,42,0,0" RenderTransformOrigin="1.338,2.769" Grid.Column="1" Text="Announcements"/>
+                <TextBlock HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Welcome to MainDab!" VerticalAlignment="Top" Width="188" Foreground="#FFD0CFCF" FontFamily="Calibri" FontSize="20" Margin="21,137,0,0" RenderTransformOrigin="1.338,2.769" Grid.ColumnSpan="2">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="-0.674"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-4.365"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="234.8,201,0,0" RenderTransformOrigin="1.338,2.769" Text="Changelog" Grid.Column="1"/>
+                <TextBlock x:Name="NoticeBoard" HorizontalAlignment="Left" Height="99" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="241.8,74,0,0" RenderTransformOrigin="1.338,2.769" Loaded="Notice" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="1">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="-0.674"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-4.365"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform><Run Text="The text for announcements go here."/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+                <TextBlock x:Name="Changelog" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="241.8,233,0,0" RenderTransformOrigin="1.338,2.769" Loaded="ChangelogBoard" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="1" Text="The text for changelog stuff goes here.">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="-0.674"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-4.365"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform></TextBlock>
+                <Viewbox x:Name="HelpCentre" Grid.ColumnSpan="2" Margin="18,203,498.2,147" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="30" Width="139">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Help" BorderBrush="#FF383A3C"/>
+                        <Image  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="icons8-web-90.png" Opacity="0.75"/>
+                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Help Centre" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Help">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-0.674"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-4.365"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                </Viewbox>
+            </Grid>
+            <TextBlock ToolTip="Made by Main_EX @ discord.io/maindab" Height="30" TextWrapping="Wrap" Text="MainDab" VerticalAlignment="Top" Foreground="Silver" FontFamily="Calibri Light" FontSize="20" Margin="6,4,25.2,0" MouseDown="TextBlock_MouseDown"/>
+
+            <Image x:Name="HomePage" HorizontalAlignment="Left" Height="21" Margin="-35,38,0,0" VerticalAlignment="Top" Width="20" Source="/ImageResources/HomePageIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" MouseDown="HomePage_MouseDown" Opacity="0.295">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="0.5" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="0.3" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="ExecutorPage" HorizontalAlignment="Left" Height="20" Margin="-35,71,0,0" VerticalAlignment="Top" Width="20" Source="/ImageResources/ExecutionTabIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" MouseDown="ExecutorPage_MouseDown" Grid.RowSpan="2" Opacity="0.295">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="0.5" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="0.3" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="ScriptHubPage" HorizontalAlignment="Left" Height="20" Margin="-36,0.2,0,0" VerticalAlignment="Top" Width="20" Source="/ImageResources/ScriptHubIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" MouseDown="ScriptHubPage_MouseDown" Grid.RowSpan="2" Grid.Row="2" Opacity="0.295">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="0.5" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="0.3" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="GameHubPage" HorizontalAlignment="Left" Height="30" Margin="-37,18,0,0" VerticalAlignment="Top" Width="22" Source="gamepad.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" MouseDown="GameHubOpen" Grid.RowSpan="2" Grid.Row="3" Opacity="0.295">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="0.5" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="0.3" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="UtilitiesPage" Height="20" Margin="-36,3.4,122.2,0" VerticalAlignment="Top" Source="/ImageResources/ToolsIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" MouseDown="UtilitiesPage_MouseDown" Grid.Row="5" Opacity="0.295" Grid.RowSpan="2">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.3" To="0.5" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="0.3" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Grid x:Name="ExecutorGrid" Grid.ColumnSpan="11" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="655" Background="#34000000" Visibility="Hidden">
+
+
+                <TabControl
+                x:Name="TabControl"
+                BorderThickness="0"
+                Opacity="1"
+                Style="{StaticResource Tabs4}" Margin="0,-2,0,29" BorderBrush="Transparent" Loaded="TextEditorLoad" Background="Transparent">
+                    <TabItem
+                    x:Name="MainTab"
+                    Header="Main Tab"
+                    Background="Transparent"
+                    Style="{StaticResource Tab2}" BorderBrush="Transparent" Height="24" Foreground="#FFB7B7B7">
+
+                        <avalonEdit:TextEditor xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" x:Name="TextEditor" Margin="-3,0,0.2,0.6" Grid.Row="1" Style="{DynamicResource TextEditorStyle1}" ShowLineNumbers="True" Foreground="#FFDDDDDD" FontFamily="Consolas" Text="-- MainDab @ discord.io/maindab" Grid.RowSpan="3" LineNumbersForeground="#FFC7C5C5" 
+                        VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" RenderTransformOrigin="0,0" MaxHeight="999999999" HorizontalContentAlignment="Stretch" Loaded="TextEditor_Loaded" Background="#0F312F2F" WordWrap="True">
+                            <avalonEdit:TextEditor.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.439"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="0.659"/>
+                                </TransformGroup>
+                            </avalonEdit:TextEditor.RenderTransform>
+                        </avalonEdit:TextEditor>
+
+                    </TabItem>
+                </TabControl>
+                <Viewbox x:Name="ExecuteButton" Margin="3,351,584,2" Stretch="Fill" Opacity="0.75" MouseDown="Execute">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="27" Width="68">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="68" Background="#0F7F7F7F"/>
+                        <Image x:Name="ExecuteIcon" HorizontalAlignment="Left" Height="18" Margin="5,5,0,0" VerticalAlignment="Top" Width="13" Source="/ImageResources/ExecuteIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="Black" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Execute" VerticalAlignment="Top" Width="44" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="21,5,0,0" MouseDown="TextBlock_MouseDown" FontSize="13"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="InjectButton" Margin="74,351,521,2" Stretch="Fill" MouseDown="Inject" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="27" Width="60">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="60" Background="#0F7F7F7F"/>
+                        <Image x:Name="InjectIcon" HorizontalAlignment="Left" Height="21" Margin="5,6,0,0" VerticalAlignment="Top" Width="16" Source="/ImageResources/InjectIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Inject" VerticalAlignment="Top" Width="29" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="25,6,0,0" MouseDown="TextBlock_MouseDown"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="ClearButton" Margin="136,351,461,2" Stretch="Fill" MouseDown="Clear" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="27" Width="58">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="58" Background="#0F7F7F7F"/>
+                        <Image x:Name="ClearIcon" HorizontalAlignment="Left" Height="21" Margin="5,5,0,0" VerticalAlignment="Top" Width="16" Source="/ImageResources/ClearIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Clear" VerticalAlignment="Top" Width="29" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="25,6,0,0" MouseDown="TextBlock_MouseDown"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="KillRobloxButton" Margin="196,351,380,2" Stretch="Fill" MouseDown="KillRoblox" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="27" Width="79">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="79" Background="#0F7F7F7F"/>
+                        <Image x:Name="KillRobloxIcon" HorizontalAlignment="Left" Height="20" Margin="5,6,0,0" VerticalAlignment="Top" Width="15" Source="/ImageResources/KillRobloxIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Kill Roblox" VerticalAlignment="Top" Width="52" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="24,6,0,0" MouseDown="TextBlock_MouseDown"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="OpenFileButton" Margin="278,351,303,-1" Stretch="Fill" MouseDown="OpenFile" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="30" Width="74">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="74" Background="#0F7F7F7F"/>
+                        <Image x:Name="OpenFileIcon" HorizontalAlignment="Left" Height="24" Margin="3,6,0,0" VerticalAlignment="Top" Width="15" Source="/ImageResources/OpenFileIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Open File" VerticalAlignment="Top" Width="52" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="22,6,0,0" MouseDown="TextBlock_MouseDown"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="SaveFileButton" Margin="355,351,223,-3" Stretch="Fill" MouseDown="SaveFile" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="32" Width="77">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="27" CornerRadius="2" VerticalAlignment="Top" Width="74" Background="#0F7F7F7F"/>
+                        <Image x:Name="SaveFileIcon" HorizontalAlignment="Left" Height="26" Margin="5,6,0,0" VerticalAlignment="Top" Width="17" Source="/ImageResources/SaveFileIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" Opacity="0.3">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Save File" VerticalAlignment="Top" Width="52" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="25,6,0,0" MouseDown="TextBlock_MouseDown"/>
+                    </Grid>
+                </Viewbox>
+                <Label x:Name="CurrentAPILabel" Content="Using EasyExploits API" HorizontalAlignment="Right" Margin="0,361,1,-2" VerticalAlignment="Top" Width="149" HorizontalContentAlignment="Right" Foreground="#FFB4B4B4" FontSize="10" Loaded="SetAPI" FontFamily="Calibri Light"/>
+                <Label  x:Name="InjectionStatus" Content="Roblox not opened" HorizontalAlignment="Right" Margin="0,346,1,0" VerticalAlignment="Top" Width="184" HorizontalContentAlignment="Right" Foreground="#FFC00000" Loaded="StartStatusCheck" FontWeight="Bold" FontFamily="Calibri"/>
+                <Grid x:Name="BlurTextbox" HorizontalAlignment="Left" Height="327" VerticalAlignment="Top" Width="655" Background="#FF131517" Margin="0,21,0,0" Visibility="Hidden">
+                    <Label x:Name="CurrentAPILabel_Copy" Content="Textbox blurred out" HorizontalAlignment="Center" Margin="0,144,0,143" VerticalAlignment="Center" Width="655" HorizontalContentAlignment="Center" Foreground="#FFB4B4B4" FontSize="24" FontFamily="Calibri Light" RenderTransformOrigin="0.329,0.279" Height="40"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="ScriptHubGrid" Grid.ColumnSpan="11" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="655" Background="#33000000" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="13*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="GeneralScriptScrollViewer" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="627" Grid.IsSharedSizeScope="True" Margin="10,62,0,0" Grid.RowSpan="3">
+                    <WrapPanel x:Name="WP" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="627" Loaded="WrapPanel_LoadedAsync" Grid.IsSharedSizeScope="True"/>
+                </ScrollViewer>
+                <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Script Hub" VerticalAlignment="Top" Width="140" Foreground="#FFE0E0E0" FontFamily="Calibri Light" FontSize="18" Margin="15,6,0,0" MouseDown="TextBlock_MouseDown" Grid.RowSpan="2"/>
+                <Rectangle Fill="#4C232323" HorizontalAlignment="Left" Height="23" Margin="14,34,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="192"/>
+                <TextBox x:Name="GeneralScriptSearch" CaretBrush ="#FF898989" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="38,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" GotFocus="GeneralScriptSearch_GotFocus" LostFocus="GeneralScriptSearch_LostFocus" GotKeyboardFocus="GeneralScriptSearch_GotFocus" LostKeyboardFocus="GeneralScriptSearch_LostFocus" Background="{x:Null}" Foreground="#FF898989" Text="Search for a script here" BorderBrush="{x:Null}" FontSize="10" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="13" Margin="21,39,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="19" Source="SearchBoxIcon.png" Opacity="0.3"/>
+                <Button x:Name="SearchGameHubButton_Copy" Template ="{DynamicResource NoHighlightBut}" Content="Search" Margin="211,33.15,374.8,316.75" Background="#4C2C2C2C" Foreground="#FFADADAD" BorderBrush="{x:Null}" Click="SearchScriptHub" Opacity="0.75" Height="24.5" BorderThickness="0" FontSize="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+            <Grid x:Name="GameHubGrid" Grid.ColumnSpan="11" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="655" Background="#33000000" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="24*" />
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="43*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer x:Name="GameScriptScrollViewer" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="627" Grid.IsSharedSizeScope="True" Margin="15,65,0,0" Grid.RowSpan="4">
+                    <WrapPanel x:Name="WP1" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="627" Loaded="WP1_LoadedAsync" Grid.IsSharedSizeScope="True"/>
+                </ScrollViewer>
+                <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Game Hub" VerticalAlignment="Top" Width="140" Foreground="#FFE0E0E0" FontFamily="Calibri Light" FontSize="18" Margin="15,6,0,0" Grid.RowSpan="2"/>
+                <Rectangle Fill="#4C232323" HorizontalAlignment="Left" Height="23" Margin="14,34,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="192"/>
+                <TextBox x:Name="GameScriptSearch" CaretBrush ="#FF898989" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="39,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" GotFocus="GameScriptSearch_GotFocus" LostFocus="GameScriptSearch_LostFocus" GotKeyboardFocus="GameScriptSearch_GotFocus" LostKeyboardFocus="GameScriptSearch_LostFocus" Background="{x:Null}" Foreground="#FF898989" Text="Search for a script here" BorderBrush="{x:Null}" FontSize="10" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="13" Margin="21,39,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="19" Source="SearchBoxIcon.png" Opacity="0.3"/>
+                <Button x:Name="SearchGameHubButton" Template ="{DynamicResource NoHighlightBut}" Content="Search" Margin="211,33,375,316.6" Background="#4C2C2C2C" Foreground="#FFADADAD" BorderBrush="{x:Null}" Click="SearchGameHub" Opacity="0.75" Height="24.5" BorderThickness="0" FontSize="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+            <Grid x:Name="ToolsGrid" Grid.ColumnSpan="11" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="655" Background="#33000000" Visibility="Hidden">
+                <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Tools" VerticalAlignment="Top" Width="140" Foreground="#FFA9A1A1" FontFamily="Calibri" FontSize="18" Margin="15,6,0,0"/>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="16,34,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="147" Background="#0F000000" BorderBrush="#19A5A5A5"/>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Multiple Roblox" VerticalAlignment="Top" Width="131" Foreground="#FFC2C2C2" FontFamily="Calibri" FontSize="16" Margin="23,38,0,0" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="by Main_EX" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="23,58,0,0" FontSize="10"/>
+                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="23,73,0,0"><Run Text="Run multiple instances of Roblox at the same time! You must run this first BEFORE opening Roblox."/><LineBreak/></TextBlock>
+                <Button Template ="{DynamicResource NoHighlightBut}" Content="Run" Margin="36,141,510,215" Background="#03FFFFFF" Foreground="White" BorderBrush="#19DADADA" Click="Button_Click_3" Opacity="0.75">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="172,34,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="147" Background="#0F000000" BorderBrush="#19A5A5A5"/>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="FPS Unlocker" VerticalAlignment="Top" Width="131" Foreground="#FFC2C2C2" FontFamily="Calibri" FontSize="16" Margin="179,38,0,0" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="179,58,0,0" FontSize="10"><Run Text="by axstin @ Github"/><LineBreak/><Run/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="179,73,0,0" Text="A simple program that unlocks Roblox's FPS limit. Roblox limits the FPS to around 60 FPS."/>
+                <Button Template ="{DynamicResource NoHighlightBut}" Content="Run" Margin="195,141,354,215" Background="#03FFFFFF" Foreground="White" BorderBrush="#19DADADA" Click="Button_Click_2" Opacity="0.75">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBlock HorizontalAlignment="Center" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" Foreground="#76FFFFFF" FontFamily="Calibri Light" FontSize="18" Margin="0,254,0,0" Text="There's not really much tools here (for now)" TextAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="SettingsGrid" HorizontalAlignment="Left" Height="382" Margin="39,30,-1.2,-0.395" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="415*"/>
+                    <ColumnDefinition Width="99*"/>
+                    <ColumnDefinition Width="26*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle x:Name="Sidebar_Copy" HorizontalAlignment="Left" Height="380" Stroke="Transparent" VerticalAlignment="Top" Width="166" StrokeThickness="0" Fill="#2D000000"/>
+                <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Options" VerticalAlignment="Top" Width="125" Foreground="#FFCACACA" FontFamily="Calibri Light" FontSize="19" Margin="5,4,0,0"/>
+                <Viewbox x:Name="APISelectionButton" Margin="6,31,331.6,314" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="37" Width="160">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="153" BorderBrush="#19A5A5A5" Background="#19373737" MouseDown="Border_MouseDown_1"/>
+                        <Image x:Name="ScriptHubPage_Copy" HorizontalAlignment="Left" Height="20" Margin="7,6,0,0" VerticalAlignment="Top" Width="20" Source="ImageResources/OptionIcons/APISelection.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" MouseDown="Border_MouseDown_1" Opacity="0.5">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="API Selection" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="35,7,0,0" MouseDown="Border_MouseDown_1"/>
+                    </Grid>
+                </Viewbox>
+                <Grid x:Name="APISelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="179*"/>
+                        <RowDefinition Height="11*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Right" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="489" Foreground="#FFD1CFCF" FontFamily="Calibri Light" FontSize="19" Margin="0,2,0,325.4" TextAlignment="Center"><Run Text="API Selection"/><LineBreak/><Run/></TextBlock>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="8,31,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <Ellipse x:Name="EasyExploitsStatus" HorizontalAlignment="Left" Height="16" Margin="14,39,0,0" VerticalAlignment="Top" Width="16" Loaded="EasyExploitAPICheck" Opacity="0.7" Fill="#B22E63E0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="37,31,0,0" Text="EasyExploits API"/>
+                    <TextBlock x:Name="EasyExploitsStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,48,247,280.4" Text="No function to check, probably working"/>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="244,31,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="241" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <Ellipse x:Name="WRDStatus" Fill="#FF28C37E" HorizontalAlignment="Left" Height="16" Margin="254,38,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
+                    <Button Content="Use" Margin="433,35,10,302.4" Background="#23656565" Template ="{DynamicResource NoHighlightBut}" Foreground="#FFE2E2E2" BorderBrush="{x:Null}" Click="Button_Click_1" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="279,31,0,0" Text="WeAreDevs API"/>
+                    <TextBlock x:Name="WRDStatusText" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Center" Width="186" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,48,22,298.4" Text="Unpatched and working!"/>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="8,67,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <Button Content="Use" Margin="188,72,255,265.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="OxygenAPI" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Ellipse x:Name="OxygenStatus" Fill="#FF28C37E" HorizontalAlignment="Left" Height="16" Margin="14,75,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="37,68,0,0" Text="Oxygen U API"/>
+                    <TextBlock x:Name="OxygenStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,85,246,243.4"><Run Text="Unpatched and working!"/></TextBlock>
+                    <TextBlock x:Name="HasKey" HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Foreground="#FF4E4E4E" FontFamily="Calibri Light" FontSize="10" Margin="126,72,0,0" Text="(has key)"/>
+                    <Button x:Name="EasyExploitsUse" Content="Use" Margin="187,35,256,302.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="Button_Click" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <TextBlock x:Name="lol" HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="484" Foreground="#FFC7C7C7" FontFamily="Calibri Light" FontSize="19" Text="Notes on API selection" Margin="5,108,0,220.4" TextAlignment="Center"/>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="13,140,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,146,0,0" Text="WeAreDevs is not the only API you can pick or use!" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,183,0,0" TextAlignment="Center"><Run Text="If WeAreDevs doesn't work (or is &quot;stuck&quot; on injection), then use another API, such as EasyExploits"/><Run Text=", "/><Run Text="Oxygen U"/><Run Text=" or Krnl"/><Run Text="."/></TextBlock>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="246,140,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="255,146,0,0" Text="Roblox updates every Wednesday, leaving exploits patched!" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="255,183,0,0" Text="If none of the API works, then please wait for a few hours for the APIs to update. It takes time." TextAlignment="Center"/>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="13,242,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,248,0,0" Text="The status shows that WeAreDevs/EasyExploits is stuck on injection!" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,285,0,0" Text="This either means that there is an issue with the API, such as it being patched. You can also try restart both MainDab and Roblox." TextAlignment="Center"/>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="247,242,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="254,248,0,0" Text="I still need help with MainDab! I have an API suggestion!" TextAlignment="Center"/>
+                    <Button Content="MainDab's Discord Server" Margin="255,305,25,29.4" Background="#1E696969" Template ="{DynamicResource NoHighlightBut}" Foreground="#FFC3C3C3" BorderBrush="{x:Null}" Click="DiscordLinkie" FontFamily="Calibri Light" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <TextBlock HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="251,285,0,0" Text="If you do, then please consider joining" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="462" Foreground="#FF6B6B6B" FontFamily="Calibri " FontSize="14" Margin="13,341,0,0" TextAlignment="Center" FontStyle="Italic" Grid.RowSpan="2"><Run Text="("/><Run Text="Also, MainDab "/><Run Text="is "/><Run Text="not sponsored by either EasyExploits or WeAreDevs"/><Run Text="."/><Run Text=" None of them wanted to sponsor MainDab for whatever reason."/><Run Text=")"/></TextBlock>
+                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="245,67,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="240" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <Button x:Name="UseKRNL" Content="Use" Margin="433,72,10,265.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="KrnlAPI" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Ellipse x:Name="OxygenStatus_Copy" Fill="#B22E63E0" HorizontalAlignment="Left" Height="16" Margin="254,75,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="279,68,0,0"><Run Text="K"/><Run Text="rnl"/><Run Text=" API"/></TextBlock>
+                    <TextBlock x:Name="KrnlStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,85,4,243.4" Text="No function to check, probably working"/>
+                    <TextBlock x:Name="HasKey_Copy" HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Foreground="#FF4E4E4E" FontFamily="Calibri Light" FontSize="10" Margin="332,72,0,0" Text="(has key)"/>
+                </Grid>
+                <Grid x:Name="GeneralOptions" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Background="#4C000000" Visibility="Hidden">
+                    <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="249,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
+                    <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="7,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
+                    <TextBlock HorizontalAlignment="Right" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="489" Foreground="#FFD1CFCF" FontFamily="Calibri Light" FontSize="19" Margin="-0.2,3.2,0.2,347.8" TextAlignment="Center" Text="General Options"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Topmost" VerticalAlignment="Top" Width="125" Foreground="#FFB9B9B9" FontFamily="Calibri Light" FontSize="18" Margin="12,37,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Foreground="#FF8C8C8C" FontFamily="Calibri Light" Margin="13,59,0,0"><Run Text="Basically to keep MainDab &quot;on top&quot; of"/><LineBreak/><Run Text="other windows, such as Roblox."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Discord RPC" VerticalAlignment="Top" Width="125" Foreground="#FFB9B9B9" FontFamily="Calibri Light" FontSize="18" Margin="257,37,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Foreground="#FF8C8C8C" FontFamily="Calibri Light" Margin="258,59,0,0"><Run Text="The thing that shows you playing MainDab"/><LineBreak/><Run Text="on your Discord status."/></TextBlock>
+                    <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="7,103,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Use custom theme" VerticalAlignment="Top" Width="189" Foreground="#FFB9B9B9" FontFamily="Calibri Light" FontSize="18" Margin="12,106,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Foreground="#FF8C8C8C" FontFamily="Calibri Light" Margin="13,128,0,0"><Run Text="Use the current theme as MainDab's"/><LineBreak/><Run Text="default theme on startup."/></TextBlock>
+                    <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="249,103,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Reset theme" VerticalAlignment="Top" Width="189" Foreground="#FFB9B9B9" FontFamily="Calibri Light" FontSize="18" Margin="252,106,0,0"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Foreground="#FF8C8C8C" FontFamily="Calibri Light" Margin="253,128,0,0"><Run Text="Use MainDab's default theme instead"/><LineBreak/><Run Text="of a custom theme."/></TextBlock>
+                    <Button x:Name="DiscordRPCButton" Content="Disabled" Margin="436,77,6,286" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="DiscordRPCFunc" Loaded="DiscordRPCSetting" FontSize="8" FontFamily="Consolas"/>
+                    <Button x:Name="TopMostButton" Content="Disabled" Margin="194,77,248,286" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="TopmostFunc" Loaded="TopmostFuncSetting" FontSize="8" FontFamily="Consolas"/>
+                    <Button x:Name="TopMostButton_Copy" Content="Use" Margin="194,145,248,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="UseCustomTheme"/>
+                    <Button x:Name="TopMostButton_Copy1" Content="Reset" Margin="435,145,7,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="ResetTheme"/>
+                </Grid>
+                <Grid x:Name="ThemeSelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Visibility="Hidden">
+                    <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Width="489" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="19" Margin="0,6,0,0" TextAlignment="Center"/>
+                    <TextBox x:Name="RightGradient" HorizontalAlignment="Left" Height="19" Margin="352,157,0,0" TextWrapping="Wrap" Text="Right hex code" VerticalAlignment="Top" Width="127" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
+                    <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="176" Foreground="#FFE4E4E4" FontFamily="Calibri Light" FontSize="15" Margin="26,43,287,309" Text="Theme List" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="222,181,10,174" Text="Background image url" TextAlignment="Center"/>
+                    <TextBox x:Name="ImageLink" HorizontalAlignment="Left" Height="19" Margin="222,208,0,0" Text="(input valid url)" VerticalAlignment="Top" Width="257" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    <Button x:Name="ThemeDemo" Content="Theme Demo" Margin="222,325,140,28" Background="#33434343" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeDemo1" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="ApplyTheme" Content="Apply theme" Margin="222,287,10,64" Background="#33434343" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeApply" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <TextBox x:Name="LeftGradient" HorizontalAlignment="Left" Height="19" Margin="222,157,0,0" TextWrapping="Wrap" Text="Left hex code" VerticalAlignment="Top" Width="127" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
+                    <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="222,233,10,119" Text="Image transparency" TextAlignment="Center"/>
+                    <TextBox x:Name="ImageTransparency" HorizontalAlignment="Left" Height="19" Margin="273,260,0,0" Text="Value from 0-100" VerticalAlignment="Top" Width="153" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="222,120,10,235" Text="Left and right border colours" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="222,70,10,285" Text="Creator name" TextAlignment="Center"/>
+                    <TextBox x:Name="CreatorName" HorizontalAlignment="Left" Height="19" Margin="222,94,0,0" Text="Theme creator name here" VerticalAlignment="Top" Width="257" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="176" Foreground="#FFE4E4E4" FontFamily="Calibri Light" FontSize="15" Margin="262,43,51,309" Text="Theme builder" TextAlignment="Center"/>
+                    <Button x:Name="SaveToFile" Content="Save to file" Margin="352,325,10,27" Background="#33434343" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeSave" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="DownloadThemeRepo" Content="Download theme repository" Margin="26,325,287,28" Background="#33434343" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeDownload" Opacity="0.75">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <TextBlock HorizontalAlignment="Center" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FF6F6F6F" FontFamily="Calibri Light" FontSize="10" Margin="222,139,10,216" Text="Make sure to include the hashtag" TextAlignment="Center"/>
+                    <ListBox x:Name="ThemeListBox" HorizontalAlignment="Left" Height="246" Margin="26,70,0,0" VerticalAlignment="Top" Width="176" Background="#26000000" BorderBrush="#4CF0F0F0" Loaded="ThemeListBox_Loaded" Foreground="#FFCDCDCD" FontFamily="Calibri Light" SelectionChanged="ListBoxSelect" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                    <Border x:Name="DownloadMessage" BorderBrush="#FFA5A5A5" BorderThickness="1" Margin="26,70,287,66" Background="#59000000" Visibility="Hidden">
+                        <TextBlock x:Name="DownloadMessageTextBox" TextWrapping="Wrap" Text="Downloading themes from theme repository..." TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-0.8,105.2,-0.8,71.4" Width="176" Foreground="LightGray" Height="65"/>
+                    </Border>
+                    <TextBlock HorizontalAlignment="Center" Height="19" TextWrapping="Wrap" VerticalAlignment="Center" Width="479" Foreground="#FF636363" FontFamily="Calibri Light" Margin="10,359,0,2" Text="You can set the current theme as a default theme in the General Options tab" TextAlignment="Center" FontSize="11"/>
+                </Grid>
+                <Viewbox x:Name="GeneralOptionsButton" Margin="6,68,332.6,277" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="37" Width="159">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="153" BorderBrush="#19A5A5A5" Background="#19373737" MouseDown="Border_MouseDown_2"/>
+                        <Image x:Name="ScriptHubPage_Copy3" HorizontalAlignment="Left" Height="17" Margin="8,8,0,0" VerticalAlignment="Top" Width="19" Source="ImageResources/OptionIcons/GeneralOptionSelection.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" MouseDown="Border_MouseDown_2" Opacity="0.5">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="General Options" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="34,7,0,0" MouseDown="Border_MouseDown_2"/>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="ThemeSelectionButton" Margin="6,105,332.6,240" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid Height="37" Width="159">
+                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="153" BorderBrush="#19A5A5A5" Background="#19373737" MouseDown="Border_MouseDown_3"/>
+                        <Image x:Name="ScriptHubPage_Copy1" HorizontalAlignment="Left" Height="23" Margin="5,4,0,0" VerticalAlignment="Top" Width="23" Source="ImageResources/OptionIcons/ThemeSelection.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" MouseDown="Border_MouseDown_3" Opacity="0.5">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect ShadowDepth="0" Color="#FFFDFDFD" Opacity="0.1" BlurRadius="20"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Theme Selection" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="34,7,0,0" MouseDown="Border_MouseDown_3"/>
+                    </Grid>
+                </Viewbox>
+                <Grid HorizontalAlignment="Left" Height="380" Margin="165.4,0,0,0" VerticalAlignment="Top" Width="1" Background="#19A5A5A5"/>
+            </Grid>
+            <Image x:Name="UtilitiesPage_Copy" HorizontalAlignment="Left" Height="19" Margin="35.2,6,0,0" VerticalAlignment="Top" Width="19" Source="/ImageResources/CloseWindowIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" MouseDown="ExitMD" Grid.Column="10" Stretch="Fill" Opacity="0.64">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.64" To="0.80" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.80" To="0.64" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image x:Name="UtilitiesPage_Copy1" HorizontalAlignment="Left" Height="15" Margin="13.2,7,0,0" VerticalAlignment="Top" Width="10" Source="/ImageResources/MinimiseIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#CC454545" MouseDown="Mini" Grid.Column="10" Opacity="0.64">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.64" To="0.80" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.80" To="0.64" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="85,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="28" MouseDown="Help" BorderBrush="#FF3A0197" Grid.ColumnSpan="2">
+                <Grid/>
+            </Border>
+            <TextBlock HorizontalAlignment="Center" Height="14" TextWrapping="Wrap" Text="15.1" VerticalAlignment="Top" Width="28" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="85,11.8,51,0" MouseDown="TextBlock_MouseDown" Grid.ColumnSpan="2" FontSize="10" TextAlignment="Center"/>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="10.2,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="27" MouseDown="Help" BorderBrush="#FF1D4299" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="10.8,12,0,0" MouseDown="TextBlock_MouseDown" FontSize="10" Grid.Column="1" TextAlignment="Center"><Run Text="SP"/><Run Text="7"/></TextBlock>
+            <Grid x:Name="LoadingScreen" HorizontalAlignment="Left" Height="417" Margin="-3,-3,-4.2,-2.395" Grid.RowSpan="12" VerticalAlignment="Top" Width="700" Grid.ColumnSpan="11" Visibility="Hidden">
+                <Grid x:Name="BG" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="700" Background="#FF0C0C0C" Opacity="0.845"/>
+                <ProgressBar x:Name="LoadingScreenBar" Height="23" Margin="164,243,157,0" VerticalAlignment="Top" BorderBrush="#FF565656" Background="#26000000" BorderThickness="1" Style="{DynamicResource ProgressBarStyle1}" Foreground="#19717171" Loaded="LoadingScreenLoaded"/>
+                <Image x:Name="MainDab" HorizontalAlignment="Left" Height="150" Margin="277,102,0,0" VerticalAlignment="Top" Width="195" Source="MainDabIcon.png" Opacity="0.8"/>
+                <Label x:Name="LoadingScreenStatus" HorizontalContentAlignment="Center" Content="Loading MainDab..." HorizontalAlignment="Left" Margin="164,213,0,0" VerticalAlignment="Top" Foreground="#FFE0E0E0" Width="379"/>
+            </Grid>
+            <Rectangle x:Name="Topbar_Copy" Fill="#46131517" HorizontalAlignment="Left" Height="380" Stroke="Transparent" VerticalAlignment="Top" Width="39" StrokeThickness="0" MouseDown="Rectangle_MouseDown" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="12"/>
+            <RadioButton x:Name="HomeRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,32,0,0" VerticalAlignment="Top" Width="36.4" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Click="HomeRadioButtonClick" Loaded="HomeRadioButtonLoaded">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="HomeRadioButton">
+                        <BeginStoryboard x:Name="HomeButtonSelected_BeginStoryboard" Storyboard="{StaticResource HomeButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="HomeRadioButton">
+                        <BeginStoryboard x:Name="HomeButtonDeselected_BeginStoryboard" Storyboard="{StaticResource HomeButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="Path1" Fill="#FF5C5B5B" Data="F1 M26.39,26.39z M0,0z M3.588,24.297C3.588,24.297 3.564,24.887 4.141,24.887 4.859,24.887 10.793,24.879 10.793,24.879L10.803,19.428C10.803,19.428,10.709,18.53,11.58,18.53L14.341,18.53C15.372,18.53,15.309,19.428,15.309,19.428L15.297,24.862C15.297,24.862 20.925,24.862 21.809,24.862 22.541,24.862 22.508,24.128 22.508,24.128L22.508,14.076 13.33,5.913 3.588,14.077C3.588,14.077,3.588,24.297,3.588,24.297z" Margin="3.3,6.25,4.1,4.8" Stretch="Fill" />
+                    <Path x:Name="Path2" Fill="#FF5C5B5B" Data="F1 M26.39,26.39z M0,0z M0,13.317C0,13.317,0.826,14.841,2.631,13.317L13.412,4.196 23.519,13.26C25.607,14.766,26.39,13.26,26.39,13.26L13.412,1.504 0,13.317z" Margin="3.2,6.7,3.8,4.8" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.939"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path x:Name="Path3" Fill="#FF5C5B5B" Data="F1 M26.39,26.39z M0,0z M23.273,4.175L23.273,4.175 20.674,4.175 20.685,7.328 23.273,9.525z" Margin="-5.133,3.867,5.533,0.933" Grid.RowSpan="2"/>
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="ExecutorRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,64,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="2" Click="ExecutorRadioButtonClick">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="ExecutorRadioButton">
+                        <BeginStoryboard x:Name="ExecutorButtonSelected_BeginStoryboard" Storyboard="{StaticResource ExecutorButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="ExecutorRadioButton">
+                        <BeginStoryboard x:Name="ExecutorButtonDeselected_BeginStoryboard" Storyboard="{StaticResource ExecutorButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="ExecutorPath1" Fill="#FF5C5B5B" Data="F1 M20,20z M0,0z M5.719,14.75A0.997,0.997,0,0,1,5.055,14.498L-0.005,10 5.336,5.252A1,1,0,0,1,6.664,6.747L3.005,10 6.383,13.002A1,1,0,0,1,5.719,14.75z M14.664,14.748L20.005,10 14.945,5.502A0.999,0.999,0,1,0,13.617,6.997L16.995,10 13.336,13.252A1,1,0,0,0,14.664,14.748z M9.986,16.165L11.986,4.165A1,1,0,1,0,10.014,3.836L8.014,15.836A1,1,0,1,0,9.986,16.165z" Margin="1.333,3.65,1.951,2.6" Stretch="Fill" />
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="ScriptHubRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,16,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="3" Grid.Row="1" Click="ScriptHubRadioButtonClick">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="ScriptHubRadioButton">
+                        <BeginStoryboard x:Name="ScriptHubButtonSelected_BeginStoryboard" Storyboard="{StaticResource ScriptHubButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="ScriptHubRadioButton">
+                        <BeginStoryboard x:Name="ScriptHubButtonDeselected_BeginStoryboard" Storyboard="{StaticResource ScriptHubButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="ScriptHubPath1" Fill="#FF5C5B5B" Data="F1 M512,512z M0,0z M480,32L32,32C14.327,32,0,46.326,0,64L0,96C0,113.673,14.327,128,32,128L480,128C497.673,128,512,113.673,512,96L512,64C512,46.326,497.673,32,480,32z" Margin="5.067,7.067,4.734,4.8" Stretch="Fill"/>
+                    <Path x:Name="ScriptHubPath2" Fill="#FF5C5B5B" Data="F1 M512,512z M0,0z M32.001,448.005C32,465.675,46.325,480,63.995,480L448.006,480C465.676,480,480,465.676,480,448.006L480,448.005 480,160 32.001,160 32.001,448.005z M192,224L320,224C328.837,224 336,231.163 336,240 336,248.836 328.837,256 320,256L192,256C183.163,256 176,248.836 176,240 176,231.163 183.163,224 192,224z" Margin="5.067,7.067,4.734,4.8" Stretch="Fill"/>
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="GameHubRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,8,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="2" Grid.Row="3" Click="GameHubRadioButtonClick">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="GameHubRadioButton">
+                        <BeginStoryboard x:Name="GameHubButtonSelected_BeginStoryboard" Storyboard="{StaticResource GameHubButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="GameHubRadioButton">
+                        <BeginStoryboard x:Name="GameHubButtonDeselected_BeginStoryboard" Storyboard="{StaticResource GameHubButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+
+                    <Path x:Name="GameHubPath1" Fill="#FF5C5B5B" Data="F1 M32,32z M0,0z M30.838,18.634L30.84,18.634 28.733,9.461C28.081,7.458 26.221,6 24,6 22.37,6 20.935,6.792 20.023,8L11.978,8C11.065,6.792 9.63,6 8,6 5.779,6 3.919,7.458 3.267,9.461L1.16,18.633 1.162,18.633C1.06,19.073 1,19.529 1,20 1,23.314 3.686,26 7,26 9.611,26 11.827,24.329 12.651,22L19.349,22C20.174,24.329 22.389,26 25,26 28.314,26 31,23.314 31,20 31,19.529 30.94,19.073 30.838,18.634z M10,16L9,16 9,17C9,17.552 8.553,18 8,18 7.447,18 7,17.552 7,17L7,16 6,16C5.447,16 5,15.552 5,15 5,14.448 5.447,14 6,14L7,14 7,13C7,12.448 7.447,12 8,12 8.553,12 9,12.448 9,13L9,14 10,14C10.553,14 11,14.448 11,15 11,15.552 10.553,16 10,16z M23,17C22.448,17 22,16.552 22,16 22,15.448 22.448,15 23,15 23.552,15 24,15.448 24,16 24,16.552 23.552,17 23,17z M23,14C22.448,14 22,13.552 22,13 22,12.448 22.448,12 23,12 23.552,12 24,12.448 24,13 24,13.552 23.552,14 23,14z M26,17C25.448,17 25,16.552 25,16 25,15.448 25.448,15 26,15 26.552,15 27,15.448 27,16 27,16.552 26.552,17 26,17z M26,14C25.448,14 25,13.552 25,13 25,12.448 25.448,12 26,12 26.552,12 27,12.448 27,13 27,13.552 26.552,14 26,14z" Margin="3.067,6.534,2.733,2" Stretch="Fill"/>
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="ToolsRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,13.8,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="3" Grid.Row="4" Click="ToolsRadioButtonClick">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="ToolsRadioButton">
+                        <BeginStoryboard x:Name="ToolsButtonSelected_BeginStoryboard" Storyboard="{StaticResource ToolsButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="ToolsRadioButton">
+                        <BeginStoryboard x:Name="ToolsButtonDeselected_BeginStoryboard" Storyboard="{StaticResource ToolsButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="ToolsPath1" Fill="#FF5C5B5B" Data="F1 M512,512z M0,0z M458.035,102.56L378.702,102.56 378.702,62.796C378.702,38.281,358.759,18.339,334.245,18.339L177.755,18.339C153.242,18.339,133.298,38.282,133.298,62.796L133.298,102.558 53.965,102.558C24.161,102.56,0,126.721,0,156.525L0,188.172C0,195.102,5.619,200.721,12.549,200.721L499.451,200.721C506.381,200.721,512,195.102,512,188.172L512,156.525C512,126.721,487.839,102.56,458.035,102.56z M332.967,102.56L179.033,102.56 179.033,64.074 332.968,64.074 332.968,102.56z" Margin="3.6,5.734,2.867,3.7" Stretch="Fill"/>
+                    <Path x:Name="ToolsPath2" Fill="#FF5C5B5B" Data="F1 M512,512z M0,0z M386.51,234.622L386.51,302.352C386.51,306.8,382.903,310.408,378.454,310.408L340.28,310.408C335.83,310.408,332.224,306.801,332.224,302.352L332.224,234.621 179.777,234.621 179.777,302.352C179.777,306.8,176.171,310.408,171.721,310.408L133.547,310.408C129.097,310.408,125.491,306.801,125.491,302.352L125.491,234.621 26.501,234.621 26.501,481.112C26.501,488.042,32.12,493.661,39.05,493.661L472.948,493.661C479.878,493.661,485.497,488.042,485.497,481.112L485.497,234.622 386.51,234.622z" Margin="3.6,5.734,2.867,3.7" Stretch="Fill"/>
+
+                </Grid>
+            </RadioButton>
+            <RadioButton x:Name="SettingsRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,83.993,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="2" Grid.Row="10" Click="SettingsRadioButtonClick">
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="SettingsRadioButton">
+                        <BeginStoryboard x:Name="SettingsButtonSelected_BeginStoryboard" Storyboard="{StaticResource SettingsButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="SettingsRadioButton">
+                        <BeginStoryboard x:Name="SettingsButtonDeselected_BeginStoryboard" Storyboard="{StaticResource SettingsButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="SettingsPath1" Fill="#FF5C5B5B" Data="F1 M262.394,262.394z M0,0z M245.63,103.39L235.72,103.39C233.234,94.019,229.523,85.148,224.765,76.958L231.78,69.943C238.326,63.397,238.326,52.784,231.78,46.238L216.159,30.617C209.613,24.071,199,24.071,192.454,30.617L185.439,37.632C177.249,32.874,168.378,29.164,159.007,26.677L159.007,16.763C159.007,7.505,151.502,0,142.244,0L120.153,0C110.895,0,103.39,7.505,103.39,16.763L103.39,26.677C94.02,29.163,85.148,32.874,76.959,37.631L69.943,30.616C63.397,24.07,52.784,24.07,46.238,30.617L30.618,46.238C24.072,52.784,24.072,63.397,30.618,69.943L37.632,76.957C32.874,85.147,29.163,94.019,26.677,103.39L16.763,103.39C7.506,103.39,0.000999999999997669,110.895,0.000999999999997669,120.153L0.000999999999997669,142.243C0.000999999999997669,151.501,7.506,159.006,16.763,159.006L26.677,159.006C29.164,168.377,32.875,177.249,37.633,185.439L30.618,192.454C24.072,199,24.072,209.613,30.618,216.159L46.239,231.78C52.785,238.326,63.398,238.326,69.944,231.78L76.96,224.764C85.149,229.522,94.021,233.233,103.391,235.719L103.391,245.632C103.391,254.89,110.896,262.395,120.154,262.395L142.245,262.395C151.503,262.395,159.008,254.89,159.008,245.632L159.008,235.719C168.379,233.232,177.25,229.521,185.44,224.763L192.456,231.78C199.002,238.326,209.615,238.326,216.161,231.78L231.782,216.159C234.927,213.015 236.692,208.752 236.692,204.306 236.692,199.86 234.926,195.597 231.782,192.453L224.766,185.437C229.524,177.248,233.234,168.375,235.721,159.005L245.631,159.005C254.889,159.005,262.394,151.5,262.394,142.242L262.394,120.152C262.393,110.895,254.888,103.39,245.63,103.39z M131.198,191.194C98.115,191.194 71.2,164.279 71.2,131.197 71.2,98.114 98.115,71.199 131.198,71.199 164.281,71.199 191.196,98.114 191.196,131.197 191.196,164.279 164.281,191.194 131.198,191.194z" Margin="3.6,5.734,2.867,3.7" Stretch="Fill"/>
+                    <Path x:Name="SettingsPath2" Fill="#FF5C5B5B" Data="F1 M262.394,262.394z M0,0z M131.198,101.199C114.657,101.199 101.2,114.656 101.2,131.197 101.2,147.737 114.657,161.194 131.198,161.194 147.739,161.194 161.196,147.737 161.196,131.197 161.196,114.656 147.739,101.199 131.198,101.199z" Margin="3.6,5.734,2.867,3.7" Stretch="Fill"/>
+
+                </Grid>
+            </RadioButton>
+            <Grid x:Name="AltWarning" HorizontalAlignment="Left" Height="412" VerticalAlignment="Top" Width="694" Background="Black" Grid.RowSpan="12" Grid.ColumnSpan="11">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="333" VerticalAlignment="Top" Width="611" Source="Untitled.png" Margin="41,79,0,0"/>
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</Window>
