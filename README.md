@@ -22,7 +22,7 @@ Second, you will need to download [this](https://github.com/MainDabRblx/ProjectD
 This repository contains the MainDab's entire source code. I update this repository everytime I update MainDab. You could just decompile MainDab yourself using DnSpy, ILSpy or any other .NET decompiler, especially if you doubt the credibility (did you really think MainDab is a virus?) of this source code.
 
 ## Tags
-Roblox, MainDab, Roblox Exploit, Roblox Serverside, Axon
+Roblox, MainDab, Roblox Exploit, Roblox Serverside
 
 ## Further questions/inquiries 
 Join MainDab's Discord at https://discord.io/maindab to contact me.
