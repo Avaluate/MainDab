@@ -1,0 +1,7 @@
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Release\UnexpectedClientBehaviourFix.exe.config
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Release\UnexpectedClientBehaviourFix.exe
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Release\UnexpectedClientBehaviourFix.pdb
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Release\UnexpectedClientBehaviourFix.csproj.AssemblyReference.cache
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Release\UnexpectedClientBehaviourFix.csproj.CoreCompileInputs.cache
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Release\UnexpectedClientBehaviourFix.exe
+C:\Users\Main_EX\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Release\UnexpectedClientBehaviourFix.pdb

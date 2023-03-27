@@ -169,6 +169,19 @@
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
 
+        <Storyboard x:Key="CustomisationButtonSelected">
+            <DoubleAnimation Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="CustomisationPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFABABAB" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="CustomisationButtonDeselected">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="CustomisationPath1">
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
         <Storyboard x:Key="SettingsButtonSelected">
             <DoubleAnimation Storyboard.TargetName="SettingsGrid" Storyboard.TargetProperty="(Window.Opacity)" From="0.0" To="1.0" Duration="0:0:0.4" AutoReverse="False" RepeatBehavior="1x" />
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="SettingsPath1">
@@ -187,6 +200,7 @@
                 <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF5C5B5B" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
+
 
 
         <Storyboard x:Key="FadeInListBox">
@@ -1197,7 +1211,7 @@
                 <GradientStop Color="#FF1F1F1F" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="411" VerticalAlignment="Top" Width="694" Loaded="ThemeLoading" Margin="0">
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="411" VerticalAlignment="Top" Width="697" Loaded="ThemeLoading" Margin="-0.2,-0.2,-3.2,-0.4">
 
             <Grid.Triggers>
                 <EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -1249,7 +1263,7 @@
                 </WebBrowser.RenderTransform>
             </WebBrowser>
             <Rectangle x:Name="Topbar" Fill="#4C131517" HorizontalAlignment="Left" Height="30" Stroke="Transparent" VerticalAlignment="Top" Width="694" Grid.ColumnSpan="11" StrokeThickness="0" MouseDown="Rectangle_MouseDown" Margin="0,0,-1.2,0"/>
-            <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000">
+            <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70*"/>
                     <ColumnDefinition Width="481*"/>
@@ -1884,16 +1898,104 @@
                 </Button>
                 <TextBlock HorizontalAlignment="Center" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" Foreground="#76FFFFFF" FontFamily="Calibri Light" FontSize="18" Margin="0,254,0,0" Text="There's not really much tools here (for now)" TextAlignment="Center"/>
             </Grid>
+            <Grid x:Name="CustomisationGrid" HorizontalAlignment="Left" Height="375" Margin="44,35,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="650" Grid.ColumnSpan="11">
+                <TextBlock x:Name="Title" ToolTip="Made by Main_EX @ discord.io/maindab" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEEEEE" FontFamily="Calibri Light" FontSize="20" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center" Margin="233,0,235,0"><Run Text="Customisation Options"/><LineBreak/><Run/></TextBlock>
+                <TextBlock x:Name="Title_Copy" ToolTip="Made by Main_EX @ discord.io/maindab" Height="11" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFB0B0B0" FontFamily="Calibri Light" FontSize="10" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center" Margin="275,25,276,0" Width="99"><Run Text="(still a work in progress!)"/><LineBreak/><Run/></TextBlock>
+                <TextBox x:Name="RightGradient_Copy" HorizontalAlignment="Left" Height="19" Margin="331,131,0,0" TextWrapping="Wrap" Text="Right hex code" VerticalAlignment="Top" Width="109" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
+                <TextBlock HorizontalAlignment="Center" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="207,155,186,193" Text="Background image url" TextAlignment="Center"/>
+                <TextBox x:Name="ImageLink_Copy" HorizontalAlignment="Left" Height="19" Margin="222,208,0,0" Text="(input valid url)" VerticalAlignment="Top" Width="257" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                <Button x:Name="ThemeDemo_Copy" Content="Theme Demo" Margin="222,325,301.2,23" Background="#214E4E4E" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeDemo1" Opacity="0.75">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="ApplyTheme_Copy" Content="Apply theme" Margin="222,287,171.2,59" Background="#214E4E4E" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeApply" Opacity="0.75">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBox x:Name="LeftGradient_Copy" HorizontalAlignment="Left" Height="19" Margin="216,131,0,0" TextWrapping="Wrap" Text="Left hex code" VerticalAlignment="Top" Width="112" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
+                <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="257" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="221.9,232,171.1,113" Text="Image transparency" TextAlignment="Center"/>
+                <TextBox x:Name="ImageTransparency_Copy" HorizontalAlignment="Left" Height="19" Margin="273,260,0,0" Text="Value from 0-100" VerticalAlignment="Top" Width="153" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Center" Height="19" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="216,98,210,258" Text="Left and right border colours" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="216,50,0,298" Text="Creator name" TextAlignment="Center"/>
+                <TextBox x:Name="CreatorName_Copy" HorizontalAlignment="Left" Height="18" Margin="216,73,0,0" Text="Theme creator name here" VerticalAlignment="Top" Width="224" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center"/>
+                <Button x:Name="SaveToFile_Copy" Content="Save to file" Margin="352,325,171.2,22" Background="#214E4E4E" Foreground="#FFE4E4E4" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="ThemeSave" Opacity="0.75">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBlock HorizontalAlignment="Center" Height="12" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Foreground="#FF6F6F6F" FontFamily="Calibri Light" FontSize="10" Margin="216,117,210,246" Text="Make sure to include the hashtag" TextAlignment="Center"/>
+                <ListBox x:Name="ThemeListBox_Copy" HorizontalAlignment="Left" Height="279" Margin="26,73,0,0" VerticalAlignment="Top" Width="176" Background="#26000000" BorderBrush="#4CF0F0F0" Loaded="ThemeListBox_Loaded" Foreground="#FFCDCDCD" FontFamily="Calibri Light" SelectionChanged="ListBoxSelect" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                <TextBlock HorizontalAlignment="Center" Height="19" TextWrapping="Wrap" VerticalAlignment="Center" Width="651" Foreground="#FF636363" FontFamily="Calibri Light" Margin="-1,358,0,-2" Text="You can set the current theme as a default theme in the General Options tab" TextAlignment="Center" FontSize="11"/>
+                <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="176" Foreground="#FFE4E4E4" FontFamily="Calibri Light" FontSize="15" Margin="26,50,448,295" Text="Theme List" TextAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" VerticalAlignment="Center" Width="224" Foreground="#FFABABAB" FontFamily="Calibri Light" FontSize="15" Margin="426,50,0,298" Text="Creator name" TextAlignment="Center"/>
+            </Grid>
             <Grid x:Name="SettingsGrid" HorizontalAlignment="Left" Height="382" Margin="39,30,-1.2,-0.395" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="161*"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="415*"/>
                     <ColumnDefinition Width="99*"/>
                     <ColumnDefinition Width="26*"/>
                     <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle x:Name="Sidebar_Copy" HorizontalAlignment="Left" Height="380" Stroke="Transparent" VerticalAlignment="Top" Width="166" StrokeThickness="0" Fill="#2D000000"/>
+                <Rectangle x:Name="Sidebar_Copy" HorizontalAlignment="Left" Height="380" Stroke="Transparent" VerticalAlignment="Top" Width="166" StrokeThickness="0" Fill="#2D000000" Grid.RowSpan="2"/>
                 <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Options" VerticalAlignment="Top" Width="125" Foreground="#FFCACACA" FontFamily="Calibri Light" FontSize="19" Margin="5,4,0,0"/>
-                <Viewbox x:Name="APISelectionButton" Margin="6,31,331.6,314" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="APISelectionButton" Margin="6,31,331.6,253.8" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -1934,7 +2036,7 @@
                         <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="API Selection" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="35,7,0,0" MouseDown="Border_MouseDown_1"/>
                     </Grid>
                 </Viewbox>
-                <Grid x:Name="APISelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000">
+                <Grid x:Name="APISelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2" Visibility="Hidden">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="179*"/>
                         <RowDefinition Height="11*"/>
@@ -2083,7 +2185,7 @@
                     <TextBlock x:Name="KrnlStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,85,4,243.4" Text="No function to check, probably working"/>
                     <TextBlock x:Name="HasKey_Copy" HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Foreground="#FF4E4E4E" FontFamily="Calibri Light" FontSize="10" Margin="332,72,0,0" Text="(has key)"/>
                 </Grid>
-                <Grid x:Name="GeneralOptions" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Background="#4C000000" Visibility="Hidden">
+                <Grid x:Name="GeneralOptions" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Background="#4C000000" Visibility="Hidden" Grid.RowSpan="2">
                     <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="249,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
                     <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="7,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
                     <TextBlock HorizontalAlignment="Right" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="489" Foreground="#FFD1CFCF" FontFamily="Calibri Light" FontSize="19" Margin="-0.2,3.2,0.2,347.8" TextAlignment="Center" Text="General Options"/>
@@ -2102,7 +2204,7 @@
                     <Button x:Name="TopMostButton_Copy" Content="Use" Margin="194,145,248,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="UseCustomTheme"/>
                     <Button x:Name="TopMostButton_Copy1" Content="Reset" Margin="435,145,7,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="ResetTheme"/>
                 </Grid>
-                <Grid x:Name="ThemeSelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Visibility="Hidden">
+                <Grid x:Name="ThemeSelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2">
                     <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Width="489" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="19" Margin="0,6,0,0" TextAlignment="Center"/>
                     <TextBox x:Name="RightGradient" HorizontalAlignment="Left" Height="19" Margin="352,157,0,0" TextWrapping="Wrap" Text="Right hex code" VerticalAlignment="Top" Width="127" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
                     <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="176" Foreground="#FFE4E4E4" FontFamily="Calibri Light" FontSize="15" Margin="26,43,287,309" Text="Theme List" TextAlignment="Center"/>
@@ -2210,7 +2312,7 @@
                     </Border>
                     <TextBlock HorizontalAlignment="Center" Height="19" TextWrapping="Wrap" VerticalAlignment="Center" Width="479" Foreground="#FF636363" FontFamily="Calibri Light" Margin="10,359,0,2" Text="You can set the current theme as a default theme in the General Options tab" TextAlignment="Center" FontSize="11"/>
                 </Grid>
-                <Viewbox x:Name="GeneralOptionsButton" Margin="6,68,332.6,277" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="GeneralOptionsButton" Margin="6,68,332.6,216.8" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -2251,7 +2353,7 @@
                         <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="General Options" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="34,7,0,0" MouseDown="Border_MouseDown_2"/>
                     </Grid>
                 </Viewbox>
-                <Viewbox x:Name="ThemeSelectionButton" Margin="6,105,332.6,240" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="ThemeSelectionButton" Margin="6,105,332.6,179.8" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -2292,7 +2394,7 @@
                         <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Theme Selection" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="34,7,0,0" MouseDown="Border_MouseDown_3"/>
                     </Grid>
                 </Viewbox>
-                <Grid HorizontalAlignment="Left" Height="380" Margin="165.4,0,0,0" VerticalAlignment="Top" Width="1" Background="#19A5A5A5"/>
+                <Grid HorizontalAlignment="Left" Height="380" Margin="165,0,0,0" VerticalAlignment="Top" Width="1" Background="#19A5A5A5" Grid.RowSpan="2"/>
             </Grid>
             <Image x:Name="UtilitiesPage_Copy" HorizontalAlignment="Left" Height="19" Margin="35.2,6,0,0" VerticalAlignment="Top" Width="19" Source="/ImageResources/CloseWindowIcon.png" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" OpacityMask="#FF454545" MouseDown="ExitMD" Grid.Column="10" Stretch="Fill" Opacity="0.64">
                 <Image.Style>
@@ -2453,6 +2555,23 @@
 
                 </Grid>
             </RadioButton>
+            <RadioButton x:Name="CustomisationRadioButton" HorizontalAlignment="Left" Height="32" Margin="4,47.993,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Click="CustomisationRadioButtonClick" Grid.Row="10">
+                <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Path x:Name="CustomisationPath1" Fill="#FF5C5B5B" Data="F1 M50,50z M0,0z M21.211,6C8.579,6 1,16.133 1,21.2 1,26.267 3.526,30.067 8.579,30.067 13.632,30.067 16.159,31.333 16.159,35.133 16.159,40.199 19.948,43.999 25.001,43.999 41.423,43.999 49.001,35.133 49.001,26.267 49,11.067 36.366,6 21.211,6z M18.053,11.067C19.797,11.067 21.211,12.485 21.211,14.233 21.211,15.983 19.797,17.4 18.053,17.4 16.309,17.4 14.895,15.982 14.895,14.233 14.895,12.485 16.309,11.067 18.053,11.067z M28.157,11.067C29.901,11.067 31.315,12.485 31.315,14.233 31.315,15.983 29.901,17.4 28.157,17.4 26.414,17.4 25,15.982 25,14.233 25,12.485 26.414,11.067 28.157,11.067z M38.263,16.133C40.008,16.133 41.422,17.55 41.422,19.3 41.422,21.05 40.008,22.466 38.263,22.466 36.519,22.466 35.106,21.049 35.106,19.3 35.105,17.551 36.519,16.133 38.263,16.133z M9.211,18.667C10.955,18.667 12.368,20.084 12.368,21.832 12.368,23.582 10.954,24.999 9.211,24.999 7.468,24.999 6.053,23.581 6.053,21.832 6.053,20.084 7.467,18.667 9.211,18.667z M25,31.333C27.093,31.333 28.789,33.033 28.789,35.134 28.789,37.232 27.093,38.933 25,38.933 22.907,38.933 21.211,37.232 21.211,35.134 21.211,33.033 22.907,31.333 25,31.333z" Margin="1.9,3.601,2.9,2.133" Stretch="Fill"/>
+                </Grid>
+                <RadioButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="CustomisationRadioButton">
+                        <BeginStoryboard x:Name="CustomisationButtonSelected_BeginStoryboard" Storyboard="{StaticResource CustomisationButtonSelected}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="CustomisationRadioButton">
+                        <BeginStoryboard x:Name="CustomisationButtonDeselected_BeginStoryboard" Storyboard="{StaticResource CustomisationButtonDeselected}" />
+                    </EventTrigger>
+                </RadioButton.Triggers>
+            </RadioButton>
             <RadioButton x:Name="SettingsRadioButton" HorizontalAlignment="Left" Height="32" Margin="3,83.993,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Grid.RowSpan="2" Grid.Row="10" Click="SettingsRadioButtonClick">
                 <RadioButton.Triggers>
                     <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="SettingsRadioButton">
@@ -2472,7 +2591,7 @@
 
                 </Grid>
             </RadioButton>
-            <Grid x:Name="AltWarning" HorizontalAlignment="Left" Height="412" VerticalAlignment="Top" Width="694" Background="Black" Grid.RowSpan="12" Grid.ColumnSpan="11">
+            <Grid x:Name="AltWarning" HorizontalAlignment="Left" Height="412" VerticalAlignment="Top" Width="694" Background="Black" Grid.RowSpan="12" Grid.ColumnSpan="11" Visibility="Hidden">
                 <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="333" VerticalAlignment="Top" Width="611" Source="Untitled.png" Margin="41,79,0,0"/>
             </Grid>
 

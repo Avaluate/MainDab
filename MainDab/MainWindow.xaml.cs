@@ -58,7 +58,7 @@ namespace MainDabRedo
     public partial class MainWindow : Window
     {
         // VARIABLES //
-        string CurrentVersion = "MainDab 15.1 SP7"; // The version of MainDab for this specific build
+        string CurrentVersion = "MainDab 15.1we SP7"; // The version of MainDab for this specific build
 
         // The default text editor text
         string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at discord.io/maindab\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
@@ -132,7 +132,7 @@ namespace MainDabRedo
             {
                 // Downloading MainDab's Updater
 
-                WebStuff.DownloadFile("https://github.com/MainDabRblx/ProjectDab/blob/master/MainDab%20Updater.exe?raw=true", "MainDabUpdater.exe");
+                WebStuff.DownloadFile("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab%20Updater.exe", "MainDabUpdater.exe");
                 WebStuff.Dispose();
 
                 // Downloading MainDab's Updater
@@ -1799,6 +1799,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Visible;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1815,6 +1816,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1826,6 +1828,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1855,6 +1858,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Visible;
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1884,6 +1888,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Visible;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1895,6 +1900,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Visible;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
         }
 
@@ -1906,6 +1912,7 @@ namespace MainDabRedo
             ScriptHubGrid.Visibility = Visibility.Hidden;
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Visible;
         }
 
@@ -2023,5 +2030,16 @@ namespace MainDabRedo
                 { }.Start();
             }
          }
+
+        private void CustomisationRadioButtonClick(object sender, RoutedEventArgs e)
+        {
+            HomeGrid.Visibility = Visibility.Hidden;
+            ExecutorGrid.Visibility = Visibility.Hidden;
+            ScriptHubGrid.Visibility = Visibility.Hidden;
+            GameHubGrid.Visibility = Visibility.Hidden;
+            ToolsGrid.Visibility = Visibility.Hidden;
+            CustomisationGrid.Visibility = Visibility.Visible;
+            SettingsGrid.Visibility = Visibility.Hidden;
+        }
     }
 }

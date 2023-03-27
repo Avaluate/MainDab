@@ -339,13 +339,13 @@ namespace MainDab_Bootstrapper
             {
                 WebStuff.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebStuff_DownloadProgressChanged);
                 WebStuff.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(WebStuff_DownloadCompleted);
-                WebStuff.DownloadFileAsync(new Uri("https://github.com/leonardssy/ProjectDab/blob/master/MainDab.exe?raw=true"), "MainDab\\MainDab.exe");
+                WebStuff.DownloadFileAsync(new Uri("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab.exe"), "MainDab\\MainDab.exe");
             }
             else
             {
                 WebStuff.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebStuff_DownloadProgressChanged);
                 WebStuff.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(WebStuff_DownloadCompleted);
-                WebStuff.DownloadFileAsync(new Uri("https://github.com/leonardssy/ProjectDab/blob/master/MainDab.exe?raw=true"), "MainDab.exe");
+                WebStuff.DownloadFileAsync(new Uri("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab.exe"), "MainDab.exe");
             }
 
             
