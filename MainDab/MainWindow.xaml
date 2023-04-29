@@ -1263,17 +1263,18 @@
                 </WebBrowser.RenderTransform>
             </WebBrowser>
             <Rectangle x:Name="Topbar" Fill="#4C131517" HorizontalAlignment="Left" Height="30" Stroke="Transparent" VerticalAlignment="Top" Width="694" Grid.ColumnSpan="11" StrokeThickness="0" MouseDown="Rectangle_MouseDown" Margin="0,0,-1.2,0"/>
-            <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000" Visibility="Hidden">
+            <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="481*"/>
+                    <ColumnDefinition Width="83*"/>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="556*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border BorderThickness="1" HorizontalAlignment="Left" Height="111" Margin="234.8,69,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="1" BorderBrush="#FF565656" Opacity="0.6"/>
-                <Border BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="234.8,228,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="1" BorderBrush="#FF565656" Opacity="0.6"/>
-                <Viewbox x:Name="JoinMainDab" Grid.ColumnSpan="2" Margin="18,169,498.2,181" Stretch="Fill" Opacity="0.75">
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="111" Margin="219,69,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="2" BorderBrush="#FF565656" Opacity="0.6"/>
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="219,228,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="2" BorderBrush="#FF565656" Opacity="0.6"/>
+                <Viewbox x:Name="JoinMainDab" Grid.ColumnSpan="3" Margin="18,169,498.2,181" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -1309,8 +1310,8 @@
                         </TextBlock>
                     </Grid>
                 </Viewbox>
-                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="234.8,42,0,0" RenderTransformOrigin="1.338,2.769" Grid.Column="1" Text="Announcements"/>
-                <TextBlock HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Welcome to MainDab!" VerticalAlignment="Top" Width="188" Foreground="#FFD0CFCF" FontFamily="Calibri" FontSize="20" Margin="21,137,0,0" RenderTransformOrigin="1.338,2.769" Grid.ColumnSpan="2">
+                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="219,42,0,0" RenderTransformOrigin="1.338,2.769" Grid.Column="2" Text="Announcements"/>
+                <TextBlock HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Welcome to MainDab!" VerticalAlignment="Top" Width="188" Foreground="#FFD0CFCF" FontFamily="Calibri" FontSize="20" Margin="21,137,0,0" RenderTransformOrigin="1.338,2.769" Grid.ColumnSpan="3">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1321,8 +1322,8 @@
                     </TextBlock.RenderTransform>
 
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="234.8,201,0,0" RenderTransformOrigin="1.338,2.769" Text="Changelog" Grid.Column="1"/>
-                <TextBlock x:Name="NoticeBoard" HorizontalAlignment="Left" Height="99" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="241.8,74,0,0" RenderTransformOrigin="1.338,2.769" Loaded="Notice" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="1">
+                <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="219,201,0,0" RenderTransformOrigin="1.338,2.769" Text="Changelog" Grid.Column="2"/>
+                <TextBlock x:Name="NoticeBoard" HorizontalAlignment="Left" Height="99" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="226,74,0,0" RenderTransformOrigin="1.338,2.769" Loaded="Notice" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="2">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1331,7 +1332,7 @@
                             <TranslateTransform X="-4.365"/>
                         </TransformGroup>
                     </TextBlock.RenderTransform><Run Text="The text for announcements go here."/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-                <TextBlock x:Name="Changelog" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="241.8,233,0,0" RenderTransformOrigin="1.338,2.769" Loaded="ChangelogBoard" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="1" Text="The text for changelog stuff goes here.">
+                <TextBlock x:Name="Changelog" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" Foreground="#FFB0B0B0" FontFamily="Calibri Light" Margin="226,233,0,0" RenderTransformOrigin="1.338,2.769" Loaded="ChangelogBoard" FontSize="13" ScrollViewer.CanContentScroll="True" Grid.Column="2" Text="The text for changelog stuff goes here.">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1340,7 +1341,7 @@
                             <TranslateTransform X="-4.365"/>
                         </TransformGroup>
                     </TextBlock.RenderTransform></TextBlock>
-                <Viewbox x:Name="HelpCentre" Grid.ColumnSpan="2" Margin="18,203,498.2,147" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="HelpCentre" Grid.ColumnSpan="3" Margin="18,203,498.2,147" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -1898,7 +1899,7 @@
                 </Button>
                 <TextBlock HorizontalAlignment="Center" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" Foreground="#76FFFFFF" FontFamily="Calibri Light" FontSize="18" Margin="0,254,0,0" Text="There's not really much tools here (for now)" TextAlignment="Center"/>
             </Grid>
-            <Grid x:Name="CustomisationGrid" HorizontalAlignment="Left" Height="375" Margin="44,35,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="650" Grid.ColumnSpan="11">
+            <Grid x:Name="CustomisationGrid" HorizontalAlignment="Left" Height="375" Margin="44,35,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="650" Grid.ColumnSpan="11" Visibility="Hidden">
                 <TextBlock x:Name="Title" ToolTip="Made by Main_EX @ discord.io/maindab" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEEEEE" FontFamily="Calibri Light" FontSize="20" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center" Margin="233,0,235,0"><Run Text="Customisation Options"/><LineBreak/><Run/></TextBlock>
                 <TextBlock x:Name="Title_Copy" ToolTip="Made by Main_EX @ discord.io/maindab" Height="11" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFB0B0B0" FontFamily="Calibri Light" FontSize="10" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center" Margin="275,25,276,0" Width="99"><Run Text="(still a work in progress!)"/><LineBreak/><Run/></TextBlock>
                 <TextBox x:Name="RightGradient_Copy" HorizontalAlignment="Left" Height="19" Margin="331,131,0,0" TextWrapping="Wrap" Text="Right hex code" VerticalAlignment="Top" Width="109" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
@@ -2445,7 +2446,7 @@
             </Border>
             <TextBlock HorizontalAlignment="Center" Height="14" TextWrapping="Wrap" Text="15.1" VerticalAlignment="Top" Width="28" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="85,11.8,51,0" MouseDown="TextBlock_MouseDown" Grid.ColumnSpan="2" FontSize="10" TextAlignment="Center"/>
             <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="10.2,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="27" MouseDown="Help" BorderBrush="#FF1D4299" Grid.Column="1"/>
-            <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="10.8,12,0,0" MouseDown="TextBlock_MouseDown" FontSize="10" Grid.Column="1" TextAlignment="Center"><Run Text="SP"/><Run Text="7"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="10.8,12,0,0" MouseDown="TextBlock_MouseDown" FontSize="10" Grid.Column="1" TextAlignment="Center"><Run Text="SP"/><Run Text="8"/></TextBlock>
             <Grid x:Name="LoadingScreen" HorizontalAlignment="Left" Height="417" Margin="-3,-3,-4.2,-2.395" Grid.RowSpan="12" VerticalAlignment="Top" Width="700" Grid.ColumnSpan="11" Visibility="Hidden">
                 <Grid x:Name="BG" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="700" Background="#FF0C0C0C" Opacity="0.845"/>
                 <ProgressBar x:Name="LoadingScreenBar" Height="23" Margin="164,243,157,0" VerticalAlignment="Top" BorderBrush="#FF565656" Background="#26000000" BorderThickness="1" Style="{DynamicResource ProgressBarStyle1}" Foreground="#19717171" Loaded="LoadingScreenLoaded"/>
@@ -2555,7 +2556,7 @@
 
                 </Grid>
             </RadioButton>
-            <RadioButton x:Name="CustomisationRadioButton" HorizontalAlignment="Left" Height="32" Margin="4,47.993,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Click="CustomisationRadioButtonClick" Grid.Row="10">
+            <RadioButton x:Name="CustomisationRadioButton" HorizontalAlignment="Left" Height="32" Margin="4,47.993,0,0" VerticalAlignment="Top" Width="36" Style="{DynamicResource CringeRadioButtonStyling}" Cursor="Hand" Click="CustomisationRadioButtonClick" Grid.Row="10" Visibility="Hidden">
                 <Grid Height="34" Width="26" Margin="-11.9,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="29*"/>

@@ -5,3 +5,10 @@ C:\Users\Main_EX\Desktop\MainDabSrc\UnexpectedClientBehaviourFix\obj\Debug\Unexp
 C:\Users\Main_EX\Desktop\MainDabSrc\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.exe
 C:\Users\Main_EX\Desktop\MainDabSrc\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.pdb
 C:\Users\Main_EX\Desktop\MainDabSrc\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.csproj.AssemblyReference.cache
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Debug\UnexpectedClientBehaviourFix.exe.config
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Debug\UnexpectedClientBehaviourFix.exe
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\bin\Debug\UnexpectedClientBehaviourFix.pdb
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.csproj.AssemblyReference.cache
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.csproj.CoreCompileInputs.cache
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.exe
+C:\Users\Avaluate\Desktop\MainDab\UnexpectedClientBehaviourFix\obj\Debug\UnexpectedClientBehaviourFix.pdb

@@ -58,7 +58,7 @@ namespace MainDabRedo
     public partial class MainWindow : Window
     {
         // VARIABLES //
-        string CurrentVersion = "MainDab 15.1we SP7"; // The version of MainDab for this specific build
+        string CurrentVersion = "MainDab 15.1 SP8"; // The version of MainDab for this specific build
 
         // The default text editor text
         string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at discord.io/maindab\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
@@ -106,13 +106,29 @@ namespace MainDabRedo
         EasyExploits.Module EasyExploitsModule = new EasyExploits.Module();
         Execution.WeAreDevs.ExploitAPI WeAreDevsModule = new Execution.WeAreDevs.ExploitAPI(); // WeAreDevs API
 
+        // DETECTION //
+        private void Detection()
+        {
+            string Check = WebStuff.DownloadString("https://clientsettings.roblox.com/v2/user-channel?binaryType=WindowsPlayer");
+            if (Check != "{\"channelName\":\"LIVE\"}")
+            {
+                foreach (Process proc in Process.GetProcessesByName("RobloxPlayerBeta"))
+                {
+                    proc.Kill();
+                }
+                MessageBox.Show("MainDab Warning", "Byfron has been detected in your Roblox installation. MainDab will not work with Byfron.\n\nJoin discord.io/maindab for more help. A document with more information about Byfron will open up in your browser.\n\nCode: " + Check);
+                Process.Start("https://docs.google.com/document/d/1rITy7pHJz8VaiG5U6x3XFmx8LzG0YKH4peebo7r5pwE/edit");
+                Environment.Exit(0);
+            }
+        }
 
         // WINDOW INITILISATION //
         public MainWindow()
         {
             InitializeComponent();
             MainWin.WindowStartupLocation = WindowStartupLocation.CenterScreen; // Center MainDab to the middle of the screen
-                                                                                // UPDATE SYSTEM //
+            Detection();
+            // UPDATE SYSTEM //
 
             // First, we want to check and see if the updater is still there
 
@@ -142,7 +158,7 @@ namespace MainDabRedo
                 Process.Start("MainDabUpdater.exe"); // Run the updater
                 Environment.Exit(0);
                 // Note : The updater automatically deletes MainDab.exe
-                // MainDab's Bootstrapper code is found here for reference : https://github.com/MainDabRblx/MainDabUISource/tree/master/MainDabBootstrapper
+
 
             }
 

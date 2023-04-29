@@ -13,3 +13,10 @@ C:\Users\Main_EX\Desktop\MainDabSrc\MultipleRoblox\obj\Debug\MultipleRoblox.cspr
 C:\Users\Main_EX\Desktop\MainDabSrc\MultipleRoblox\obj\Debug\MultipleRobloxInstances.exe
 C:\Users\Main_EX\Desktop\MainDabSrc\MultipleRoblox\obj\Debug\MultipleRobloxInstances.pdb
 C:\Users\Main_EX\Desktop\MainDabSrc\MultipleRoblox\obj\Debug\MultipleRoblox.csproj.AssemblyReference.cache
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\bin\Debug\MultipleRobloxInstances.exe.config
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\bin\Debug\MultipleRobloxInstances.exe
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\bin\Debug\MultipleRobloxInstances.pdb
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\obj\Debug\MultipleRoblox.csproj.AssemblyReference.cache
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\obj\Debug\MultipleRoblox.csproj.CoreCompileInputs.cache
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\obj\Debug\MultipleRobloxInstances.exe
+C:\Users\Avaluate\Desktop\MainDab\MultipleRoblox\obj\Debug\MultipleRobloxInstances.pdb
