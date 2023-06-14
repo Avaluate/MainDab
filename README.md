@@ -13,7 +13,9 @@ MainDab even worked in Linux using Wine
 ## Can I use MainDab's source code?
 Since MainDab is now "archived" in GitHub, yes.
 
-Even though MainDab is technically just out there for anyone to freely copy, it is a general etiquette within the Roblox exploiting community (or more rather any cheating community) to not directly copy an entire project and call it yours. If you do want to do copy the entirety of MainDab, then it would always be good if you did credit me. Permission is not needed from me if you wish to use MainDab. You do not need to credit or ask for permission from me if you want to use parts of MainDab's code in your project. 
+Even though MainDab is technically just out there for anyone to freely copy, it is a general etiquette within the Roblox exploiting community (or more rather any cheating community) to not directly copy an entire project and call it yours. 
+
+If you do want to do copy the entirety of MainDab, then it would always be good if you did credit me. Permission is not needed from me if you wish to use MainDab. You do not need to credit or ask for permission from me if you want to use parts of MainDab's code in your project. 
 
 ## Background Information
 MainDab is a free Roblox Exploit (or cheat if you call it like that) with multiple APIs to choose from. This repository contains the UI/frontend itself. MainDab was developed by Avaluate (aka me). MainDab actually was a solo project for the majority of its history.
