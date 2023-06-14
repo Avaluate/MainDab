@@ -6,7 +6,7 @@ This is the source code for MainDab's UI. Beware that the code is extremely mess
 
 ## Some photos and pictures
 MainDab's Game Hub in operation
-![video](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095)
+![image](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095)
 
 MainDab even worked in Linux
 ![image](https://github.com/Avaluate/MainDab/assets/126605163/892e108e-6de5-4ac9-b120-c6dbfb278562)
