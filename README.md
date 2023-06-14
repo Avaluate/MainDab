@@ -4,8 +4,12 @@ If you do fancy using MainDab's Source Code, then please do go ahead and use it.
 ## MainDab Source Code
 This is the source code for MainDab's UI. Beware that the code is extremely messy and perhaps even unoptimised. There is also a lack of comments within the code. MainDab's UI is made using WPF. A note that the old repository for MainDab got taken down (due to claims of "viruses" within MainDab), and therefore this repository serves as a new link.
 
+## Some photos and pictures
+MainDab's Game Hub in operation
+https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095
+
+MainDab even worked in Linux
 ![image](https://github.com/Avaluate/MainDab/assets/126605163/892e108e-6de5-4ac9-b120-c6dbfb278562)
-(MainDab even works in Linux)
 
 ## Can I use MainDab's source code?
 Since MainDab is now "archived" in GitHub, yes.
