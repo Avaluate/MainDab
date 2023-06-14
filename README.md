@@ -2,7 +2,10 @@
 If you do fancy using MainDab's Source Code, then please do go ahead and use it. MainDab is not "free software" per se as it does not cover the requirements needed, but MainDab had always been open sourced in a way that MainDab was never obfuscated in the first place, like what the majority of Roblox exploits do.
 
 ## MainDab Source Code
-This is the source code for MainDab's UI. Beware that the code is extremely messy and perhaps even unoptimised. There is also a lack of comments within the code. MainDab's UI is made using WPF. A note that the old repository for MainDab got taken down (due to claims of "viruses" within MainDab), and therefore this repository serves as a new link.
+This is the source code for MainDab's UI. Beware that the code is extremely messy and perhaps even unoptimised. There is also a lack of comments within the code. MainDab's UI is made using WPF. A note that the old repository for MainDab got taken down (due to claims of "viruses" within MainDab), and therefore this repository serves as a new link.(As
+
+![image](https://github.com/Avaluate/MainDab/assets/126605163/892e108e-6de5-4ac9-b120-c6dbfb278562)
+(MainDab even works in Linux)
 
 ## Can I use MainDab's source code?
 Since MainDab is now "archived" in GitHub, yes.
