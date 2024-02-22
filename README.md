@@ -20,10 +20,6 @@ If you do want to do copy the entirety of MainDab, then it would always be good 
 ## Background Information
 MainDab is a free Roblox Exploit (or cheat if you call it like that) with multiple APIs to choose from. This repository contains the UI/frontend itself. MainDab was developed by Avaluate (aka me). MainDab actually was a solo project for the majority of its history.
 
-If you want to join MainDab, you can join the Discord server at https://discord.io/maindab (the link will always be valid)
-
-For whatever reason, if you really want to contact me on Discord, my username is `avaluate`. You should also note that I have already "left" the Roblox exploiting community, so you should not really be expecting me to be of much help when it comes to using MainDab or to dealing with Roblox's new anti-tamper.
-
 ## Great, so how do I get it working?
 You are expected to know what you are doing, alongside having some experience with Visual Studio and C# if you really do want to build MainDab.
 
