@@ -1,31 +1,34 @@
-## MainDab has been discontinued
-If you do fancy using MainDab's Source Code, then please do go ahead and use it. MainDab is not "free software" per se as it does not cover the requirements needed, but MainDab had always been open sourced in a way that MainDab was never obfuscated in the first place, like what the majority of Roblox exploits do.
+# MainDab
+MainDab ~~was~~ is a Roblox exploit that solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). Compared to what was in 2023, MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit).
 
-## MainDab Source Code
-This is the source code for MainDab's UI. Beware that the code is extremely messy and perhaps even unoptimised. There is also a lack of comments within the code. MainDab's UI is made using WPF. A note that the old repository for MainDab got taken down (due to claims of "viruses" within MainDab), and therefore this repository serves as a new link.
+[MainDab's Game Hub in operation in 2023](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095) (video)
+## Download
 
-## Some photos and pictures
-[MainDab's Game Hub in operation](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095) (video)
+## Won't using Roblox exploits get you banned nowadays?
+The simple answer: yes.
+The exception: **exploiting in your __own__ Roblox game is allowed.**
 
-MainDab even worked in Linux using Wine
-![image](https://github.com/Avaluate/MainDab/assets/126605163/892e108e-6de5-4ac9-b120-c6dbfb278562)
+[From Roblox, 30 May 2025](https://devforum.roblox.com/t/an-update-on-automated-action-against-modified-clients/3640609):
+> *As of today, __anyone with edit permissions for a place will not be actioned against if we detect them using a modified client in that place only__. In other words, if you’re a creator and want to test your anti-cheat system against an exploit, you may do so.*
 
+## Wasn't MainDab discontinued?
+MainDab was discontinued around mid-2023 due to both more stingent anti-exploit measures and a lack of interest from my side. 
+
+**However, MainDab has been partially resurrected and still works as of June 2025, as there was a need for me to secure my own Roblox game projects.**
+## Is MainDab a virus?
+No. You can decompile MainDab using a .NET decompiler like [ILSpy](github.com/icsharpcode/ILSpy). WeAreDevs API, as of time of writing, is not malware. 
+
+**However, [WeAreDevs API has __auto-update__ functionality](https://raw.githubusercontent.com/wcrddn/wcrddn.github.io/refs/heads/main/tauri.json)**. This implies malware can be delivered to you without your knowledge. This, however, has never occured. If you are afraid of a virus, run MainDab and Roblox in a Virtual Machine. [Just be sure to use GPU passthrough](https://clayfreeman.github.io/gpu-passthrough/).
+
+Ironically, MainDab also has an auto-update function for convenience. You can remove this auto-update functionality if you don't trust me by compiling MainDab yourself.
+
+## How did you implement checking WRD's status?
+
+
+# Source Code FAQ
+## Why is the code so shit?
+Because 3 years ago I did not know how to organise my code properly, and also because most of this is code last touched in late 2022.
 ## Can I use MainDab's source code?
-Since MainDab is now "archived" in GitHub, yes.
+I have not added any licensing to MainDab. MainDab uses other components with their own licenses. I will have to check every single library used to determine whether or not you one is free to use MainDab.
 
-Even though MainDab is technically just out there for anyone to freely copy, it is a general etiquette within the Roblox exploiting community (or more rather any cheating community) to not directly copy an entire project and call it yours. 
-
-If you do want to do copy the entirety of MainDab, then it would always be good if you did credit me. Permission is not needed from me if you wish to use MainDab. You do not need to credit or ask for permission from me if you want to use parts of MainDab's code in your project. 
-
-## Background Information
-MainDab is a free Roblox Exploit (or cheat if you call it like that) with multiple APIs to choose from. This repository contains the UI/frontend itself. MainDab was developed by Avaluate (aka me). MainDab actually was a solo project for the majority of its history.
-
-## Great, so how do I get it working?
-You are expected to know what you are doing, alongside having some experience with Visual Studio and C# if you really do want to build MainDab.
-
-If you have any missing dependencies, then you can find them [here](https://github.com/Avaluate/MainDab/tree/main/Dependencies) and add it as a dependency for MainDab. The rest of the dependencies can be restored via NuGet.
-
-If you still have problems with any sort of dependencies (specifically related to building MainDab), Fody may be the issue. Fody has some problems with VS2022, which is why I previously used VS2019 to develop MainDab.
-
-## Tags
-Roblox, MainDab, Roblox Exploit, Roblox Serverside
+My own guess is that you can use MainDab's source code for non-commercial purposes. In order words, you must not attach a "key system" to modified version.
