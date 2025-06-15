@@ -1,18 +1,34 @@
-# MainDab
-MainDab ~~was~~ is a Roblox exploit that solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). Compared to what was in 2023, MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit). **MainDab works as of June 2025**.
+**MainDab ~~was~~ is a Roblox exploit that bypasses key systems implemented in Roblox exploit APIs.**
 
-[MainDab's Game Hub in operation in 2023](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095) (video)
+At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). 
+
+**MainDab works as of June 2025**. 
+
+Compared to what MainDab was in 2023, before a partial resurrection on June 2025, MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit). 
+
+[Script hub function in 2023](https://github.com/Avaluate/MainDab/assets/126605163/67fcf747-64da-429a-9e31-e0f783940095) (video)
 ## Download
 
 ## FAQ
-### Won't using Roblox exploits get you banned nowadays?
-The simple answer: yes.
-The exception: **exploiting in your __own__ Roblox game is allowed.**
-
-[From Roblox, 30 May 2025](https://devforum.roblox.com/t/an-update-on-automated-action-against-modified-clients/3640609):
-> *As of today, __anyone with edit permissions for a place will not be actioned against if we detect them using a modified client in that place only__. In other words, if you’re a creator and want to test your anti-cheat system against an exploit, you may do so.*
 ### Is MainDab a virus?
-No. You can decompile MainDab using a .NET decompiler like [ILSpy](github.com/icsharpcode/ILSpy). WeAreDevs API, as of time of writing, is not malware. 
+No. MainDab is not obfuscated. This is explained in the "Risks of Using MainDab" section.
+### Why was MainDab "resurrected"?
+I have primarily moved onto doing Roblox development. I want to make sure my own Roblox projects are secure.
+
+I did not want to be bothered with advertisements, so I resurrected MainDab.
+### How is the key system bypassed?
+It ultimately depends on which exploit API you use.
+#### WeAreDevs
+WeAreDevs key system uses (mboost.me)[https://mboost.me]. 
+
+According to (mboost's API documentation)[https://docs.mboost.me/], WRD key system sends a POST request to mboost to see if a user has completed a task, with `{"success": true}` indicating the key system complete.
+
+Thus, all that is required is to locally host a server (on localhost) that returns `{"success": true}`, alongside locally directing all traffic from mboost.me to localhost. 
+
+This method requires a self-signed SSL certificate to be installed.
+
+An alternative method would be to create a browser extension specific to mboost.me. However redirecting traffic locally avoids WRD opening your browser to mboost.me.
+
 
 **However, WeAreDevs API has an auto update function**. This implies malware can be delivered to you without your knowledge. This, however, has never occured. If you are afraid of a virus, run MainDab and Roblox in a Virtual Machine. [Just be sure to use GPU passthrough](https://clayfreeman.github.io/gpu-passthrough/).
 
