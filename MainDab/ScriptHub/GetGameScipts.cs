@@ -30,7 +30,7 @@ namespace MainDabRedo.ScriptHub
 
         {
             // Now we parse the json, making use of Newtonsoft
-            var json = Web.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/GameHubScripts.json");
+            var json = Web.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/GameHubScripts.json");
             var arrays = JArray.Parse(json);
 
             // Then we return each of it

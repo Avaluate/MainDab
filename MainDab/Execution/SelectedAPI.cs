@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MainDabRedo.Execution
 {
-    static class SelectedAPI
+    class SelectedAPI
     {
         public static string API = "";
+        public static PipeSync NewPipe = new PipeSync("MainDabWRDWrapper");
     }
 }

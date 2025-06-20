@@ -1,0 +1,1 @@
+pkg WRDFakeServer.js --target node22-win-x64

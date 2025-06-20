@@ -6,26 +6,17 @@
  | |  | | (_| | | | | | |__| | (_| | |_) |
  |_|  |_|\__,_|_|_| |_|_____/ \__,_|_.__/ 
                  
- You can join MainDab's Discord server at discord.io/maindab
- This is the source code for MainDab, which can be found at https://github.com/MainDabRblx/MainDabUISource
+ https://github.com/Avaluate/MainDab
+
+ You can join MainDab's Discord server at https://maindab.org/discord (June 2025) 
+ or Telegram at https://telegram.me/maindab (June 2025)
                                           
- MainDab by Main_EX#3898 (on Discord)
+ MainDab, Main_EX (Avaluate)
+ Discord: avaluate
+ Telegram: t.me/avaluate
 
+ WeAreDevs API obtained from https://wearedevs.net/d/Exploit%20API
 */
-
-/*
- A few notes:
- - JUST BECAUSE IT'S OPEN SOURCE DOESN'T MEAN THE CODE IS GOOD! Some code here may be written in a very horrible fashion.
- - NOT EVERYTHING HERE HAS BEEN ANNOTATED! Things here aren't fully organised in order.
- - YOU ARE EXPECTED TO KNOW BASIC C#!
-
- Also as a reminder:
- - Just because MainDab is "open source"
- - You may be missing quite a few dependencies. The majority of these dependencies are restored via NuGet.
- - The Pastebin dependency can be downloaded here : https://github.com/MainDabRblx/ProjectDab/raw/master/PastebinAPIs.dll
- - Exploit API dependencies can be found by downloading them from their proper pages, which should should be able to find online
-*/
-
 
 // References
 using DiscordRPC;
@@ -33,24 +24,27 @@ using DiscordRPC.Logging;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using MainDabRedo.Execution;
 using Microsoft.Win32;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Xml;
-using Newtonsoft.Json;
-using System.Windows.Media.Animation;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using Newtonsoft.Json.Linq;
+using System.Xml;
 
 namespace MainDabRedo
 {
@@ -58,16 +52,16 @@ namespace MainDabRedo
     public partial class MainWindow : Window
     {
         // VARIABLES //
-        string CurrentVersion = "MainDab 15.1 SP8"; // The version of MainDab for this specific build
+        string CurrentVersion = "MainDab 15.2 REL"; // The version of MainDab for this specific build
 
         // The default text editor text
-        string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at discord.io/maindab\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
+        string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at maindab.org/discord\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
 
         // Variables relating to injection
         bool InjectionInProgress = false; // When injection is in progress, self explanatory
         bool OxygenInjected = false; // This function is here just so the status text shows whether Oxygen is injecting or not
 
-        // Animation variables (I'm still not good at WPF)
+        // Animation variables
         private bool CloseCompleted = false; // Window fade-in
 
         // Scripthub stuff
@@ -87,12 +81,14 @@ namespace MainDabRedo
         string BGTransparency = ""; // Background image transparency, on a 0 to 1 scale
 
         // Variables for the AvalonEdit background colours, there's probably a much better way
-        int AvalonEditBGA = 6; // A (Transparency)
-        int AvalonEditBGR = 47; // R
-        int AvalonEditBGG = 47; // G
-        int AvalonEditBGB = 49; // B
+        static int AvalonEditBGA = 6; // A (Transparency)
+        static int AvalonEditBGR = 47; // R
+        static int AvalonEditBGG = 47; // G
+        static int AvalonEditBGB = 49; // B
 
         string AvalonEditFont = "Consolas"; // Font to be used for editor, this is for future customisation options
+
+        bool IsInjected = false;
 
         // Variables for custom icons (to be implemented in the future)
         Array scripts = null;
@@ -101,54 +97,45 @@ namespace MainDabRedo
         // WebClient Creation
         WebClient WebStuff = new WebClient(); // Create a new generally used WebClient
 
-        // Execution
-        // Note : Both EasyExploits API and OxygenAPI are added as a reference and not actually copied into the execution folder!
-        EasyExploits.Module EasyExploitsModule = new EasyExploits.Module();
-        Execution.WeAreDevs.ExploitAPI WeAreDevsModule = new Execution.WeAreDevs.ExploitAPI(); // WeAreDevs API
+        // Console handle - https://stackoverflow.com/questions/3571627/show-hide-the-console-window-of-a-c-sharp-console-application
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
 
-        // DETECTION //
-        private void Detection()
-        {
-            string Check = WebStuff.DownloadString("https://clientsettings.roblox.com/v2/user-channel?binaryType=WindowsPlayer");
-            if (Check != "{\"channelName\":\"LIVE\"}")
-            {
-                foreach (Process proc in Process.GetProcessesByName("RobloxPlayerBeta"))
-                {
-                    proc.Kill();
-                }
-                MessageBox.Show("MainDab Warning", "Byfron has been detected in your Roblox installation. MainDab will not work with Byfron.\n\nJoin discord.io/maindab for more help. A document with more information about Byfron will open up in your browser.\n\nCode: " + Check);
-                Process.Start("https://docs.google.com/document/d/1rITy7pHJz8VaiG5U6x3XFmx8LzG0YKH4peebo7r5pwE/edit");
-                Environment.Exit(0);
-            }
-        }
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow); // show = 5, hide = 0
 
         // WINDOW INITILISATION //
         public MainWindow()
         {
+            Console.WriteLine($"  __  __       _       _____        _     \r\n |  \\/  |     (_)     |  __ \\      | |    \r\n | \\  / | __ _ _ _ __ | |  | | __ _| |__  \r\n | |\\/| |/ _` | | '_ \\| |  | |/ _` | '_ \\ \r\n | |  | | (_| | | | | | |__| | (_| | |_) |\r\n |_|  |_|\\__,_|_|_| |_|_____/ \\__,_|_.__/\n\n${CurrentVersion}, by Avaluate (Main_EX)\n"); // i love maindab
+
             InitializeComponent();
             MainWin.WindowStartupLocation = WindowStartupLocation.CenterScreen; // Center MainDab to the middle of the screen
-            Detection();
             // UPDATE SYSTEM //
 
             // First, we want to check and see if the updater is still there
 
+            
             if (File.Exists("MainDabUpdater.exe"))
             {
+                Console.WriteLine("MainDab Updater found, deleting");
                 File.Delete("MainDabUpdater.exe"); // If it is, we should delete it
             }
 
-            string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/Version");
+            string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/Version");
             WebStuff.Dispose(); // Remember to dispose the WebClient! Or someone will scold me for it
 
             // .FirstOrDefault() is nessesary since GitHub always adds an extra line for some reason
             // If I don't do this, then the string that would return is "MainDab 14.3/n" rather than "MainDab 14.3", so basically an additional unwanted line!
             string OnlineVersion = Version.Split(new[] { '\r', '\n' }).FirstOrDefault();
-            
+
+            Console.WriteLine("Checking to see if MainDab is up to date");
             if (CurrentVersion != OnlineVersion) // If the current version is not equal to the value online
             {
                 // Downloading MainDab's Updater
+                Console.WriteLine("MainDab not up to date, downloading new version");
 
-                WebStuff.DownloadFile("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab%20Updater.exe", "MainDabUpdater.exe");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDab%20Updater.exe", "MainDabUpdater.exe");
                 WebStuff.Dispose();
 
                 // Downloading MainDab's Updater
@@ -158,65 +145,178 @@ namespace MainDabRedo
                 Process.Start("MainDabUpdater.exe"); // Run the updater
                 Environment.Exit(0);
                 // Note : The updater automatically deletes MainDab.exe
-
-
             }
 
             // SETUP //
-            // So basically, what I want to do is to organise the folders and stuff
+
 
             // All these folders are needed for MainDab to run
             // This can be written in a shorter way, but I'll just leave it like this
+
+            Console.WriteLine("Checking to see if directories exist");
+
             if (!Directory.Exists("Applications")) // Tools
             {
+                Console.WriteLine("Created new directory: Applications");
                 Directory.CreateDirectory("Applications");
             }
             if (!Directory.Exists("EditorThemes"))
             {
+                Console.WriteLine("Created new directory: EditorThemes");
                 Directory.CreateDirectory("EditorThemes");
             }
             if (!Directory.Exists("Scripts"))
             {
+                Console.WriteLine("Created new directory: Scripts");
                 Directory.CreateDirectory("Scripts");
             }
             if (!Directory.Exists("Themes"))
             {
+                Console.WriteLine("Created new directory: Themes");
                 Directory.CreateDirectory("Themes");
             }
             if (!Directory.Exists("Workspace"))
             {
+                Console.WriteLine("Created new directory: Workspace");
                 Directory.CreateDirectory("Workspace");
             }
 
+            // check the WRD wrapper version first & update if req
+            Console.WriteLine("Checking to see if WeAreDevs API wrapper is up to date");
+
+            try
+            {
+                RegistryKey SettingReg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MainDabWRDWrapper");
+                string WRDVer = SettingReg.GetValue("WrapperVersion").ToString();
+
+                if (WRDVer != null)
+                {
+                    string VersionWRDWrapper = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/VersionWRDWrapper");
+                    if (WRDVer != VersionWRDWrapper.Split(new[] { '\r', '\n' }).FirstOrDefault())
+                    {
+                        Console.WriteLine("Wrapper not up to date, downloading new version");
+
+                        if (File.Exists("MainDabWRDWrapper.deps.json"))
+                        {
+                            File.Delete("MainDabWRDWrapper.deps.json");
+                        }
+                        if (File.Exists("MainDabWRDWrapper.dll"))
+                        {
+                            File.Delete("MainDabWRDWrapper.dll");
+                        }
+                        if (File.Exists("MainDabWRDWrapper.exe"))
+                        {
+                            File.Delete("MainDabWRDWrapper.exe");
+                        }
+                        if (File.Exists("MainDabWRDWrapper.pdb"))
+                        {
+                            File.Delete("MainDabWRDWrapper.pdb");
+                        }
+                        if (File.Exists("MainDabWRDWrapper.runtimeconfig.json"))
+                        {
+                            File.Delete("MainDabWRDWrapper.runtimeconfig.json");
+                        }
+                        if (File.Exists("WRDFakeServer.exe"))
+                        {
+                            File.Delete("WRDFakeServer.exe");
+                        }
+                        Console.WriteLine("Deleted old files");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Attempt to check WRD wrapper version result in error: {ex}");
+            }
+            
+
+            if (!File.Exists("MainDabWRDWrapper.deps.json"))
+            {
+                Console.WriteLine("Downloading MainDabWRDWrapper.deps.json, please wait...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/MainDabWRDWrapper.deps.json", "MainDabWRDWrapper.deps.json");
+            }
+            if (!File.Exists("MainDabWRDWrapper.dll"))
+            {
+                Console.WriteLine("Downloading MainDabWRDWrapper.dll, please wait...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/MainDabWRDWrapper.dll", "MainDabWRDWrapper.dll");
+            }
+            if (!File.Exists("MainDabWRDWrapper.exe"))
+            {
+                Console.WriteLine("Downloading MainDabWRDWrapper.exe, please wait...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/MainDabWRDWrapper.exe", "MainDabWRDWrapper.exe");
+            }
+            if (!File.Exists("MainDabWRDWrapper.pdb"))
+            {
+                Console.WriteLine("Downloading MainDabWRDWrapper.pdb, please wait...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/MainDabWRDWrapper.pdb", "MainDabWRDWrapper.pdb");
+            }
+            if (!File.Exists("MainDabWRDWrapper.runtimeconfig.json"))
+            {
+                Console.WriteLine("Downloading MainDabWRDWrapper.runtimeconfig.json, please wait...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/MainDabWRDWrapper.runtimeconfig.json", "MainDabWRDWrapper.runtimeconfig.json");
+            }
+            if (!File.Exists("WRDFakeServer.exe"))
+            {
+                Console.WriteLine("Downloading WRDFakeServer.exe, please wait (this will take some time)...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabWRDWrapper/WRDFakeServer.exe", "WRDFakeServer.exe");
+            }
+            if (!File.Exists("wearedevs_exploit_api.dll"))
+            {
+                Console.WriteLine("Downloading wearedevs_exploit_api.dll, please wait...");
+                WebStuff.DownloadFile("https://wrdcdn.net/r/2/exploit%20api/wearedevs_exploit_api.dll", "wearedevs_exploit_api.dll");
+            }
+            // OpenSSL req
+            Console.WriteLine("Checking to see if OpenSSL is downloaded...");
+
+            if (!Directory.Exists("OpenSSL"))
+            {
+                Console.WriteLine("Created new directory: OpenSSL");
+                Directory.CreateDirectory("OpenSSL");
+            }
+            if (!File.Exists("OpenSSL\\msys-2.0.dll"))
+            {
+                Console.WriteLine("Downloading msys-2.0.dll...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/OpenSSL/msys-2.0.dll", "OpenSSL\\msys-2.0.dll");
+            }
+            if (!File.Exists("OpenSSL\\msys-crypto-3.dll"))
+            {
+                Console.WriteLine("Downloading msys-crypto-3.dll...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/OpenSSL/msys-crypto-3.dll", "OpenSSL\\msys-crypto-3.dll");
+            }
+            if (!File.Exists("OpenSSL\\msys-ssl-3.dll"))
+            {
+                Console.WriteLine("Downloading msys-ssl-3.dll...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/OpenSSL/msys-ssl-3.dll", "OpenSSL\\msys-ssl-3.dll");
+            }
+            if (!File.Exists("OpenSSL\\openssl.exe"))
+            {
+                Console.WriteLine("Downloading openssl.exe...");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/OpenSSL/openssl.exe", "OpenSSL\\openssl.exe");
+            }
+
             // Theme checking for Avalon stuff, etc
+            Console.WriteLine("Updating Avalon theme definitions (text editor syntax highlighting)");
             if (File.Exists("EditorThemes\\lua_md_default.xshd"))
             {
                 File.Delete("EditorThemes\\lua_md_default.xshd"); // We want to update default theme regardless lol
-                string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/Themes/lua_md_default.xshd");
-                File.WriteAllText("EditorThemes\\lua_md_default.xshd", penis);
             }
-            else
-            {
-                // The Avalon syntax thing doesn't exist, so we'll just download it
-                string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/Themes/lua_md_default.xshd");
-                File.WriteAllText("EditorThemes\\lua_md_default.xshd", penis);
-            }
+            string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/Themes/lua_md_default.xshd");
+            File.WriteAllText("EditorThemes\\lua_md_default.xshd", penis);
+            
             CurrentLuaXSHDLocation = "EditorThemes\\lua_md_default.xshd";
             IsAvalonLoaded = true;
-            // Set location
-            // CurrentLuaXSHDLocation = "Default.xshd";
-
 
             // Finally, load scripthub data
             this.Dispatcher.Invoke(async () => // Prevent error from this being done on "another thread"
             {
+                Console.WriteLine("Loading script hub data...");
                 scripts = await ScriptHub.MainDabSC.GetSCData(); // Extract data from json file
                 gamescripts = await ScriptHub.MainDabGSC.GetGSCData(); // Extract data from json file
             });
 
-            // Now load KRNL API
-            Execution.KRNL.MainAPI.Load();
-
+           
+            Console.Title = "MainDab";
+            Console.WriteLine("All done!\n");
         }
 
         // Make MainDab actually draggable
@@ -226,35 +326,7 @@ namespace MainDabRedo
             DragMove();
         }
 
-        // MainDab's counter, loads in a browser then deletes itself
-        // I didn't know how to make an actual proper counter so here we go
-        private void WebBrowser_Loaded(object sender, RoutedEventArgs e)
-        {
-            Counter.Visibility = Visibility.Visible;
-            dynamic activeX = this.Counter.GetType().InvokeMember("ActiveXInstance",
-                    BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-                    null, this.Counter, new object[] { }); // We want to hide errors
-            activeX.Silent = true; // There we go
-
-            // Now load the counter up
-            Counter.Navigate("https://maindabrblx.github.io/avaluate.github.io/");
-            new Thread(() =>
-            {
-                // We are gonna delete it later so less memory usage in the background
-                Thread.CurrentThread.IsBackground = true;
-                Thread.Sleep(25000); // It can take this long to load :sob:
-                this.Dispatcher.Invoke(() =>
-                {
-                    Counter.Dispose();
-                    MainGrid.Children.Remove(Counter); // we will "try" to remove it
-                    GC.Collect();
-                });
-            })
-            {
-
-            }.Start();
-
-        }
+       
 
         // Theme settings
         private void ThemeLoading(object sender, RoutedEventArgs e)
@@ -332,7 +404,7 @@ namespace MainDabRedo
             // Loop until Avalon has loaded
             while (IsAvalonLoaded == false)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
 
             // This one is for the theming for Avalon
@@ -415,27 +487,27 @@ namespace MainDabRedo
 
         }
 
-        // Now when the texteditor is loaded
+        // Now when the TabControl is loaded
         private void TextEditorLoad(object sender, RoutedEventArgs e)
         {
-            // Right, now let's do some editor theming
-
-            if (!Directory.Exists("EditorThemes"))
-            {
-                Directory.CreateDirectory("EditorThemes"); // We already checked for this in the beginning, this is just a double check
-            }
-
             // Loop until Avalon has loaded
             while (IsAvalonLoaded == false)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
 
             // Now, let's load up the theme
             Stream input = File.OpenRead(CurrentLuaXSHDLocation);
             XmlTextReader xmlTextReader = new XmlTextReader(input);
             TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xmlTextReader, HighlightingManager.Instance);
-            
+                        
+            // Now actually set it
+            Stream nya = File.OpenRead(CurrentLuaXSHDLocation);
+            XmlTextReader xml = new XmlTextReader(nya);
+            TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xml, HighlightingManager.Instance); 
+
+            CurrentTabWithStuff().Text = DefaultTextEditorText; // Scroll all the way up to the top of this source code to set it
+
             // The template is defined in the xaml code
             this.TabControl.GetTemplateItem<System.Windows.Controls.Button>("AddTabButton").Click += delegate (object s, RoutedEventArgs f)
             {
@@ -447,13 +519,6 @@ namespace MainDabRedo
             {
                 tab.GetTemplateItem<System.Windows.Controls.Button>("CloseButton").Width = 0;
             }
-            
-            // Now actually set it
-            Stream nya = File.OpenRead(CurrentLuaXSHDLocation);
-            XmlTextReader xml = new XmlTextReader(nya);
-            TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xml, HighlightingManager.Instance); 
-
-            CurrentTabWithStuff().Text = DefaultTextEditorText; // Scroll all the way up to the top of this source code to set it
         }
 
         // This is similar to the function above, but it's actually for the texteditor that first spawns in
@@ -470,7 +535,7 @@ namespace MainDabRedo
             // Loop until Avalon has loaded
             while (IsAvalonLoaded == false)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(100);
             }
 
             // Load file
@@ -488,7 +553,7 @@ namespace MainDabRedo
             // For usage examples, look at https://github.com/Lachee/discord-rpc-csharp/blob/master/DiscordRPC.Example/Program.cs
 
             DiscordRpcClient client;
-            client = new DiscordRpcClient("795935176873213982") // The ID of the client
+            client = new DiscordRpcClient("1385682532326183085") // The ID of the client
             {
                 Logger = new ConsoleLogger
                 {
@@ -502,7 +567,7 @@ namespace MainDabRedo
             client.SetPresence(new RichPresence()
             {
                 Details = "Using " + CurrentVersion, // Status
-                State = "Keyless Roblox Exploit",
+                State = "Keyless Roblox Exploit (as in we bypass key systems)",
 
                 Timestamps = new Timestamps
                 {
@@ -516,89 +581,17 @@ namespace MainDabRedo
                     SmallImageKey = "icon_maindab_v3_side"
                 },
 
+                
                 // These show the buttons in the Discord RPC status
+                
+
                 Buttons = new DiscordRPC.Button[]
                 {
-                    new DiscordRPC.Button() { Label = "Join MainDab's Discord", Url = "https://discord.io/maindab" },
-                    new DiscordRPC.Button() { Label = "Get MainDab", Url = "https://github.com/MainDabRblx/ProjectDab/blob/master/MainDabBootstrapper.exe?raw=true" }
+                    new DiscordRPC.Button() { Label = "Join MainDab's Discord", Url = "https://maindab.org/discord" },
+                    new DiscordRPC.Button() { Label = "Get MainDab (GitHub)", Url = "https://github.com/Avaluate/MainDab" }
                 },
 
             });
-        }
-
-        public void Inject()
-        {
-            // So first, lets check and see if Roblox is already running
-            Process[] pname = Process.GetProcessesByName("RobloxPlayerBeta");
-
-            // So if Roblox is indeed running
-            if (pname.Length > 0)
-            {
-                InjectionInProgress = true;
-
-                // The rest here is self explanatory
-                if (Execution.SelectedAPI.API == "Selected API: EasyExploits API")
-                {
-                    string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/EasyExploitsAPIUse");
-                    WebStuff.Dispose(); // Remember to dispose the WebClient! Or someone will scold me for it
-
-                    // .FirstOrDefault() is nessesary since GitHub always adds an extra line for some reason
-                    // If I don't do this, then the string that would return is "MainDab 14.3/n" rather than "MainDab 14.3", so basically an additional unwanted line!
-                    string OnlineVersion = Version.Split(new[] { '\r', '\n' }).FirstOrDefault();
-
-                    if (OnlineVersion == "No")
-                    {
-                        MessageBox.Show("The EasyExploits API function is currently disabled manually by MainDab Developers. Please use another API, such as WeAreDevs API. You can join MainDab at discord.io/maindab if you have further questions.", "MainDab");
-                    }
-                    else
-                    {
-                        EasyExploitsModule.LaunchExploit();
-                    }
-                }
-                else if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
-                {
-                    WeAreDevsModule.LaunchExploit();
-                }
-                else if (Execution.SelectedAPI.API == "Selected API: Oxygen U API")
-                {
-                    Oxygen.API.Inject();
-                }
-                else if (Execution.SelectedAPI.API == "Selected API: Krnl API")
-                {
-                    InjectionInProgress = true;
-                    Thread.Sleep(100);
-                    Execution.KRNL.MainAPI.Inject();
-                }
-                // Custom API option disabled for now
-                /*else if (Execution.SelectedAPI.API == "Selected API: Custom")
-                {
-                    Execution.CustomInjection.Functions.Inject();
-                    new Thread(() =>
-                    {
-                        Thread.CurrentThread.IsBackground = true;
-
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            // Status.Content = "Injecting Custom API...";
-
-                        });
-                        Thread.Sleep(6000);
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            //Status.Content = "";
-                        });
-                    }).Start();
-                }*/
-
-                else // API not selected yet
-                {
-                    MessageBox.Show("Please select an API to use first in settings. The option you have selected may be invalid due to MainDab updates.", "MainDab");
-                }
-            }
-            else // Best to tell the user first!
-            {
-                MessageBox.Show("Please open Roblox first before injecting!", "MainDab");
-            }
         }
 
         // ANIMATIONS //
@@ -743,6 +736,9 @@ namespace MainDabRedo
         private void CloseWindow(object sender, EventArgs e)
         {
             CloseCompleted = true;
+            // just in case
+            try { foreach (Process proc in Process.GetProcessesByName("MainDabWRDWrapper")) { proc.Kill(); } } catch { }
+            try { foreach (Process proc in Process.GetProcessesByName("WRDFakeServer")) { proc.Kill(); } } catch { }
             Environment.Exit(0);
         }
 
@@ -758,7 +754,7 @@ namespace MainDabRedo
         // Join Discord button
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            byte[] succ = WebStuff.DownloadData("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/DiscordLink.txt");
+            byte[] succ = WebStuff.DownloadData("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/DiscordLink.txt");
             WebStuff.Dispose();
             string discord = Encoding.UTF8.GetString(succ);
             Process.Start(discord);
@@ -773,14 +769,14 @@ namespace MainDabRedo
         // Set notice board text
         private void Notice(object sender, RoutedEventArgs e)
         {
-            string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/Notice");
+            string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/Notice");
             NoticeBoard.Text = penis;
         }
 
         // Set changelog board text
         private void ChangelogBoard(object sender, RoutedEventArgs e)
         {
-            string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/Changelog");
+            string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/Changelog");
             Changelog.Text = penis;
         }
 
@@ -796,7 +792,34 @@ namespace MainDabRedo
         // Injection icon
         private void Inject(object sender, MouseButtonEventArgs e)
         {
-            Inject(); // Scroll up to find this function or right click and go to definition
+            Process[] pname = Process.GetProcessesByName("RobloxPlayerBeta");
+            if (IsInjected)
+            {
+                MessageBox.Show("The API has already been injected. Attempting to inject twice will result in a crash");
+            }
+            else if (InjectionInProgress)
+            {
+                MessageBox.Show("Injection is already in process");
+            }
+            else if (pname.Length > 0) // If Roblox is running
+            {
+                InjectionInProgress = true;
+
+                // wrd
+                if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API") {
+                    ShowWindow(GetConsoleWindow(), 5);
+                    // wrd
+                    if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
+                    {
+                        ShowWindow(GetConsoleWindow(), 5);
+                        ExecutionHandler.Inject();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please open Roblox first before attempting to inject");
+            }
         }
 
         // Clear icon
@@ -871,8 +894,6 @@ namespace MainDabRedo
             if (saveDialog.ShowDialog() == true) File.WriteAllText(saveDialog.FileName, CurrentTabWithStuff().Text);
         }
 
-       
-
         // Sets the selected API
         private void SetAPI(object sender, RoutedEventArgs e)
         {
@@ -890,51 +911,29 @@ namespace MainDabRedo
             }
         }
 
-        // Code for injection status
-        // This is the function that we are going to run for checking whether it's injected or not
-        // There is probably a better way to code this, but it does the job
         private void StatusCheck(Object o)
         {
             Process[] pname = Process.GetProcessesByName("RobloxPlayerBeta");
             if (pname.Length > 0) // If Roblox is running
             {
-                if (InjectionInProgress == true)
+                if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
                 {
-                    // EasyExploits API check
-                    if (Execution.SelectedAPI.API == "Selected API: EasyExploits API")
+                    Process[] pname1 = Process.GetProcessesByName("MainDabWRDWrapper");
+                    if (pname1.Length > 0) // so injection at this point has started
                     {
-
-                        if (EasyExploitsModule.isInjected())
+                        IsInjected = Execution.ExecutionHandler.IsInjected();
+                        if (IsInjected)
                         {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = "EasyExploits injected";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(0, 192, 140));
-                            });
-                        }
-                        else
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = "EasyExploits injection in progress";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(170, 192, 0));
-                            });
-                        }
-                    }
-
-                    // WeAreDevs API check
-                    if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
-                    {
-                        if (WeAreDevsModule.isAPIAttached())
-                        {
+                            ShowWindow(GetConsoleWindow(), 5); // wrd wants to hide it; however we want to show it for debugging
                             this.Dispatcher.Invoke(() =>
                             {
                                 InjectionStatus.Content = "WeAreDevs injected";
                                 InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(0, 192, 140));
                             });
                         }
-                        else
+                        else // presumably injection is occuring
                         {
+                            ShowWindow(GetConsoleWindow(), 5); // wrd wants to hide it; however we want to show it for debugging
                             this.Dispatcher.Invoke(() =>
                             {
                                 InjectionStatus.Content = "WeAreDevs injection in progress";
@@ -942,70 +941,27 @@ namespace MainDabRedo
                             });
                         }
                     }
-
-                    // OxygenU API check
-                    if (Execution.SelectedAPI.API == "Selected API: Oxygen U API")
+                    else
                     {
-
-                        if (Oxygen.Execution.Exists() == true)
+                        this.Dispatcher.Invoke(() =>
                         {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = "Oxygen U injected";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(0, 192, 140));
-                            });
-                        }
-                        else
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = "Oxygen U injection in progress";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(170, 192, 0));
-                            });
-                        }
-                       
-                        }
-                    // Krnl API check
-                    if (Execution.SelectedAPI.API == "Selected API: Krnl API")
-                    {
-
-                        if (Execution.KRNL.MainAPI.IsAttached() == true)
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = " Krnl injected";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(0, 192, 140));
-                            });
-                        }
-                        else
-                        {
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                InjectionStatus.Content = "Krnl injection in progress";
-                                InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(170, 192, 0));
-                            });
-                        }
+                            InjectionStatus.Content = "Awaiting injection";
+                            InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(192, 110, 0));
+                        });
                     }
-                }
-                else
-                {
-                    this.Dispatcher.Invoke(() =>
-                    {
-
-                        InjectionStatus.Content = "Awaiting injection";
-                        InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(192, 110, 0));
-
-                    });
                 }
             }
             else
             {
+                // for WRD
+                try { foreach (Process proc in Process.GetProcessesByName("MainDabWRDWrapper")) { proc.Kill(); } } catch { }
+                try { foreach (Process proc in Process.GetProcessesByName("WRDFakeServer")) { proc.Kill(); } } catch { }
+
                 this.Dispatcher.Invoke(() =>
                 {
-
                     InjectionStatus.Content = "Roblox not opened";
                     InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(192, 0, 0));
-                    InjectionInProgress = false;
+                    InjectionInProgress = false;                   
                 });
             }
         }
@@ -1073,7 +1029,7 @@ namespace MainDabRedo
             {
                 MessageBox.Show("Downloading FPS Unlocker. Click OK to continue.", "MainDab");
                 // Taken from https://github.com/axstin/rbxfpsunlocker
-                WebStuff.DownloadFile("https://github.com/MainDabRblx/ProjectDab/blob/master/fpsunlocker.exe?raw=true", "Applications\\fpsunlocker.exe");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/blob/master/fpsunlocker.exe?raw=true", "Applications\\fpsunlocker.exe");
                 WebStuff.Dispose();
                 Process.Start("Applications\\fpsunlocker.exe");
                 MessageBox.Show("FPS unlocker downloaded and started!", "MainDab");
@@ -1082,57 +1038,6 @@ namespace MainDabRedo
 
         // SETTINGS GRID FUNCTIONS //
         // There are multiple tabs on this grid //
-
-        // API selection //
-        // Basically, what we are going to do here is to check WeAreDevs API status
-      
-       
-
-        // I'm not too sure how they check anymore, so I removed it for now
-        private void EasyExploitAPICheck(object sender, RoutedEventArgs e)
-        {
-            // This was stupid for me to think it'd work
-            /* ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-             string[] array = this.HITLER.DownloadString("https://easyexploits.com/Module").Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-             bool flag = !(array[2] == "true");
-             bool flag2 = Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Roblox\\Versions\\" + array[3]);
-             if (flag2)
-             {
-                 EasyExploitsStatus.Fill = new SolidColorBrush(Color.FromRgb(40, 195, 126));
-             }
-             else
-             {
-                 EasyExploitsStatus.Fill = new SolidColorBrush(Color.FromRgb(206, 24, 24));
-             }*/
-        }
-        
-        // There is no status check for OxygenU API, since they update relatively quickly
-
-        // EasyExploits API selection
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/EasyExploitsAPIUse");
-            WebStuff.Dispose(); // Remember to dispose the WebClient! Or someone will scold me for it
-
-            // .FirstOrDefault() is nessesary since GitHub always adds an extra line for some reason
-            // If I don't do this, then the string that would return is "MainDab 14.3/n" rather than "MainDab 14.3", so basically an additional unwanted line!
-            string OnlineVersion = Version.Split(new[] { '\r', '\n' }).FirstOrDefault();
-
-            if(OnlineVersion == "No")
-            {
-                MessageBox.Show("The EasyExploits API function is currently disabled manually by MainDab Devlopers. Please use another API, such as WeAreDevs API. You can join MainDab at discord.io/maindab if you have further questions.", "MainDab");
-            }
-            else
-            {
-                Execution.SelectedAPI.API = "Selected API: EasyExploits API";
-                CurrentAPILabel.Content = "Using EasyExploits API";
-                RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MainDabData"); // We save the user's selection
-                key.SetValue("DLL", "Selected API: EasyExploits API");
-                key.Close();
-                MessageBox.Show("API set to EasyExploits", "MainDab");
-            }
-           
-        }
 
         // WeAreDevs API selection
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -1145,21 +1050,10 @@ namespace MainDabRedo
             MessageBox.Show("API set to WeAreDevs", "MainDab");
         }
 
-        // Oxygen API selection
-        private void OxygenAPI(object sender, RoutedEventArgs e)
-        {
-            Execution.SelectedAPI.API = "Selected API: Oxygen U API";
-            CurrentAPILabel.Content = "Using Oxygen U API";
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MainDabData");
-            key.SetValue("DLL", "Selected API: Oxygen U API");
-            key.Close();
-            MessageBox.Show("API set to Oxygen U API", "MainDab");
-        }
-
         // Join Discord for help button
         private void DiscordLinkie(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.io/maindab");
+            Process.Start("https://maindab.org/discord");
         }
 
         // General options //
@@ -1619,7 +1513,7 @@ namespace MainDabRedo
                     sb.Begin();
 
                 });
-                var json = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/ThemeList.json");
+                var json = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/ThemeList.json");
                 dynamic dsfadfasdf = JsonConvert.DeserializeObject(json);
                 foreach (var item in dsfadfasdf)
                 {
@@ -1976,16 +1870,6 @@ namespace MainDabRedo
                 { }.Start();
         }
 
-        private void KrnlAPI(object sender, RoutedEventArgs e)
-        {
-            Execution.SelectedAPI.API = "Selected API: Krnl API";
-            CurrentAPILabel.Content = "Using Krnl API";
-            RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MainDabData");
-            key.SetValue("DLL", "Selected API: Krnl API");
-            key.Close();
-            MessageBox.Show("API set to Krnl", "MainDab");
-        }
-
         private void MainWin_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.F5))
@@ -2056,6 +1940,29 @@ namespace MainDabRedo
             ToolsGrid.Visibility = Visibility.Hidden;
             CustomisationGrid.Visibility = Visibility.Visible;
             SettingsGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void WRDStatus_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            // wrd status checker
+            string WRDStatusDl = WebStuff.DownloadString("https://cdn.wearedevs.net/software/jjsploit/tauri.json");
+            dynamic WRDStatusFormat = JsonConvert.DeserializeObject(WRDStatusDl);
+            bool IsWRDPatched = WRDStatusFormat.patched;
+            WRDStatusTextFromWe.Text = $"Message from WRD: {WRDStatusFormat.serverMessage}";
+
+            if (!IsWRDPatched) // not patch
+            {
+                WRDStatus.Fill = new SolidColorBrush(Color.FromRgb(40, 195, 126));
+                WRDStatusText.Text = "Unpatched and working!";
+            }
+            else
+            {
+                WRDStatus.Fill = new SolidColorBrush(Color.FromRgb(255, 30, 30));
+                WRDStatusText.Text = "Currently patched";
+            }
+
+            
+
         }
     }
 }

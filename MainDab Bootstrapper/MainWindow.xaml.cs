@@ -147,7 +147,7 @@ namespace MainDab_Bootstrapper
             Startup.Visibility = Visibility.Hidden;
             DownloadMainDab.Visibility = Visibility.Visible;
 
-            string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/MainDabRblx/ProjectDab/master/UpdateStuff/Version");
+            string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/Version");
             WebStuff.Dispose(); // Remember to dispose the WebClient! Or someone will scold me for it
 
             // .FirstOrDefault() is nessesary since GitHub always adds an extra line for some reason
@@ -339,13 +339,13 @@ namespace MainDab_Bootstrapper
             {
                 WebStuff.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebStuff_DownloadProgressChanged);
                 WebStuff.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(WebStuff_DownloadCompleted);
-                WebStuff.DownloadFileAsync(new Uri("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab.exe"), "MainDab\\MainDab.exe");
+                WebStuff.DownloadFileAsync(new Uri("https://github.com/Avaluate/MainDabWeb/raw/main/MainDab.exe"), "MainDab\\MainDab.exe");
             }
             else
             {
                 WebStuff.DownloadProgressChanged += new DownloadProgressChangedEventHandler(WebStuff_DownloadProgressChanged);
                 WebStuff.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(WebStuff_DownloadCompleted);
-                WebStuff.DownloadFileAsync(new Uri("https://github.com/MainDabRblx/ProjectDab/raw/main/MainDab.exe"), "MainDab.exe");
+                WebStuff.DownloadFileAsync(new Uri("https://github.com/Avaluate/MainDabWeb/raw/main/MainDab.exe"), "MainDab.exe");
             }
 
             

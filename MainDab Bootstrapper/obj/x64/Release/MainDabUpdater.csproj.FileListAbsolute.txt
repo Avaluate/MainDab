@@ -1,0 +1,5 @@
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Release\MainDabUpdater.csproj.AssemblyReference.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Release\MainWindow.g.cs
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Release\App.g.cs
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Release\MainDabUpdater_MarkupCompile.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Release\MainDabUpdater_MarkupCompile.lref

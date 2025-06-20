@@ -227,6 +227,6 @@
             </Grid>
         </Grid>
         <Image x:Name="JoinDiscord" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="16" Margin="7,306,0,0" VerticalAlignment="Top" Width="20" Source="5761437_discord_logo_icon.png" Opacity="0.5" Visibility="Hidden"/>
-        <Label x:Name="JoinOurDiscord"  Content="discord.io/maindab" HorizontalAlignment="Left" Height="24" Margin="22,301.5,0,0" VerticalAlignment="Top" Width="107" Foreground="#FF938E8E" FontFamily="Calibri Light" RenderTransformOrigin="0.5,1" FontStyle="Italic" Visibility="Hidden"/>
+        <Label x:Name="JoinOurDiscord"  Content="maindab.org/discord" HorizontalAlignment="Left" Height="24" Margin="22,301.5,0,0" VerticalAlignment="Top" Width="107" Foreground="#FF938E8E" FontFamily="Calibri Light" RenderTransformOrigin="0.5,1" FontStyle="Italic" Visibility="Hidden"/>
     </Grid>
 </Window>

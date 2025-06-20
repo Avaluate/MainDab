@@ -1,0 +1,7 @@
+D:\Development\MainDab\MainDab\obj\x64\Release\MainDab.csproj.AssemblyReference.cache
+D:\Development\MainDab\MainDab\obj\x64\Release\GameTab.g.cs
+D:\Development\MainDab\MainDab\obj\x64\Release\MainWindow.g.cs
+D:\Development\MainDab\MainDab\obj\x64\Release\TabThingy.g.cs
+D:\Development\MainDab\MainDab\obj\x64\Release\App.g.cs
+D:\Development\MainDab\MainDab\obj\x64\Release\MainDab_MarkupCompile.cache
+D:\Development\MainDab\MainDab\obj\x64\Release\MainDab_MarkupCompile.lref

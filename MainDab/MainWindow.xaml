@@ -1252,16 +1252,6 @@
                 <RowDefinition Height="108*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <WebBrowser x:Name="Counter" HorizontalAlignment="Left" Height="1" Margin="65,7,0,0" VerticalAlignment="Top" Width="4" Source="{x:Null}" Loaded="WebBrowser_Loaded" Opacity="0.965" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
-                <WebBrowser.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </WebBrowser.RenderTransform>
-            </WebBrowser>
             <Rectangle x:Name="Topbar" Fill="#4C131517" HorizontalAlignment="Left" Height="30" Stroke="Transparent" VerticalAlignment="Top" Width="694" Grid.ColumnSpan="11" StrokeThickness="0" MouseDown="Rectangle_MouseDown" Margin="0,0,-1.2,0"/>
             <Grid x:Name="HomeGrid" HorizontalAlignment="Left" Height="380" Margin="39,30,-1.2,0" VerticalAlignment="Top" Width="655" Grid.ColumnSpan="11" Grid.RowSpan="12" Background="#33000000">
                 <Grid.ColumnDefinitions>
@@ -1298,7 +1288,7 @@
                     <Grid Height="30" Width="139">
                         <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Border_MouseDown" BorderBrush="#FF383A3C"/>
                         <Image  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="6,6,0,0" VerticalAlignment="Top" Width="20" Source="/ImageResources/DiscordIcon.png" Opacity="0.75"/>
-                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Join MainDab" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Border_MouseDown">
+                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Border_MouseDown">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -1306,8 +1296,7 @@
                                     <RotateTransform/>
                                     <TranslateTransform X="-4.365"/>
                                 </TransformGroup>
-                            </TextBlock.RenderTransform>
-                        </TextBlock>
+                            </TextBlock.RenderTransform><Run Language="en-hk" Text="Our Discord"/></TextBlock>
                     </Grid>
                 </Viewbox>
                 <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="219,42,0,0" RenderTransformOrigin="1.338,2.769" Grid.Column="2" Text="Announcements"/>
@@ -1365,7 +1354,7 @@
                     <Grid Height="30" Width="139">
                         <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Help" BorderBrush="#FF383A3C"/>
                         <Image  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="icons8-web-90.png" Opacity="0.75"/>
-                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Help Centre" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Help">
+                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Help">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -1373,8 +1362,7 @@
                                     <RotateTransform/>
                                     <TranslateTransform X="-4.365"/>
                                 </TransformGroup>
-                            </TextBlock.RenderTransform>
-                        </TextBlock>
+                            </TextBlock.RenderTransform><Run Text="Help "/><Run Language="en-hk" Text="Website"/></TextBlock>
                     </Grid>
                 </Viewbox>
             </Grid>
@@ -1764,7 +1752,7 @@
                         <TextBlock HorizontalAlignment="Left" Height="16" TextWrapping="Wrap" Text="Save File" VerticalAlignment="Top" Width="52" Foreground="#FFEBEBEB" FontFamily="Calibri Light" Margin="25,6,0,0" MouseDown="TextBlock_MouseDown"/>
                     </Grid>
                 </Viewbox>
-                <Label x:Name="CurrentAPILabel" Content="Using EasyExploits API" HorizontalAlignment="Right" Margin="0,361,1,-2" VerticalAlignment="Top" Width="149" HorizontalContentAlignment="Right" Foreground="#FFB4B4B4" FontSize="10" Loaded="SetAPI" FontFamily="Calibri Light"/>
+                <Label x:Name="CurrentAPILabel" Content="Using WeAreDevs API" HorizontalAlignment="Right" Margin="0,361,1,-2" VerticalAlignment="Top" Width="149" HorizontalContentAlignment="Right" Foreground="#FFB4B4B4" FontSize="10" Loaded="SetAPI" FontFamily="Calibri Light"/>
                 <Label  x:Name="InjectionStatus" Content="Roblox not opened" HorizontalAlignment="Right" Margin="0,346,1,0" VerticalAlignment="Top" Width="184" HorizontalContentAlignment="Right" Foreground="#FFC00000" Loaded="StartStatusCheck" FontWeight="Bold" FontFamily="Calibri"/>
                 <Grid x:Name="BlurTextbox" HorizontalAlignment="Left" Height="327" VerticalAlignment="Top" Width="655" Background="#FF131517" Margin="0,21,0,0" Visibility="Hidden">
                     <Label x:Name="CurrentAPILabel_Copy" Content="Textbox blurred out" HorizontalAlignment="Center" Margin="0,144,0,143" VerticalAlignment="Center" Width="655" HorizontalContentAlignment="Center" Foreground="#FFB4B4B4" FontSize="24" FontFamily="Calibri Light" RenderTransformOrigin="0.329,0.279" Height="40"/>
@@ -2037,19 +2025,15 @@
                         <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="API Selection" VerticalAlignment="Top" Width="125" Foreground="#FFC2C2C2" FontFamily="Calibri Light" FontSize="15" Margin="35,7,0,0" MouseDown="Border_MouseDown_1"/>
                     </Grid>
                 </Viewbox>
-                <Grid x:Name="APISelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2" Visibility="Hidden">
+                <Grid x:Name="APISelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="179*"/>
                         <RowDefinition Height="11*"/>
                     </Grid.RowDefinitions>
                     <TextBlock HorizontalAlignment="Right" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="489" Foreground="#FFD1CFCF" FontFamily="Calibri Light" FontSize="19" Margin="0,2,0,325.4" TextAlignment="Center"><Run Text="API Selection"/><LineBreak/><Run/></TextBlock>
-                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="8,31,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <Ellipse x:Name="EasyExploitsStatus" HorizontalAlignment="Left" Height="16" Margin="14,39,0,0" VerticalAlignment="Top" Width="16" Loaded="EasyExploitAPICheck" Opacity="0.7" Fill="#B22E63E0"/>
-                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="37,31,0,0" Text="EasyExploits API"/>
-                    <TextBlock x:Name="EasyExploitsStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,48,247,280.4" Text="No function to check, probably working"/>
-                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="244,31,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="241" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <Ellipse x:Name="WRDStatus" Fill="#FF28C37E" HorizontalAlignment="Left" Height="16" Margin="254,38,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
-                    <Button Content="Use" Margin="433,35,10,302.4" Background="#23656565" Template ="{DynamicResource NoHighlightBut}" Foreground="#FFE2E2E2" BorderBrush="{x:Null}" Click="Button_Click_1" Opacity="0.75">
+                    <Border BorderThickness="1" HorizontalAlignment="Center" Height="49" Margin="0,36,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="241" Background="#19000000" BorderBrush="#19A5A5A5"/>
+                    <Ellipse x:Name="WRDStatus" Fill="#FFFF1E1E" HorizontalAlignment="Left" Height="16" Margin="135,46,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7" Loaded="WRDStatus_Loaded_1"/>
+                    <Button Content="Use" Margin="321,43,129,283" Background="#23656565" Template ="{DynamicResource NoHighlightBut}" Foreground="#FFE2E2E2" BorderBrush="{x:Null}" Click="Button_Click_1" Opacity="0.75">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Style.Triggers>
@@ -2071,69 +2055,20 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="279,31,0,0" Text="WeAreDevs API"/>
-                    <TextBlock x:Name="WRDStatusText" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Center" Width="186" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,48,22,298.4" Text="Unpatched and working!"/>
-                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="8,67,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <Button Content="Use" Margin="188,72,255,265.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="OxygenAPI" Opacity="0.75">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Style.Triggers>
-                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <Ellipse x:Name="OxygenStatus" Fill="#FF28C37E" HorizontalAlignment="Left" Height="16" Margin="14,75,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
-                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="37,68,0,0" Text="Oxygen U API"/>
-                    <TextBlock x:Name="OxygenStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,85,246,243.4"><Run Text="Unpatched and working!"/></TextBlock>
-                    <TextBlock x:Name="HasKey" HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Foreground="#FF4E4E4E" FontFamily="Calibri Light" FontSize="10" Margin="126,72,0,0" Text="(has key)"/>
-                    <Button x:Name="EasyExploitsUse" Content="Use" Margin="187,35,256,302.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="Button_Click" Opacity="0.75">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Style.Triggers>
-                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <TextBlock x:Name="lol" HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="484" Foreground="#FFC7C7C7" FontFamily="Calibri Light" FontSize="19" Text="Notes on API selection" Margin="5,108,0,220.4" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="157,39,0,0" Text="WeAreDevs API"/>
+                    <TextBlock x:Name="WRDStatusText" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,57,146,0" Text="Unpatched and working!"/>
+                    <TextBlock x:Name="lol" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="484" Foreground="#FFC7C7C7" FontFamily="Calibri Light" FontSize="19" Text="Notes on API selection" Margin="5,109,0,0" TextAlignment="Center"/>
                     <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="13,140,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,146,0,0" Text="WeAreDevs is not the only API you can pick or use!" TextAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,183,0,0" TextAlignment="Center"><Run Text="If WeAreDevs doesn't work (or is &quot;stuck&quot; on injection), then use another API, such as EasyExploits"/><Run Text=", "/><Run Text="Oxygen U"/><Run Text=" or Krnl"/><Run Text="."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,146,0,0" TextAlignment="Center"><Run Text="All the APIs listed above have their key systems effectively bypassed"/><Run Language="en-hk" Text="."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,183,0,0" TextAlignment="Center"><Run Language="en-hk" Text="The key system is automatically bypassed before injection. Check the MainDab Docs (home page) for more information."/></TextBlock>
                     <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="246,140,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="233" Background="#19000000" BorderBrush="#19A5A5A5"/>
                     <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="255,146,0,0" Text="Roblox updates every Wednesday, leaving exploits patched!" TextAlignment="Center"/>
                     <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="255,183,0,0" Text="If none of the API works, then please wait for a few hours for the APIs to update. It takes time." TextAlignment="Center"/>
                     <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="13,242,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,248,0,0" Text="The status shows that WeAreDevs/EasyExploits is stuck on injection!" TextAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,285,0,0" Text="This either means that there is an issue with the API, such as it being patched. You can also try restart both MainDab and Roblox." TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="20,248,0,0" TextAlignment="Center"><Run Language="en-hk" Text="All Roblox exploits are effectively detected by Roblox."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="20,285,0,0" TextAlignment="Center"><Run Language="en-hk" Text="You are exploiting at your own risk of being sanctioned by Roblox. However, exploiting in your own game is allowed by Roblox."/></TextBlock>
                     <Border BorderThickness="1" HorizontalAlignment="Left" Height="94" Margin="247,242,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="228" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="254,248,0,0" Text="I still need help with MainDab! I have an API suggestion!" TextAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FFC2C1C1" FontFamily="Calibri Light" FontSize="14" Margin="254,248,0,0" TextAlignment="Center"><Run Text="I still need help with MainDab"/><Run Language="en-hk" Text="/I have a suggestion!"/></TextBlock>
                     <Button Content="MainDab's Discord Server" Margin="255,305,25,29.4" Background="#1E696969" Template ="{DynamicResource NoHighlightBut}" Foreground="#FFC3C3C3" BorderBrush="{x:Null}" Click="DiscordLinkie" FontFamily="Calibri Light" Opacity="0.75">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -2157,36 +2092,12 @@
                         </Button.Style>
                     </Button>
                     <TextBlock HorizontalAlignment="Left" Height="18" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Foreground="#FF918F8F" FontFamily="Calibri Light" Margin="251,285,0,0" Text="If you do, then please consider joining" TextAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="462" Foreground="#FF6B6B6B" FontFamily="Calibri " FontSize="14" Margin="13,341,0,0" TextAlignment="Center" FontStyle="Italic" Grid.RowSpan="2"><Run Text="("/><Run Text="Also, MainDab "/><Run Text="is "/><Run Text="not sponsored by either EasyExploits or WeAreDevs"/><Run Text="."/><Run Text=" None of them wanted to sponsor MainDab for whatever reason."/><Run Text=")"/></TextBlock>
-                    <Border BorderThickness="1" HorizontalAlignment="Left" Height="32" Margin="245,67,0,0" CornerRadius="9 9 9 9" VerticalAlignment="Top" Width="240" Background="#19000000" BorderBrush="#19A5A5A5"/>
-                    <Button x:Name="UseKRNL" Content="Use" Margin="433,72,10,265.4" Background="#23656565" Foreground="#FFE2E2E2"  Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" Click="KrnlAPI" Opacity="0.75">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Style.Triggers>
-                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                    <Ellipse x:Name="OxygenStatus_Copy" Fill="#B22E63E0" HorizontalAlignment="Left" Height="16" Margin="254,75,0,0" VerticalAlignment="Top" Width="16" Opacity="0.7"/>
-                    <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="16" Margin="279,68,0,0"><Run Text="K"/><Run Text="rnl"/><Run Text=" API"/></TextBlock>
-                    <TextBlock x:Name="KrnlStatusText" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="205" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,85,4,243.4" Text="No function to check, probably working"/>
-                    <TextBlock x:Name="HasKey_Copy" HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Foreground="#FF4E4E4E" FontFamily="Calibri Light" FontSize="10" Margin="332,72,0,0" Text="(has key)"/>
+                    <TextBlock HorizontalAlignment="Center" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="462" Foreground="#FF6B6B6B" FontFamily="Calibri " FontSize="14" Margin="0,350,0,0" TextAlignment="Center" FontStyle="Italic" Grid.RowSpan="2"><Run Language="en-hk" Text="None of the APIs listed above are sponsored, neither are we sponsored."/></TextBlock>
+                    <TextBlock x:Name="WRDStatusTextFromWe" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,69,169,0"><Run Language="en-hk" Text="Message from WRD:"/></TextBlock>
+                    <TextBlock x:Name="WRDStatusText_Copy1" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Foreground="#FF139549" FontFamily="Calibri" FontSize="9" Margin="0,45,171,0"><Run Language="en-hk" Text="(key bypassed)"/></TextBlock>
+                    <TextBlock x:Name="APISelectionNotice" HorizontalAlignment="Right" Height="12" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Foreground="#FF4F4F4F" FontFamily="Calibri Light" FontSize="9" Margin="0,89,146,0"><Run Text="(at the moment, only"/><Run Language="en-hk" Text=" one exploit API is available"/><Run Text=")"/></TextBlock>
                 </Grid>
-                <Grid x:Name="GeneralOptions" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Background="#4C000000" Visibility="Hidden" Grid.RowSpan="2">
+                <Grid x:Name="GeneralOptions" Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Background="#4C000000" Grid.RowSpan="2" Visibility="Hidden">
                     <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="249,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
                     <Border CornerRadius = "3,3,3,3" BorderBrush="#19A5A5A5" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="7,34,0,0" VerticalAlignment="Top" Width="234" Background="#33212121"/>
                     <TextBlock HorizontalAlignment="Right" Height="31" TextWrapping="Wrap" VerticalAlignment="Center" Width="489" Foreground="#FFD1CFCF" FontFamily="Calibri Light" FontSize="19" Margin="-0.2,3.2,0.2,347.8" TextAlignment="Center" Text="General Options"/>
@@ -2205,7 +2116,7 @@
                     <Button x:Name="TopMostButton_Copy" Content="Use" Margin="194,145,248,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="UseCustomTheme"/>
                     <Button x:Name="TopMostButton_Copy1" Content="Reset" Margin="435,145,7,217" Background="#33212121" Foreground="#FF969595" Template ="{DynamicResource NoHighlightBut}" BorderBrush="{x:Null}" FontSize="8" FontFamily="Consolas" Click="ResetTheme"/>
                 </Grid>
-                <Grid x:Name="ThemeSelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2">
+                <Grid x:Name="ThemeSelection" HorizontalAlignment="Left" Height="380" Margin="166,0,0,0" VerticalAlignment="Top" Width="489" Grid.ColumnSpan="4" Background="#4C000000" Grid.RowSpan="2" Visibility="Hidden">
                     <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" Text="Themes" VerticalAlignment="Top" Width="489" Foreground="#FFD7D7D7" FontFamily="Calibri Light" FontSize="19" Margin="0,6,0,0" TextAlignment="Center"/>
                     <TextBox x:Name="RightGradient" HorizontalAlignment="Left" Height="19" Margin="352,157,0,0" TextWrapping="Wrap" Text="Right hex code" VerticalAlignment="Top" Width="127" FontFamily="Consolas" FontSize="13" Foreground="#FFD1D1D1" Background="#19000000" BorderBrush="{x:Null}" TextAlignment="Center" RenderTransformOrigin="0.507,0.526"/>
                     <TextBlock HorizontalAlignment="Center" Height="30" TextWrapping="Wrap" VerticalAlignment="Center" Width="176" Foreground="#FFE4E4E4" FontFamily="Calibri Light" FontSize="15" Margin="26,43,287,309" Text="Theme List" TextAlignment="Center"/>
@@ -2441,12 +2352,12 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="85,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="28" MouseDown="Help" BorderBrush="#FF3A0197" Grid.ColumnSpan="2">
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="85,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="28" MouseDown="Help" BorderBrush="#FF9B62F9" Grid.ColumnSpan="2">
                 <Grid/>
             </Border>
-            <TextBlock HorizontalAlignment="Center" Height="14" TextWrapping="Wrap" Text="15.1" VerticalAlignment="Top" Width="28" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="85,11.8,51,0" MouseDown="TextBlock_MouseDown" Grid.ColumnSpan="2" FontSize="10" TextAlignment="Center"/>
-            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="10.2,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="27" MouseDown="Help" BorderBrush="#FF1D4299" Grid.Column="1"/>
-            <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="10.8,12,0,0" MouseDown="TextBlock_MouseDown" FontSize="10" Grid.Column="1" TextAlignment="Center"><Run Text="SP"/><Run Text="8"/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="85,11.8,51,0" MouseDown="TextBlock_MouseDown" Grid.ColumnSpan="2" FontSize="10" TextAlignment="Center"><Run Text="1"/><Run Language="en-hk" Text="5.2"/></TextBlock>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="15" Margin="10.2,10,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="27" MouseDown="Help" BorderBrush="#FF4876E2" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Left" Height="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="26" Foreground="#FF9A9898" FontFamily="Calibri Light" Margin="10.8,12,0,0" MouseDown="TextBlock_MouseDown" FontSize="10" Grid.Column="1" TextAlignment="Center"><Run Language="en-hk" Text="REL"/></TextBlock>
             <Grid x:Name="LoadingScreen" HorizontalAlignment="Left" Height="417" Margin="-3,-3,-4.2,-2.395" Grid.RowSpan="12" VerticalAlignment="Top" Width="700" Grid.ColumnSpan="11" Visibility="Hidden">
                 <Grid x:Name="BG" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="700" Background="#FF0C0C0C" Opacity="0.845"/>
                 <ProgressBar x:Name="LoadingScreenBar" Height="23" Margin="164,243,157,0" VerticalAlignment="Top" BorderBrush="#FF565656" Background="#26000000" BorderThickness="1" Style="{DynamicResource ProgressBarStyle1}" Foreground="#19717171" Loaded="LoadingScreenLoaded"/>
