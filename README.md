@@ -23,6 +23,10 @@ Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDa
 No. MainDab is not obfuscated either; you are free to look at the (shitty) code.
 
 This is explained further in the [help website](https://maindab.gitbook.io/maindabdocs/downloading-maindab/is-maindab-a-virus).
+## Aren't things that advertise themselves as including a key bypass malware?
+Mostly. GitHub is [full of such examples](https://github.com/search?q=roblox+exploit+keyless&type=repositories&s=updated&o=desc).
+
+If [this](https://maindab.gitbook.io/maindabdocs/downloading-maindab/is-maindab-a-virus) hasn't convinced you MainDab isn't a virus, take a look at [this](https://github.com/Avaluate/MainDab/blob/main/MainDabWRDWrapper/WRDCert.cs), [this](https://github.com/Avaluate/MainDab/tree/main/MainDabWRDFakeServer), and [this page explaining how the bypass is done](https://maindab.gitbook.io/maindabdocs/maindab-faq/bypassing-wrd-key-system).
 ## Can you get banned for Roblox for using exploits?
 Yes, but Roblox allows you to exploit [only in your own games](https://devforum.roblox.com/t/an-update-on-automated-action-against-modified-clients/3640609).
 ## Features
