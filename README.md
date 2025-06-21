@@ -14,7 +14,9 @@
 
 At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). 
 
-MainDab was previously discontinued onn April 2023, before a partial resurrection on June 2025. MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit). 
+MainDab was previously discontinued onn April 2023, before a partial resurrection on June 2025. MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit).
+
+Changelog: see [Changelog.txt](https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Changelog.txt).
 ## Download
 Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDab yourself.
 ## Is MainDab a virus?
