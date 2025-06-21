@@ -1,0 +1,678 @@
+== MainDab 15.2 REL Released! ==
+Build number: 174
+Release date: 21 June 2025
+
+Update information
+MainDab 15.2 REL is the first update of MainDab since MainDab's last update on 27 April 2023. Many things have since changed in regards to exploiting, and likewise major changes (on the code side of things) have changed. User interface remains mostly untouched.
+
+Fixes/removals
+• Removed all exploit APIs, except for WeAreDevs API
+• Fixed link to Discord
+• Fixed bug where attempting to copy a script to clipboard from script hub results in MainDab crashing
+
+Updates
+• Added key bypass system for WeAreDevs API
+• Updated API selection page to properly reflect new changes
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+Build number 173 would be the final version of MainDab to be released.
+
+== MainDab 15.1 SP8 Released! ==
+Build number: 173
+Release date: 27 April 2023
+
+Update information
+Fixed some UI bugs and updated Avalon. Other dependencies have also been updated for security reasons.
+
+MainDab update problems
+MainDab's auto updater has broken down due to me moving MainDab's assets to another GitHub repo. You MUST redownload MainDab from ⁠『📥』get-maindab. Trust me, this is just a one-time thing.
+
+New documentation
+MainDab now has download tutorials for Arch Linux, Gentoo Linux, openSUSE and Ubuntu, which make use of Wine to run MainDab. As far as I am aware, there are no other exploits that have any guides for exploiting on Linux (at most just Arch Linux).
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP7 Released! ==
+Build number: 172
+Release date: Feburary 6 2023
+
+Update information
+Added Krnl's API into MainDab as another API for MainDab to use. This is just a small but needed update since other APIs can be quite unreliable.
+
+Fixes/removals
+• None
+
+Updates
+• Added in Krnl's API as requested. Also note that you will need to go through four key systems in order to use Krnl (keys last for 48 hours, I believe)
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP6 Released! ==
+Build number: 171
+Release date: Feburary 3 2023
+
+Update information
+A few rather urgent fixes needed for MainDab. What a concidence that EasyExploits and WeAreDevs BOTH have problems.
+
+Fixes/removals
+• Added MainDab's own backup file for WeAreDevs json files. The current WRD mirror on GitHub is not reliable.
+• Added a function where I can remotely enable and disable EasyExploits API from being used in MainDab
+• Fixed the status text settings, it was due to some mispellings I originally made
+
+About EasyExploits API
+I could simply just fix the EasyExploits API right now, but I am unsure if I actually need the permission to use Furk Ultra's injection (since that's where EasyExploits work from). EasyExploits API in MainDab is disabled until EasyExploits fixes their injection and no longer demands you to use Furk Ultra.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP5 Released! ==
+Build number: 170
+Release date: Feburary 21 2023
+
+Update information
+Attempt #1 at fixing MainDab "randomly closing". This is possibly linked to a timer that I have running in the background of MainDab that constantly checks for WeAreDevs API status.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP4 Released! ==
+Build number: 169
+Release date: Feburary 21 2023
+
+Update information
+Fixed the WeAreDevs error closing MainDab
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP3 Released! ==
+Build number: 168
+Release date: January 21 2023
+
+Update information
+Since I'm in the process of adding a lot of scripts into the Game Hub, I discovered that I had not thought about memory issues. 44 scripts in the Game Hub would have brought MainDab's total memory usage up to 250mb. I managed to bring down MainDab's total memory usage to ~100mb with the same amount by reducing the image quality.
+
+Fixes/removals
+• I only updated the Game Hub search bar. From now on, you will have to click "search" each time to search for a script, since I couldn't find a way to make that part less laggy.
+• Only the Game Hub has recieved this optimisation update, I'm pioritising adding the rest of the scripts into the Game Hub before I update MainDab.
+
+== MainDab Bootstrapper Update ==
+MainDab has recieved a new bootstrapper UI. It looks completely different from the previous bootstrapper, with the new bootstrapper now including a lot more animations.
+
+You can download the bootstrapper and see for yourself here: https://github.com/Avaluate/MainDabWeb/blob/master/MainDabBootstrapper.exe?raw=true (or ⁠『📥』get-maindab)
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP2 Released! ==
+Build number: 167
+Release date: December 22 2022
+
+Update information
+Sorry yet AGAIN for more things that I didn't see coming for MainDab's 15.1 update. I swear this will be the last update for today (3 updates in a row today!)
+
+Fixes/removals
+• Made the script hub images look a bit less weird for custom themes
+• Readded the side bar panel or else custom themes would make MainDab look extremely goofy
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 SP1 Released! ==
+Build number: 166
+Release date: December 22 2022
+
+Update information
+Apparently having a lot of images in the script and game hub would be a bit of an issue. I decided to only load the script and game hub when you actually click on that tab, and not to load it up on startup.
+
+Fixes/removals
+• MainDab no longer takes 10 seconds to start up
+• Fixed the copy script button in game hub crashing MainDab (it was due to a missing animation)
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.1 REL Released! ==
+Build number: 165
+Release date: December 22 2022
+
+Update information
+MainDab finally has a game hub now, plus a search bar for scripts for both the script hub and the game hub. Both of them are still a work in progress, and the script thumbnail images still need to be filled in.
+
+Fixes/removals
+• Fixed WeAreDevs API yet AGAIN breaking MainDab for people (there will be a message showing that WRD's website is down)
+• Fixed the topmost toggle button randomly showing a messagebox
+
+Updates
+• The side bar is now animated, and will now indicate which window you are on
+• Some colour schemes (such as text colour) has been fixed
+• The game hub that I've been talking about for so long now exists
+• There's also a search bar for scripts for both the game hub and the script hub (although not the most efficient one codewise!)
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.0 SP7 Released! ==
+Build number: 164
+Release date: December 5 2022
+
+Update information
+Fixes for WeAreDevs API and some Avalon issues
+
+Fixes/removals
+• Fixed MainDab not opening for some people
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.0 SP6 Released! ==
+Build number: 163
+Release date: October 11 2022
+
+Update information
+Just a quick fix for the theme builder.
+
+Fixes/removals
+• Fixed the theme builder's left and right border hex codes
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.0 SP5 Released! ==
+Build number: 162
+Release date: October 7 2022
+
+Update information
+I updated the UI slightly so that custom themes actually look more decent
+
+Updates
+• Changed the icon colours on the execute tab
+• Removed the home page MainDab icon
+• Updated the minimise and close button icon
+• Updated Discord RPC icon
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+== MainDab 15.0 SP4 Released! ==
+
+Build number: 161
+Release date: October 4 2022
+
+Update information
+I am attempting to somehow "perfect" MainDab's UI in one way or another. What's odd is how only other exploit developers don't really like MainDab's UI. Please remember that I'm the only person working on MainDab.
+
+Fixes/removals
+• WeAreDevs API not injecting has been fixed by updating the API dependency
+• Removed the "Unexpected Client Behaviour" fixer since it no longer works
+
+Updates
+• Side icons slightly changed, tell me if it looks odd or not
+• Replaced the "Get Help" icon with the "Help Centre" icon on the home page
+• Updated the tool tab layout to look less weird
+• Added background images for the scripthub
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.15.0 SP3 Released! | Build 160 | 28 July 2022
+I was still in the process of updating the general codebase of some stuff but decided I had to push this update since it was too urgent
+
+[1] Attempt #1 at fixing the "module not found" error
+
+Report to me issues in dms or spam ping me
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.15.0 SP2 Released! | Build 159 | 1 July 2022
+[1] Fixed some small UI issues again
+[2] Fixed theme transparency representation bug
+[3] Fixed listbox bug as well
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.15.0 SP1 Released! | Build 158 | 1 July 2022
+Just a small patch for MainDab 15.0
+
+[1] Updated Discord RPC
+[2] Fixed some small UI issues
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+
+MainDab V.15.0 Released! | Build 157 | 30 June 2022
+[1] Added in the option to copy script in the scripthub
+[2] Revamped settings tab
+[3] Theming settings finally out! You can now theme MainDab as you wish and save your theme as a .json file! I will be adding (or making themes) and adding them to the theme repository.
+[4] Animations slightly redone, but nothing fancy
+
+There may be issues regarding the new update system! Report them to my DMs, as I've found about it recently and applied a fix for it.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.9 Released! | Build 156 | 24 June 2022
+[1] UI enlarged
+[2] Exit button redone
+[3] Preparations done for UI customisation updates, basic UI customisation here now
+
+Not really so much of a big update, but I've decided to FINALLY make a bootstrapper. 
+Actually, this is more of a "2-in-1" thing as this can both download and update MainDab.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.8 SP4 Released! | Build 155 | 23 May 2022
+This update brings along some fixes. Kinda dissapointing that Kato API got slightly fucked.
+
+[/] Updated Avalon
+[-] Removed Kato API
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.8 SP3 Released! | Build 154 | 16 May 2022
+This update brings along some minor bug fixes, alongside a few small UI changes in preparation for bigger UI changes.
+
+[1] Change MainDab's logo in home page
+[2] Version number changed
+[3] I tried to tidy some stuff up with the minimise and close icons
+
+[/] A couple of bugs relating to execution fixed
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.8 SP2 Released! | Build 153 | 29 April 2022
+[1] I have decided to take the issue into my own hands, and fixed Kato API myself. The "fix" Kato API implemented just didn't work for MainDab.
+
+I was also working a bit on the scripthub, so a bit of a layout change for it.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.8 SP1 Released! | Build 152 | 14 April 2022
+[1] Kato API module updated/fixed, now using KatoAPI2
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.8 Released! | Build 151 | 13 April 2022
+[1] Added Oxygen U API (it has a key system tho)
+[2] Fixed Kato API and EasyExploits API
+[3] Did some small UI tweaks based on user feedback
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.7 Released! | Build 151 | 9 April 2022
+This update fixes a bug that makes MainDab not open. This was due to an issue in the DiscordRPC code. Thanks to @Kades supports MainDab for reporting this!
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.6 Released! | Build 149 | 8 April 2022
+This update brings along a lot of requested functions/options and fixes.
+
+[1] Made icons brighter
+[2] WeAreDevs API code fixed/updated
+[3] Kato API fixes added since Kato API devs are lazy
+[4] Injection status added
+[5] Fixed/updated unexpected Client Behaviour fixer
+[6] Added warning for kill Roblox icon
+[7] Add option to disable Discord RPC
+[8] Updated credits
+[9] UI layout slightly changed for the tools section
+[10] MainDab usage counter check fixed
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.5 Released! | Build 148 | 31 March 2022
+[1] Added Kato API. Kato API is actually pretty powerful compared to other APIs, so I would recommend you to use it.
+[2] Fixed a small bug in the scripthub I hope no one noticed
+[3] Fixed the usage counter
+[4] Testing a new notice board system, left a nice message there as a start
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.4 Released! | Build 147 | 21 March 2022
+[1] Added in buttons for MainDab's Discord RPC! When using buttons, your Discord status will show buttons to join MainDab.
+[2] Added in a timer for MainDab's API checker that checks every 10 seconds.
+[3] EasyExploits API checker fixed
+[4] Added topmost option in settings
+[5] Theme and API setting options in registry fixed
+[6] Added upload to pastebin button, execution icon rearrangement
+[7] Added in tooltip
+[8] Added some basic fade in/out animations
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.3 // BM2.1 Released! | Build 146 | 18 March 2022
+[1] Completely new UI for MainDab
+[2] MainDab's Discord no longer opens when you open MainDab
+[3] Scripthub now JSON intergrated (finally!)
+
+MainDab auto updates, run MainDab and it should auto update. If you need to redownload MainDab (or if you haven't downloaded it yet), get it from 📥¦get-maindab
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.2 Released! | Build 145 | 29 January 2022
+
+MainDab is now recieving a new UI! Progress has actually been relatively quick, however I do need your feedback on the new UI. There is no need to redownload MainDab.
+
+Please do leave comments and suggestions on the new UI in #💡¦suggestions. Everything isn't finalised yet. Everything in the new UI is functional, but there is still some work to do.
+
+The following bugs have also been fixed :
+- Multiple Roblox crashing MainDab (found making new UI)
+- Theme borders looking odd (fixed alongside new UI)
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.1 Released! | Build 144 | 26 January 2022
+[1] Updated WeAreDevs API due to their new updates (https://wearedevs.net/forum/t/24277)
+
+Oh and I forgot to mention Avalon slightly re-edited BECAUSE IT KEEPS FUCKING BREAKING!!
+
+If I were to use monaco or aceeditor or some shit then MainDab would be bigger, less portable and need webbrowser which means more memory usage
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.14.0 Released! | Build 143 | 1 January 2022
+This is an emergency patch for MainDab that I was forced to push. Alongside this however, you might find some hints for a newer, bigger update...
+
+[1] I have now added a patch in MainDab that automatically fixes the "Kicked due to unexpected client behaviour" issue before you inject.
+[2] The Autoexec folder is fully functional now. It will automatically execute any scripts in the folder, and it will work with any API.
+[3] Avalon is less of a pain now due to a new system (finally!)
+[4] Replaced the WRD multiple exploit program with a one I made (#deleted-channel)
+[-] Removed Sniff Hub button because we are no longered partnered with them (@LingNYC wanna parther again?). However, Sniff Hub is still in MainDab's script hub.
+[-] Removed taint log checks since Roblox doesn't seem to use taint logs to detect exploits anymore.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.9 Released! | Build 142 | 8 November 2021
+[1] EasyExploits no longer checks for versions, EasyExploits API should work now.
+
+
+MainDab V.13.8 Released! | Build 141 | 11 October 2021
+[1] UI changes again, border slightly cleaned up
+[2] New theme - Hallow Orange (Halloween Theme for MainDab)
+[3] Added in a new API, Anemo API
+[4] Improved error messages for EasyExploits and WeAreDevs further
+[5] There is now a working autoexec for MainDab
+
+Basically, MainDab now has another free and good API. Anemo API is a new API that replaces the old RBLX API.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.7 Released! | Build 140 | 10 October 2021
+
+[1] UI changes again, MainDab is now slightly darker
+[2] Icon changes, hopefully it seems cleaner
+[3] Fixed EasyExploits and added messages to check if EasyExploits is updated or not
+[4] Improved error messages for EasyExploits and WeAreDevs
+[-] Removed RBLX API since I realized it won't work
+
+So yea, long time no update. School is keeping me busy.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.6 Released! | Build 139 | 3 September 2021
+
+[1] Scripthub now moved into new window
+[2] UI changes
+
+The scripthub has been moved into a new section to faciliitate further development, plus I've started on revamping the UI. Next update will bring along new icons.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.5 Released! | Build 138 | 1 September 2021
+
+[1] Scripthub changes
+[2] Fixed funny border colour
+
+THE SEARCH BAR ON THE SCRIPTHUB DOES NOT WORK, and the image loading isn't perfect either. This will be fixed later.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.4 Released! | Build 137 | 31 August 2021
+
+[1] Added RobloxHacks/REV API into MainDab, it isn't working at the time of writing this message
+[2] Fixed Bug #1 - MainDab crashing when you select the same theme twice
+[3] Preparations for further scripthub improvements
+[4] Removes funny UI angles
+[5] Improved the border 
+
+So new API and a bug fix (check #🔨¦bugs for a list of current bugs), I've switched my strategy from updates every month or so to more frequent updates to show I actually care
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.3 Released!| Build 136 | 30 August 2021
+[1] MainDab's directory is now much clearer thanks to using Fody.Weavers
+
+Just to save time all of MainDab's dependencies are now packed into MainDab, this should significantly reduce the change of some funny errors occurring. As usual, let me know if problems occur.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.2 Released! | Build 135 | 29 August 2021
+[1] Attempt #1 at preventing MainDab from crashing on startup
+[2] Fixed clearbutton
+[3] Moved update platform to Github, say goodbye to Pastebin
+[4] Fixed scrollbar fucking glitches
+
+THIS UPDATE SHOULD FIX MAINDAB NOT OPENING, CRASHING OR STUCK ON THE LOADING SCREEN WHEN YOU TRY RUN IT. YOU MUST REDOWNLOAD MAINDAB IF YOU ARE HAVING THESE ISSUES. 
+
+Basically I've moved the update platform to Github which should fix MainDab not opening.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.1 REV Released! | Build 134 | 21 July 2021
+[1] Small tweaks on Avalon AGAIN
+[2] Fixed scrollbar
+[3] Fixed clear button not working again
+[4] MainDab API gone now
+[6] Hotfix for WeAreDevs API
+
+I'm aware its still patched but I'm updating it anyways, plus a new API update checker program will be out soon.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.13.0 Released! | Build 133 | 21 July 2021
+[1] Small tweaks on Avalon
+[2] Added a much better looking scrollbar to the text editor and scripthub
+[3] Fixed listbox
+[4] Fixed clear button not working
+[5] Removed unnecessary references
+[6] Execution moved to a new class
+[7] Code cleaned up
+[8] Updated some text contents and the Discord RPC stuff 
+
+So it's just a bit of a massive cleanup.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.9 Released! | Build 132 | 20 July 2021
+[1] Moved DLL into new window
+[2] More performance stuff changed
+[3] Scripthub is bigger, though I haven't moved it to a new window yet
+[4] Updated credits
+
+That's pretty much it.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.8 Released! | Build 131 | 9 July 2021
+[1] MainDab now has tabs, though it's in its extremely basic form atm
+[2] Fixed SniffHub stuff
+[3] Memory management attempt #1 (attempt to reduce memory usage)
+[4] Cleaned up some unnecessary code
+
+[+] MainDab's DLL is now updated
+
+So basically MainDab now has tabs but I pasted the tab element off sentinel plus an attempt at better memory management.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.7 Released! | Build 130 | 18 Jun 2021
+[1] Re-enabled MainDab LBI, got fixed
+[2] (Re)added in ShadowCheats API to MainDab
+[3] Fixed Avalon Class for the last fucking time
+[4] Updated EasyExploits Class to fix some issues
+[5] Other very small icon tweaks
+
+Anyways MainDab LBI is now working and ShadowCheats API was added in, so yea that's pretty much it. 
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.6 Released! | Build 129 | 17 Jun 2021
+[1] Disabled MainDab LBI
+[2] Fixed EasyExploits
+[3] Fixed WRD
+[4] Fixed other UI issues
+
+Dunno what happened to the LBI, but hopefully things will be fine soon. I'll soon update the icons to something different.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.5 Released! | Build 128 | 31 May 2021
+
+[1] Added MainDab LBI
+[2] Fixed message when you try inject when Roblox isn't started yet
+[3] Fixed MainDab crashing when you try inject a custom DLL and MainDab LBI when it's already injected
+[4] DLL saving options is now fixed
+
+Thanks deadlocust for being a DLL dev for MainDab. Infact, it's a auto updating LBI :3
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.4 Released! | Build 127 | 15 May 2021
+-- MainDab Executor --
+[1] Fixed injection issues, found out it was a single line of code that broke it. This code was supposed to check whether your saved selected options were valid, and changed it to EasyExploits if it wasn't. Turns out that I screwed something up here. I now fixed and tested it, injection should work.
+
+Basically injection fixed, also I'm actually pretty busy this week, just found some time to update it today.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.3 Released! | Build 126 | 7 May 2021
+-- MainDab Executor --
+[1] Removed more DLLs that won't be used
+[2] People should now have less issues with MainDab in general, a studden spike in users in MainDab led to more issues being reported
+[3] It will automatically fix invalid choice of DLL
+[4] Fixed more bugs that will hopefully have less reported issues..
+
+Basically a stability update, more things to come soon to MainDab. For now, I'm focusing on school and other stuff.
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.2 Released! | Build 125 | 22 Apr 2021
+-- MainDab Updater --
+[1] Deletes unessesary shit
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+-- MainDab Executor --
+[1] Removed Acrylix API since it's no longer being updated (suspected)
+[2] Removed WeAreDevs API, EasyExploits API and instead embedded it into MainDab (copy paste code into MainDab)
+[3] Fixed Taintlogs button, though the logging form is actually from than a year ago
+[-] Removed extensions, no one bothered to use it
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.1 Released! | Build 124 | 21 Apr 2021
+-- MainDab Updater --
+[1] Fixed spacing issues with the text
+[2] Made it delete ShadowCheats API
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+-- MainDab Executor --
+[1] Fixed Sniff Hub not working
+[2] Added Arch API, a pretty decent API. Not sponsored by Arch API btw.
+[3] Removed ShadowCheats API, was pretty shitty
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.12.0 Released! | Build 123 | 20 Apr 2021
+[1] FINALLY THEME UPDATE IKR, added the change theme tab on the topbar
+[2] 5 new themes added
+  | Default
+  | Royal Purple
+  | Crimson Red
+  | Purity Blue
+  | MainDab Green
+[3] Once you pick a theme, it saves your settings automatically to the Registry
+[4] Recode 5% progress
+[5] These themes change text colour highlighting
+[6] These themes also change the border colour
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.9 Released! | Build 122 | 19 Apr 2021
+[1] Did some topbar tweaks and stuff (again)
+[2] Added Pastebin optimisations (again)
+[3] Added in "Sniff Hub", a pretty decent script hub.
+[4] Did some checks for seeing whether Roblox is open or not
+[5] Tried to fix some UI outlining
+[+] I'm trying to experiment with this newer, purple UI. if people don't like it, I'll remove it
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.8 Released | Build 121 | 31 Mar 2021
+[1] Urgent fix for Script Hub not opening, crashing MainDab
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.7 Released! | Build 120 | 31 Mar 2021
+[1] Did some topbar tweaks and stuff
+[2] Added Pastebin optimisations
+[3] Added MainDab Auto Updating LBI, though it's basically useless for now
+[4] MainDab now saves your dll selection
+[5] Fixed kill Roblox process button
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.6 Released! | Build 119 | 18 Mar 2021
+I'm aware the UI has been broken, this update fixes the UI issues!
+[1] Fixed UI issues
+[2] Added in A PASTEBIN UPLOADER! This can be found under Flie > Upload Script to Pastebin
+[3] Fixed help button
+[4] Removed dysfunctional settings button
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.5 Released! | Build 118 | 11 Mar 2021
+Sorry for the 4 day downtime/MainDab not working, I was unaware of crashing issues nor did MainDab crash for me (until I ran it on another computer.)
+[1] Fixed MainDab crashing on startup, this is due to some weird glitches with Discord RPC
+[2] Removed shadow from UI since it's blurry on bigger screens
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.4 Released! | Build 117 | 7 Mar 2021
+[1] Added the settings tab in the bar.
+[2] Added a option to enable/disabled Discord RPC
+[3] Did some small UI tweaks
+[4] Progress started on a Pastebin Uploader
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.3 Released! | Build 116 | 3 Mar 2021
+[1] Added listbox icon (top right corner), it opens and closes the listbox. 
+[2] Listbox no longer shows scrollbar, looked ugly af
+[3] Added AcrylixAPI, it's a pretty powerful API in general. 
+[4] Fixed startup sound being choppy
+[-] Discord now opens when you open MainDab
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.2 Released! | Build 115 | 2 Mar 2021
+[1] Added 2 small icons (discord and github icon)
+[2] Discord stops opening every time you open MainDab
+[3] New counter system implemented, old one got deleted
+[4] Completely removed cheatsquad
+[5] Fixed MainDab crashing when you try inject or execute when Roblox isn't open. Instead, a check has been implemented for whether Roblox is open.
+[6] Added new startup sound
+[7] A bit of a splashscreen tweak
+[8] New credits area, you can find it under help > credits
+[-] Removed documentation button, people should join MainDab to get help
+[-] Changed help > Join our Discord to help > Get support (Discord)
+[-] Spelling correction, oopsies
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.1 Released! | Build 114 | 24 Feb 2021
+Files uploaded : MainDab.exe, MainDab.zip
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.11.0 Released! | Build 113 | 21 Feb 2021
+Files uploaded : MainDab.exe, MainDab.zip
+
+<------------------------------------------------------------------------------------------------------------------------------------->
+
+MainDab V.10.9 Released | Build 112 | 29 Jan 2021
+[1] Did a few small tweaks with the updater
+[2] Added ShadowCheats API
+[3] Added WeAreDevs API
+[4] Made the top bar status show the current injection
+[5] Removed unnecessary dependencies
+[6] Removed Sirhurt API in favour of more free ones
