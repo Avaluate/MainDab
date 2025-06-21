@@ -18,7 +18,7 @@ MainDab was previously discontinued on April 2023, before a partial resurrection
 
 Changelog: see [Changelog.txt](https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Changelog.txt).
 ## Download
-Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDab yourself.
+Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDab yourself. Please [read the instructions](https://maindab.gitbook.io/maindabdocs) first.
 ## Is MainDab a virus?
 No. MainDab is not obfuscated either; you are free to look at the (shitty) code.
 
