@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://maindab.org/discord">
-    <img src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/MainDabThumbnail.png" alt="Logo" width=900 height=505>
+    <img src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/MainDabThumbnail.png" alt="Logo" width=70% height=70%>
   </a>
 </p>
 <p align="center">
