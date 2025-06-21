@@ -23,6 +23,8 @@ Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDa
 No. MainDab is not obfuscated either; you are free to look at the (shitty) code.
 
 This is explained further in the [help website](https://maindab.gitbook.io/maindabdocs).
+## Can you get banned for Roblox for using exploits?
+Yes, but Roblox allows you to exploit [only in your own games](https://devforum.roblox.com/t/an-update-on-automated-action-against-modified-clients/3640609).
 ## Features
 - The key system bypass is what makes MainDab different from other exploits. This process is fully automated
 - MainDab also has standard features found in other exploits:
