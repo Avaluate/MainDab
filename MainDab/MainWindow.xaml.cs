@@ -107,7 +107,7 @@ namespace MainDabRedo
         // WINDOW INITILISATION //
         public MainWindow()
         {
-            Console.WriteLine($"  __  __       _       _____        _     \r\n |  \\/  |     (_)     |  __ \\      | |    \r\n | \\  / | __ _ _ _ __ | |  | | __ _| |__  \r\n | |\\/| |/ _` | | '_ \\| |  | |/ _` | '_ \\ \r\n | |  | | (_| | | | | | |__| | (_| | |_) |\r\n |_|  |_|\\__,_|_|_| |_|_____/ \\__,_|_.__/\n\n${CurrentVersion}, by Avaluate (Main_EX)\n"); // i love maindab
+            Console.WriteLine($"  __  __       _       _____        _     \r\n |  \\/  |     (_)     |  __ \\      | |    \r\n | \\  / | __ _ _ _ __ | |  | | __ _| |__  \r\n | |\\/| |/ _` | | '_ \\| |  | |/ _` | '_ \\ \r\n | |  | | (_| | | | | | |__| | (_| | |_) |\r\n |_|  |_|\\__,_|_|_| |_|_____/ \\__,_|_.__/\n\n${CurrentVersion}, by Avaluate (Main_EX) | maindab.org/discord\n"); // i love maindab
 
             InitializeComponent();
             MainWin.WindowStartupLocation = WindowStartupLocation.CenterScreen; // Center MainDab to the middle of the screen
@@ -116,12 +116,13 @@ namespace MainDabRedo
             // First, we want to check and see if the updater is still there
 
             
-            if (File.Exists("MainDabUpdater.exe"))
+            if (File.Exists("MainDabDownloader.exe"))
             {
-                Console.WriteLine("MainDab Updater found, deleting");
-                File.Delete("MainDabUpdater.exe"); // If it is, we should delete it
+                Console.WriteLine("MainDab Downloader found, deleting");
+                File.Delete("MainDabDownloader.exe"); // If it is, we should delete it
             }
 
+            Console.WriteLine("Checking to see if MainDab is up to date");
             string Version = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/UpdateStuff/Version");
             WebStuff.Dispose(); // Remember to dispose the WebClient! Or someone will scold me for it
 
@@ -129,20 +130,19 @@ namespace MainDabRedo
             // If I don't do this, then the string that would return is "MainDab 14.3/n" rather than "MainDab 14.3", so basically an additional unwanted line!
             string OnlineVersion = Version.Split(new[] { '\r', '\n' }).FirstOrDefault();
 
-            Console.WriteLine("Checking to see if MainDab is up to date");
             if (CurrentVersion != OnlineVersion) // If the current version is not equal to the value online
             {
                 // Downloading MainDab's Updater
                 Console.WriteLine("MainDab not up to date, downloading new version");
 
-                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDab%20Updater.exe", "MainDabUpdater.exe");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/raw/main/MainDabDownloader.exe", "MainDabDownloader.exe");
                 WebStuff.Dispose();
 
                 // Downloading MainDab's Updater
 
                 // We have to set it like this since the updater needs the right startup path to run correctly
                 Directory.SetCurrentDirectory(Directory.GetCurrentDirectory());
-                Process.Start("MainDabUpdater.exe"); // Run the updater
+                Process.Start("MainDabDownloader.exe"); // Run the updater
                 Environment.Exit(0);
                 // Note : The updater automatically deletes MainDab.exe
             }
@@ -1003,17 +1003,17 @@ namespace MainDabRedo
         // Multi Roblox Instance
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if (File.Exists("Applications\\multirblx.exe"))
+            if (File.Exists("Applications\\MultipleRobloxInstances.exe"))
             {
-                Process.Start("Applications\\multirblx.exe");
+                Process.Start("Applications\\MultipleRobloxInstances.exe");
             }
             else
             {
-                MessageBox.Show("Downloading Multiple Roblox. Click OK to continue.", "MainDab");
-                // Taken from one of my personal projects at https://github.com/MainDabRblx/MultipleRobloxInstances
-                WebStuff.DownloadFile("https://github.com/MainDabRblx/MultipleRobloxInstances/releases/download/v1.0/MultipleRobloxInstances.exe", "Applications\\multirblx.exe");
+                MessageBox.Show("Downloading Multiple Roblox Instances. Click OK to continue.", "MainDab");
+
+                WebStuff.DownloadFile("https://github.com/Avaluate/MultipleRobloxInstances/releases/download/v2.0/MultipleRobloxInstances.exe", "Applications\\MultipleRobloxInstances.exe");
                 WebStuff.Dispose();
-                Process.Start("Applications\\multirblx.exe");
+                Process.Start("Applications\\MultipleRobloxInstances.exe");
                 MessageBox.Show("Multiple Roblox downloaded and started!", "MainDab");
             }
         }
@@ -1021,17 +1021,17 @@ namespace MainDabRedo
         // FPS unlocker
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (File.Exists("Applications\\fpsunlocker.exe"))
+            if (File.Exists("Applications\\rbxfpsunlocker.exe"))
             {
-                Process.Start("Applications\\fpsunlocker.exe");
+                Process.Start("Applications\\rbxfpsunlocker.exe");
             }
             else
             {
                 MessageBox.Show("Downloading FPS Unlocker. Click OK to continue.", "MainDab");
                 // Taken from https://github.com/axstin/rbxfpsunlocker
-                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/blob/master/fpsunlocker.exe?raw=true", "Applications\\fpsunlocker.exe");
+                WebStuff.DownloadFile("https://github.com/Avaluate/MainDabWeb/blob/master/rbxfpsunlocker.exe?raw=true", "Applications\\rbxfpsunlocker.exe");
                 WebStuff.Dispose();
-                Process.Start("Applications\\fpsunlocker.exe");
+                Process.Start("Applications\\rbxfpsunlocker.exe");
                 MessageBox.Show("FPS unlocker downloaded and started!", "MainDab");
             }
         }
@@ -1963,6 +1963,16 @@ namespace MainDabRedo
 
             
 
+        }
+
+        private void JoinTelegramGroup(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://t.me/maindabnow");
+        }
+
+        private void OpenGitHub(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("https://github.com/Avaluate/MainDab");
         }
     }
 }

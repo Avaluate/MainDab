@@ -110,18 +110,27 @@ namespace MainDabWRDWrapper
         {
             Console.WriteLine("Checking SSL certificate...");
 
-            // is already installed???
             X509Certificate2 existingCert = GetCertificateBySubject();
+
+            // is already installed???
             if (existingCert != null)
             {
-
-                Console.WriteLine("Certificate already installed in Trusted Root Certification Authorities");
-
-                return true;
+                // see if file is there or not. will not work is cert is not there
+                if (!File.Exists("cert.conf") || !File.Exists(CertFileName) || !File.Exists(KeyFileName))
+                {
+                    Console.WriteLine("Certificate files are missing / not made before");
+                    try { File.Delete("cert.conf"); } catch { }
+                    try { File.Delete(CertFileName); } catch { }
+                    try { File.Delete(KeyFileName); } catch { }
+                }
+                else
+                {
+                    Console.WriteLine("Certificate already installed in Trusted Root Certification Authorities");
+                    return true;
+                }
             }
 
             Console.WriteLine("Certificate not found so generating and installing...");
-
 
             string CertConfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cert.conf");
             string CertOutputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CertFileName);

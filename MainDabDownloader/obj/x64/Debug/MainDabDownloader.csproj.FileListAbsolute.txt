@@ -1,0 +1,52 @@
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\MainDabDownloader.exe.config
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\MainDabDownloader.exe
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\MainDabDownloader.pdb
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\Newtonsoft.Json.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\System.Reactive.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
+D:\Development\MainDab\MainDab Bootstrapper\bin\x64\Debug\WpfAnimatedGif.xml
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.csproj.AssemblyReference.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainWindow.g.cs
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\App.g.cs
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader_MarkupCompile.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader_MarkupCompile.lref
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainWindow.baml
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.g.resources
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.Properties.Resources.resources
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.csproj.GenerateResource.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.csproj.CoreCompileInputs.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.sourcelink.json
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.csproj.Fody.CopyLocal.cache
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabD.CB16A703.Up2Date
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.exe
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.pdb
+D:\Development\MainDab\MainDab Bootstrapper\obj\x64\Debug\MainDabDownloader.exe.config
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\MainDabDownloader.exe.config
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\MainDabDownloader.exe
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\MainDabDownloader.pdb
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\Newtonsoft.Json.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\System.Reactive.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\System.Threading.Tasks.Extensions.xml
+D:\Development\MainDab\MainDabDownloader\bin\x64\Debug\WpfAnimatedGif.xml
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.csproj.AssemblyReference.cache
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.exe.config
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainWindow.g.cs
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\App.g.cs
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader_MarkupCompile.cache
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader_MarkupCompile.lref
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainWindow.baml
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.g.resources
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.Properties.Resources.resources
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.csproj.GenerateResource.cache
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.csproj.CoreCompileInputs.cache
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.sourcelink.json
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.csproj.Fody.CopyLocal.cache
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabD.CB16A703.Up2Date
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.exe
+D:\Development\MainDab\MainDabDownloader\obj\x64\Debug\MainDabDownloader.pdb

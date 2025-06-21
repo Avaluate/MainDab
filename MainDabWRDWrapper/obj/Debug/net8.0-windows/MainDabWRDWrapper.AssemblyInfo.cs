@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MainDabWRDWrapper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ff2aef1e6b2dea49aa3041350878db97e8b05fb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7612bdd1285923eb7e2fcb4e6a133d020bc2b031")]
 [assembly: System.Reflection.AssemblyProductAttribute("MainDabWRDWrapper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MainDabWRDWrapper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

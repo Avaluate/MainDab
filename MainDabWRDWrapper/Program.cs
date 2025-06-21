@@ -10,6 +10,8 @@ namespace MainDabWRDWrapper
         static string WrapperVersion = "1.0";
         static async Task Main(string[] args)
         {
+            Console.Title = "MainDab WeAreDevs Wrapper";
+
             RegistryKey SettingReg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MainDabWRDWrapper"); // From the settings we saved
             RegistryKey key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\MainDabWRDWrapper");
             key.SetValue("WrapperVersion", WrapperVersion);

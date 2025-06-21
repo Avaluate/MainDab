@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("maindab-modern.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("websiteicon.png")]
 
 

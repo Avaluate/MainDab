@@ -64,6 +64,7 @@ namespace MainDabWRDWrapper
             {
                 initialize();
                 ShowWindow(GetConsoleWindow(), 5);
+                Console.Title = "MainDab WeAreDevs Wrapper";
             });
             initthread.Start();
             return initthread;
@@ -74,11 +75,13 @@ namespace MainDabWRDWrapper
         {
             execute(Script);
             ShowWindow(GetConsoleWindow(), 5);
+            Console.Title = "MainDab WeAreDevs Wrapper";
         }
 
         public static bool IsInjected()
         {
             ShowWindow(GetConsoleWindow(), 5);
+            Console.Title = "MainDab WeAreDevs Wrapper";
             if (isAttached()) { Console.WriteLine("attached");  return true; }
             else { Console.WriteLine("not attached"); return false; }
         }

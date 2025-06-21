@@ -1264,7 +1264,7 @@
                 </Grid.RowDefinitions>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="111" Margin="219,69,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="2" BorderBrush="#FF565656" Opacity="0.6"/>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="219,228,0,0" CornerRadius="3 3 3 3" VerticalAlignment="Top" Width="310" Background="#3E000000" Grid.Column="2" BorderBrush="#FF565656" Opacity="0.6"/>
-                <Viewbox x:Name="JoinMainDab" Grid.ColumnSpan="3" Margin="18,169,498.2,181" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="JoinMainDab" Grid.ColumnSpan="3" Margin="18,129,498,221" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -1296,11 +1296,11 @@
                                     <RotateTransform/>
                                     <TranslateTransform X="-4.365"/>
                                 </TransformGroup>
-                            </TextBlock.RenderTransform><Run Language="en-hk" Text="Our Discord"/></TextBlock>
+                            </TextBlock.RenderTransform><Run Language="en-hk" Text="Discord"/></TextBlock>
                     </Grid>
                 </Viewbox>
                 <TextBlock HorizontalAlignment="Left" Height="55" TextWrapping="Wrap" VerticalAlignment="Top" Width="309" Foreground="#FFD0CFCF" FontFamily="Calibri Light" FontSize="20" Margin="219,42,0,0" RenderTransformOrigin="1.338,2.769" Grid.Column="2" Text="Announcements"/>
-                <TextBlock HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Welcome to MainDab!" VerticalAlignment="Top" Width="188" Foreground="#FFD0CFCF" FontFamily="Calibri" FontSize="20" Margin="21,137,0,0" RenderTransformOrigin="1.338,2.769" Grid.ColumnSpan="3">
+                <TextBlock HorizontalAlignment="Left" Height="29" TextWrapping="Wrap" Text="Welcome to MainDab!" VerticalAlignment="Top" Width="188" Foreground="#FFD0CFCF" FontFamily="Calibri" FontSize="20" Margin="22,99,0,0" RenderTransformOrigin="1.338,2.769" Grid.ColumnSpan="3">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -1330,7 +1330,7 @@
                             <TranslateTransform X="-4.365"/>
                         </TransformGroup>
                     </TextBlock.RenderTransform></TextBlock>
-                <Viewbox x:Name="HelpCentre" Grid.ColumnSpan="3" Margin="18,203,498.2,147" Stretch="Fill" Opacity="0.75">
+                <Viewbox x:Name="HelpCentre" Grid.ColumnSpan="3" Margin="18,198,498,152" Stretch="Fill" Opacity="0.75">
                     <Viewbox.Style>
                         <Style TargetType="{x:Type Viewbox}">
                             <Style.Triggers>
@@ -1351,10 +1351,10 @@
                             </Style.Triggers>
                         </Style>
                     </Viewbox.Style>
-                    <Grid Height="30" Width="139">
-                        <Border BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Help" BorderBrush="#FF383A3C"/>
-                        <Image  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="icons8-web-90.png" Opacity="0.75"/>
-                        <TextBlock HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Help">
+                    <Grid x:Name="HelpGrid" Height="30" Width="139">
+                        <Border x:Name="HelpBorder" BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="Help" BorderBrush="#FF383A3C"/>
+                        <Image x:Name="HelpIcon"  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="/WebsiteIcon.png" Opacity="0.75"/>
+                        <TextBlock x:Name="HelpText" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="Help">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -1363,6 +1363,76 @@
                                     <TranslateTransform X="-4.365"/>
                                 </TransformGroup>
                             </TextBlock.RenderTransform><Run Text="Help "/><Run Language="en-hk" Text="Website"/></TextBlock>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="JoinTelegram" Grid.ColumnSpan="3" Margin="18,164,498,186" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid x:Name="JoinTelegramGrid" Height="30" Width="139">
+                        <Border x:Name="TelegramBorder" BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="JoinTelegramGroup" BorderBrush="#FF383A3C"/>
+                        <Image x:Name="TelegramIcon"  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="16" Margin="7,0,0,0" VerticalAlignment="Center" Width="16" Source="/ImageResources/TelegramIcon.png" Opacity="0.75"/>
+                        <TextBlock x:Name="TelegramText" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="JoinTelegramGroup">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-0.674"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-4.365"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform><Run Language="en-hk" Text="Telegram"/></TextBlock>
+                    </Grid>
+                </Viewbox>
+                <Viewbox x:Name="GitHub" Grid.ColumnSpan="3" Margin="18,233,498,117" Stretch="Fill" Opacity="0.75">
+                    <Viewbox.Style>
+                        <Style TargetType="{x:Type Viewbox}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.75" To="1" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.75" BeginTime="0:0:0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Viewbox.Style>
+                    <Grid x:Name="GitHubGrid" Height="30" Width="139">
+                        <Border x:Name="GitHubBorder" BorderThickness="1" HorizontalAlignment="Left" Height="30" CornerRadius="0 9 9 0" VerticalAlignment="Top" Width="139" Background="#7F191919" MouseDown="OpenGitHub" BorderBrush="#FF383A3C"/>
+                        <Image x:Name="GitHubIcon"  RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="18" Margin="8,0,0,0" VerticalAlignment="Center" Width="17" Source="/ImageResources/GithubIcon.png" Opacity="0.75"/>
+                        <TextBlock x:Name="GitHubText" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Foreground="#FFEAEAEA" FontFamily="Calibri Light" FontSize="16" Margin="35,5,0,0" RenderTransformOrigin="1.338,2.769" MouseDown="OpenGitHub">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="-0.674"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-4.365"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform><Run Language="en-hk" Text="GitHub"/></TextBlock>
                     </Grid>
                 </Viewbox>
             </Grid>
@@ -1835,8 +1905,8 @@
                 <TextBlock HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Tools" VerticalAlignment="Top" Width="140" Foreground="#FFA9A1A1" FontFamily="Calibri" FontSize="18" Margin="15,6,0,0"/>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="16,34,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="147" Background="#0F000000" BorderBrush="#19A5A5A5"/>
                 <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="Multiple Roblox" VerticalAlignment="Top" Width="131" Foreground="#FFC2C2C2" FontFamily="Calibri" FontSize="16" Margin="23,38,0,0" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="by Main_EX" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="23,58,0,0" FontSize="10"/>
-                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="23,73,0,0"><Run Text="Run multiple instances of Roblox at the same time! You must run this first BEFORE opening Roblox."/><LineBreak/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="23,58,0,0" FontSize="10"><Run Text="by "/><Run Language="en-hk" Text="Avaluate (Main_EX)"/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="23,73,0,0"><Run Text="Allows for"/><Run Language="en-hk" Text=" multiple "/><Run Text="Roblox window"/><Run Language="en-hk" Text="s"/><Run Text=" to be opened on different accounts."/><Run Language="en-hk" Text=" Run before opening Roblox."/></TextBlock>
                 <Button Template ="{DynamicResource NoHighlightBut}" Content="Run" Margin="36,141,510,215" Background="#03FFFFFF" Foreground="White" BorderBrush="#19DADADA" Click="Button_Click_3" Opacity="0.75">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -1861,8 +1931,8 @@
                 </Button>
                 <Border BorderThickness="1" HorizontalAlignment="Left" Height="138" Margin="172,34,0,0" CornerRadius="5 5 5 5" VerticalAlignment="Top" Width="147" Background="#0F000000" BorderBrush="#19A5A5A5"/>
                 <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" Text="FPS Unlocker" VerticalAlignment="Top" Width="131" Foreground="#FFC2C2C2" FontFamily="Calibri" FontSize="16" Margin="179,38,0,0" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="179,58,0,0" FontSize="10"><Run Text="by axstin @ Github"/><LineBreak/><Run/></TextBlock>
-                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="179,73,0,0" Text="A simple program that unlocks Roblox's FPS limit. Roblox limits the FPS to around 60 FPS."/>
+                <TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" Foreground="#FF868585" FontFamily="Calibri Light" Margin="179,58,0,0" FontSize="10"><Run Text="by axstin"/><Run Language="en-hk" Text=" (github.com/axstin)"/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="80" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Foreground="#FFC5BDBD" FontFamily="Calibri Light" Margin="179,73,0,0"><Run Language="en-hk" Text="Although Roblox allows for maximum FPS setting now, some users may still find this tool useful."/></TextBlock>
                 <Button Template ="{DynamicResource NoHighlightBut}" Content="Run" Margin="195,141,354,215" Background="#03FFFFFF" Foreground="White" BorderBrush="#19DADADA" Click="Button_Click_2" Opacity="0.75">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -1885,7 +1955,6 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <TextBlock HorizontalAlignment="Center" Height="29" TextWrapping="Wrap" VerticalAlignment="Top" Width="655" Foreground="#76FFFFFF" FontFamily="Calibri Light" FontSize="18" Margin="0,254,0,0" Text="There's not really much tools here (for now)" TextAlignment="Center"/>
             </Grid>
             <Grid x:Name="CustomisationGrid" HorizontalAlignment="Left" Height="375" Margin="44,35,0,0" Grid.RowSpan="12" VerticalAlignment="Top" Width="650" Grid.ColumnSpan="11" Visibility="Hidden">
                 <TextBlock x:Name="Title" ToolTip="Made by Main_EX @ discord.io/maindab" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEEEEE" FontFamily="Calibri Light" FontSize="20" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center" Margin="233,0,235,0"><Run Text="Customisation Options"/><LineBreak/><Run/></TextBlock>

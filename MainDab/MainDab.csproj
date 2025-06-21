@@ -349,7 +349,7 @@
     <Resource Include="Untitled drawing %2840%29.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-web-90.png" />
+    <Resource Include="ImageResources\WebsiteIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ImageResources\ClearIcon.png" />
@@ -388,6 +388,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ImageResources\CustomisationTabIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\TelegramIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResources\GitHubIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WebsiteIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
