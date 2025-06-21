@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://maindab.org/discord">
-    <img src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/MainDabThumbnail.png" alt="Logo" width=900 height=506>
+    <img src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/MainDabThumbnail.png" alt="Logo" width=900 height=505>
   </a>
 </p>
 <p align="center">
@@ -10,7 +10,7 @@
     <a title="Telegram" href="https://t.me/maindabnow"><img alt="Telegram" src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/Telegram.png" width=200 height=53></a>
   </p>
 
-**MainDab is a Roblox exploit that bypasses key systems implemented in Roblox exploit APIs. MainDab works as of June 2025/** 
+**MainDab is a Roblox exploit that bypasses key systems implemented in Roblox exploit APIs. MainDab works as of June 2025.** 
 
 At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). 
 
