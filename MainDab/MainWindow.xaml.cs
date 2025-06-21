@@ -1756,7 +1756,7 @@ namespace MainDabRedo
                     };
                     // Functions for buttons
                     obj.Executed += (_, _) => Execution.ExecutionHandler.Execute(obj.Script.Script);
-                    obj.CopyScript += (_, _) => Clipboard.SetText(obj.Script.Script);
+                    obj.CopyScript += (_, _) => Clipboard.SetDataObject(obj.Script.Script);
                     WP.Children.Add(obj); // Add objects into scripthub panel
                 }
             }

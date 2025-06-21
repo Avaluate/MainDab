@@ -36,3 +36,4 @@ D:\Development\MainDab\MainDab\obj\x64\Debug\MainDab.csproj.Fody.CopyLocal.cache
 D:\Development\MainDab\MainDab\obj\x64\Debug\MainDab.csproj.Up2Date
 D:\Development\MainDab\MainDab\obj\x64\Debug\MainDab.exe
 D:\Development\MainDab\MainDab\obj\x64\Debug\MainDab.pdb
+D:\Development\MainDab\MainDab\obj\x64\Debug\MainDab.exe.config
