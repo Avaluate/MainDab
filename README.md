@@ -17,12 +17,18 @@ At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net
 MainDab was previously discontinued on April 2023, before a partial resurrection on June 2025. 
 
 Changelog: see [Changelog.txt](https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Changelog.txt).
+## Support warning
+* **I no longer exploit on Roblox -- I only resurrected MainDab to help myself with Roblox game development.** Do not expect frequent fixes or any additional things that benefit exploiting.
+* **The script hub has not been updated since 2023.** Again, I resurrected MainDab to assist myself with game development, *not* to exploit. You will have to find your own scripts.
 ## Download
 Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDab yourself. Please [read the instructions](https://maindab.gitbook.io/maindabdocs/downloading-maindab) first.
 ## Is MainDab a virus?
 No. MainDab is not obfuscated either; you are free to look at the (shitty) code.
 
 This is explained further in the [help website](https://maindab.gitbook.io/maindabdocs/downloading-maindab/is-maindab-a-virus).
+## Why am I bypassing key systems?
+* As I do Roblox game development now, I updated MainDab so I could have a reliable exploit to test with. I do not exploit outside of my own game development purposes.
+* Bypassing a key system is obviously to the detriment of Roblox exploit developers, but I have no obligation to support them. It would be more beneficial for me if Roblox were to properly deal with Roblox exploits.
 ## Aren't things that advertise themselves as including a key bypass malware?
 Mostly. GitHub is [full of such examples](https://github.com/search?q=roblox+exploit+keyless&type=repositories&s=updated&o=desc).
 
