@@ -1,0 +1,5 @@
+E:\Development\MainDab\MainDabDownloader\obj\x64\Release\MainDabDownloader.csproj.AssemblyReference.cache
+E:\Development\MainDab\MainDabDownloader\obj\x64\Release\MainWindow.g.cs
+E:\Development\MainDab\MainDabDownloader\obj\x64\Release\App.g.cs
+E:\Development\MainDab\MainDabDownloader\obj\x64\Release\MainDabDownloader_MarkupCompile.cache
+E:\Development\MainDab\MainDabDownloader\obj\x64\Release\MainDabDownloader_MarkupCompile.lref

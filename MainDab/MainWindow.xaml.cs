@@ -52,14 +52,13 @@ namespace MainDabRedo
     public partial class MainWindow : Window
     {
         // VARIABLES //
-        string CurrentVersion = "MainDab 15.2 REL"; // The version of MainDab for this specific build
+        string CurrentVersion = "MainDab 15.2 SP1"; // The version of MainDab for this specific build
 
         // The default text editor text
         string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at maindab.org/discord\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
 
         // Variables relating to injection
         bool InjectionInProgress = false; // When injection is in progress, self explanatory
-        bool OxygenInjected = false; // This function is here just so the status text shows whether Oxygen is injecting or not
 
         // Animation variables
         private bool CloseCompleted = false; // Window fade-in
@@ -111,11 +110,11 @@ namespace MainDabRedo
 
             InitializeComponent();
             MainWin.WindowStartupLocation = WindowStartupLocation.CenterScreen; // Center MainDab to the middle of the screen
-            // UPDATE SYSTEM //
+                                                                                // UPDATE SYSTEM //
 
             // First, we want to check and see if the updater is still there
 
-            
+
             if (File.Exists("MainDabDownloader.exe"))
             {
                 Console.WriteLine("MainDab Downloader found, deleting");
@@ -224,11 +223,11 @@ namespace MainDabRedo
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Attempt to check WRD wrapper version result in error: {ex}");
             }
-            
+
 
             if (!File.Exists("MainDabWRDWrapper.deps.json"))
             {
@@ -262,10 +261,26 @@ namespace MainDabRedo
             }
             if (!File.Exists("wearedevs_exploit_api.dll"))
             {
-                Console.WriteLine("Downloading wearedevs_exploit_api.dll, please wait...");
-                WebStuff.DownloadFile("https://wrdcdn.net/r/2/exploit%20api/wearedevs_exploit_api.dll", "wearedevs_exploit_api.dll");
+                try
+                {
+                    Console.WriteLine("Downloading wearedevs_exploit_api.dll, please wait...");
+                    WebStuff.DownloadFile("https://wrdcdn.net/r/2/exploit%20api/wearedevs_exploit_api.dll", "wearedevs_exploit_api.dll");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed to download original wearedevs_exploit_api.dll: " + ex + ", so now will try GitHub mirror");
+                    try
+                    {
+                        WebStuff.DownloadFile("https://github.com/wcrddn/wcrddn.github.io/raw/main/wearedevs_exploit_api.dll", "wearedevs_exploit_api.dll");
+                    }
+                    catch (Exception ex1)
+                    {
+                        Console.WriteLine("Failed to download wearedevs_exploit_api.dll even from mirror: " + ex1 + "\nMainDab DEPENDS on the existence of this file, so MainDab cannot be ran. Please contact MainDab staff for help...");
+                    }
+                }
             }
-            // OpenSSL req
+
+            // OpenSSL req for cert signing
             Console.WriteLine("Checking to see if OpenSSL is downloaded...");
 
             if (!Directory.Exists("OpenSSL"))
@@ -302,7 +317,7 @@ namespace MainDabRedo
             }
             string penis = WebStuff.DownloadString("https://raw.githubusercontent.com/Avaluate/MainDabWeb/master/Themes/lua_md_default.xshd");
             File.WriteAllText("EditorThemes\\lua_md_default.xshd", penis);
-            
+
             CurrentLuaXSHDLocation = "EditorThemes\\lua_md_default.xshd";
             IsAvalonLoaded = true;
 
@@ -314,7 +329,7 @@ namespace MainDabRedo
                 gamescripts = await ScriptHub.MainDabGSC.GetGSCData(); // Extract data from json file
             });
 
-           
+
             Console.Title = "MainDab";
             Console.WriteLine("All done!\n");
         }
@@ -326,7 +341,7 @@ namespace MainDabRedo
             DragMove();
         }
 
-       
+
 
         // Theme settings
         private void ThemeLoading(object sender, RoutedEventArgs e)
@@ -420,11 +435,11 @@ namespace MainDabRedo
         // Get the text from the current texteditor
         // You can call this using CurrentTabWithStuff()
         // For example, to set the texteditor text, CurrentTabWithStuff().Text = "Text here";
-        public TextEditor CurrentTabWithStuff() 
+        public TextEditor CurrentTabWithStuff()
         {
             return this.TabControl.SelectedContent as TextEditor;
         }
-        
+
         // Create a new tab
         public TabItem CreateTab(string text = "", string title = "Tab")
         {
@@ -500,11 +515,11 @@ namespace MainDabRedo
             Stream input = File.OpenRead(CurrentLuaXSHDLocation);
             XmlTextReader xmlTextReader = new XmlTextReader(input);
             TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xmlTextReader, HighlightingManager.Instance);
-                        
+
             // Now actually set it
             Stream nya = File.OpenRead(CurrentLuaXSHDLocation);
             XmlTextReader xml = new XmlTextReader(nya);
-            TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xml, HighlightingManager.Instance); 
+            TextEditor.SyntaxHighlighting = HighlightingLoader.Load(xml, HighlightingManager.Instance);
 
             CurrentTabWithStuff().Text = DefaultTextEditorText; // Scroll all the way up to the top of this source code to set it
 
@@ -581,9 +596,9 @@ namespace MainDabRedo
                     SmallImageKey = "icon_maindab_v3_side"
                 },
 
-                
+
                 // These show the buttons in the Discord RPC status
-                
+
 
                 Buttons = new DiscordRPC.Button[]
                 {
@@ -613,7 +628,7 @@ namespace MainDabRedo
             ToolsGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
 
-           
+
         }
 
         // Execution icon animation
@@ -628,7 +643,7 @@ namespace MainDabRedo
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
-           
+
         }
 
         // Scripthub page icon
@@ -643,7 +658,7 @@ namespace MainDabRedo
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Hidden;
-           
+
         }
 
         // Utilities page icon
@@ -658,7 +673,7 @@ namespace MainDabRedo
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Visible;
             SettingsGrid.Visibility = Visibility.Hidden;
-          
+
         }
 
         // Settings page icon
@@ -673,7 +688,7 @@ namespace MainDabRedo
             GameHubGrid.Visibility = Visibility.Hidden;
             ToolsGrid.Visibility = Visibility.Hidden;
             SettingsGrid.Visibility = Visibility.Visible;
-           
+
         }
 
         // Settings animations
@@ -806,7 +821,8 @@ namespace MainDabRedo
                 InjectionInProgress = true;
 
                 // wrd
-                if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API") {
+                if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
+                {
                     ShowWindow(GetConsoleWindow(), 5);
                     // wrd
                     if (Execution.SelectedAPI.API == "Selected API: WeAreDevs API")
@@ -867,7 +883,7 @@ namespace MainDabRedo
         // Open file icon
         private void OpenFile(object sender, MouseButtonEventArgs e)
         {
-           OpenFileDialog FL = new OpenFileDialog()
+            OpenFileDialog FL = new OpenFileDialog()
             {
                 CheckFileExists = true,
                 Filter = "Text Files and Lua Files (*.txt *.lua)|*.txt;*.lua|All files (*.*)|*.*" // Same filter
@@ -878,7 +894,7 @@ namespace MainDabRedo
                 CurrentTabWithStuff().Text = File.ReadAllText(FL.FileName);
             }
         }
-        
+
         // Save file icon
         private void SaveFile(object sender, MouseButtonEventArgs e)
         {
@@ -961,7 +977,7 @@ namespace MainDabRedo
                 {
                     InjectionStatus.Content = "Roblox not opened";
                     InjectionStatus.Foreground = new SolidColorBrush(Color.FromRgb(192, 0, 0));
-                    InjectionInProgress = false;                   
+                    InjectionInProgress = false;
                 });
             }
         }
@@ -969,7 +985,7 @@ namespace MainDabRedo
         private System.Threading.Timer StatusCheckTimer; // Create timer
 
         private void StartStatusCheck(object sender, RoutedEventArgs e) // Actual function
-        { 
+        {
             StatusCheckTimer = new System.Threading.Timer(StatusCheck, null, 1000, 1000); // Run the check every 10 seconds or so
         }
 
@@ -991,11 +1007,11 @@ namespace MainDabRedo
             set => SetValue(ScriptStringVal, value);
         }
 
-        
+
         // When the scripthub panel loads
         private void WrapPanel_LoadedAsync(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         // TOOLS GRID FUNCTIONS //
@@ -1170,7 +1186,7 @@ namespace MainDabRedo
                             DiscordRPCButton.Background = new SolidColorBrush(Color.FromArgb(20, 11, 47, 199));
                             DiscordRPC();
                         }
-                    }  
+                    }
                 }
                 else
                 {
@@ -1299,10 +1315,10 @@ namespace MainDabRedo
                 MessageBox.Show("Theme set!", "MainDab");
             }
             catch
-            { 
+            {
                 MessageBox.Show("Did you put in the right hex code format and image url?", "MainDab");
             }
-            
+
         }
 
         // To be removed soon
@@ -1335,7 +1351,7 @@ namespace MainDabRedo
 
         // I'm just keeping this function here for now
         private void JSON(object sender, RoutedEventArgs e)
-        {    
+        {
             try
             {
                 // Deserialise first
@@ -1418,7 +1434,7 @@ namespace MainDabRedo
 
                     // Name
                     CreatorName.Text = stuff.SelectToken("MadeBy").Value<string>();
-                    
+
 
                     // Border setting first
                     var left = (Color)conv.ConvertFrom(stuff.SelectToken("TopLeftBorderColour").Value<string>());
@@ -1466,7 +1482,7 @@ namespace MainDabRedo
                 }
                 catch
                 {
-                   // MessageBox.Show("The theme file is invalid!", "MainDab");
+                    // MessageBox.Show("The theme file is invalid!", "MainDab");
                 }
             }
         }
@@ -1508,7 +1524,7 @@ namespace MainDabRedo
                 this.Dispatcher.Invoke(() =>
                 {
                     DownloadMessageTextBox.Text = "Downloading themes from theme repository...";
-                    
+
                     Storyboard sb = TryFindResource("FadeInListBox") as Storyboard;
                     sb.Begin();
 
@@ -1561,10 +1577,10 @@ namespace MainDabRedo
 
         private void LoadingScreenLoaded(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
-       
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -1653,14 +1669,14 @@ namespace MainDabRedo
 
         private void WP1_LoadedAsync(object sender, RoutedEventArgs e)
         {
-           
-        
+
+
         }
 
         private void GameScriptTextChanged(object sender, TextChangedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void GameScriptSearch_GotFocus(object sender, RoutedEventArgs e)
@@ -1761,7 +1777,7 @@ namespace MainDabRedo
                 }
             }
 
-          
+
             // This is pretty damn stupid to do but oh well
             HomeGrid.Visibility = Visibility.Hidden;
             ExecutorGrid.Visibility = Visibility.Hidden;
@@ -1790,7 +1806,7 @@ namespace MainDabRedo
                     WP1.Children.Add(obj); // Add objects into scripthub panel
                 }
             }
-            
+
 
             // This is pretty damn stupid to do but oh well
             HomeGrid.Visibility = Visibility.Hidden;
@@ -1835,46 +1851,46 @@ namespace MainDabRedo
         {
             // This is likely a very inefficient method of searching, if there are better ways, I would like to know
             // The CPU usage rises while searching
-            
-                new Thread(() =>
+
+            new Thread(() =>
+            {
+                this.Dispatcher.Invoke(() => // Prevent error from this being done on "another thread"
                 {
-                    this.Dispatcher.Invoke(() => // Prevent error from this being done on "another thread"
+                    WP1.Children.Clear();
+
+                    foreach (var scriptData in gamescripts)
                     {
-                        WP1.Children.Clear();
-
-                        foreach (var scriptData in gamescripts)
+                        var obj = new GameTab
                         {
-                            var obj = new GameTab
-                            {
-                                Script = (ScriptHub.GameScriptData)scriptData
-                            };
+                            Script = (ScriptHub.GameScriptData)scriptData
+                        };
 
-                            if (GameScriptSearch.Text == "" | GameScriptSearch.Text == "Search for a script here" | string.IsNullOrEmpty(GameScriptSearch.Text))
-                            {
-                                // Functions for buttons
-                                obj.Executed += (_, _) => Execution.ExecutionHandler.Execute(obj.Script.Script);
-                                obj.CopyScript += (_, _) => Clipboard.SetText(obj.Script.Script);
-                                WP1.Children.Add(obj); // Add objects into scripthub panel
-                            }
-
-                            else if (obj.ScriptTitle.Content.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true | obj.Description.Text.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true | obj.Credit.Content.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true)
-                            {
-                                // Functions for buttons
-                                obj.Executed += (_, _) => Execution.ExecutionHandler.Execute(obj.Script.Script);
-                                obj.CopyScript += (_, _) => Clipboard.SetText(obj.Script.Script);
-                                WP1.Children.Add(obj); // Add objects into scripthub panel
-                            }
+                        if (GameScriptSearch.Text == "" | GameScriptSearch.Text == "Search for a script here" | string.IsNullOrEmpty(GameScriptSearch.Text))
+                        {
+                            // Functions for buttons
+                            obj.Executed += (_, _) => Execution.ExecutionHandler.Execute(obj.Script.Script);
+                            obj.CopyScript += (_, _) => Clipboard.SetText(obj.Script.Script);
+                            WP1.Children.Add(obj); // Add objects into scripthub panel
                         }
-                    });
-                })
-                { }.Start();
+
+                        else if (obj.ScriptTitle.Content.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true | obj.Description.Text.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true | obj.Credit.Content.ToString().ToLower().Contains(GameScriptSearch.Text.ToLower()) == true)
+                        {
+                            // Functions for buttons
+                            obj.Executed += (_, _) => Execution.ExecutionHandler.Execute(obj.Script.Script);
+                            obj.CopyScript += (_, _) => Clipboard.SetText(obj.Script.Script);
+                            WP1.Children.Add(obj); // Add objects into scripthub panel
+                        }
+                    }
+                });
+            })
+            { }.Start();
         }
 
         private void MainWin_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.F5))
-             {
-                if(BlurTextbox.Visibility == Visibility.Visible)
+            {
+                if (BlurTextbox.Visibility == Visibility.Visible)
                 {
                     BlurTextbox.Visibility = Visibility.Hidden;
                 }
@@ -1929,7 +1945,7 @@ namespace MainDabRedo
 
                 { }.Start();
             }
-         }
+        }
 
         private void CustomisationRadioButtonClick(object sender, RoutedEventArgs e)
         {
@@ -1961,7 +1977,7 @@ namespace MainDabRedo
                 WRDStatusText.Text = "Currently patched";
             }
 
-            
+
 
         }
 

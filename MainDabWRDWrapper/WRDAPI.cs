@@ -54,7 +54,7 @@ namespace MainDabWRDWrapper
                     WC.DownloadFile(WRDLink, "wearedevs_exploit_api.dll");
                     WC.Dispose();
                 }
-                catch (Exception ex)
+                catch
                 {
                     return null;
                 }
