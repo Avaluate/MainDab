@@ -7,7 +7,7 @@ namespace MainDabWRDWrapper
 {
     internal class Program
     {
-        static string WrapperVersion = "1.0";
+        static string WrapperVersion = "1.1";
         static async Task Main(string[] args)
         {
             Console.Title = "MainDab WeAreDevs Wrapper";

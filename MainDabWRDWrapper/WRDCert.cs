@@ -113,20 +113,20 @@ namespace MainDabWRDWrapper
             X509Certificate2 existingCert = GetCertificateBySubject();
 
             // is already installed???
-            if (existingCert != null)
+            if (File.Exists("cert.conf") && File.Exists(CertFileName) && File.Exists(KeyFileName) && existingCert != null)
             {
-                // see if file is there or not. will not work is cert is not there
+                Console.WriteLine("Certificate already installed in Trusted Root Certification Authorities");
+                return true;
+            }
+            else
+            {
+                // have to redo
                 if (!File.Exists("cert.conf") || !File.Exists(CertFileName) || !File.Exists(KeyFileName))
                 {
                     Console.WriteLine("Certificate files are missing / not made before");
                     try { File.Delete("cert.conf"); } catch { }
                     try { File.Delete(CertFileName); } catch { }
                     try { File.Delete(KeyFileName); } catch { }
-                }
-                else
-                {
-                    Console.WriteLine("Certificate already installed in Trusted Root Certification Authorities");
-                    return true;
                 }
             }
 
@@ -218,7 +218,6 @@ namespace MainDabWRDWrapper
                     if (cert.Subject == CertSubject)
                     {
                         // subject is sufficient
-                        Console.WriteLine($"found certificate: {cert.Subject}");
                         return cert;
                     }
                 }

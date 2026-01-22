@@ -52,7 +52,7 @@ namespace MainDabRedo
     public partial class MainWindow : Window
     {
         // VARIABLES //
-        string CurrentVersion = "MainDab 15.2 SP1"; // The version of MainDab for this specific build
+        string CurrentVersion = "MainDab 15.2 SP2"; // The version of MainDab for this specific build
 
         // The default text editor text
         string DefaultTextEditorText = "--[[\r\nWelcome to MainDab!\r\nMake sure to join MainDab's Discord at maindab.org/discord\r\nIf you need help, join our Discord!\r\n--]]\r\n-- Paste in your text below this comment.\r\n\r\nprint(\"MainDab Moment\")";
@@ -1961,7 +1961,12 @@ namespace MainDabRedo
         private void WRDStatus_Loaded_1(object sender, RoutedEventArgs e)
         {
             // wrd status checker
+
             string WRDStatusDl = WebStuff.DownloadString("https://cdn.wearedevs.net/software/jjsploit/tauri.json");
+
+
+
+
             dynamic WRDStatusFormat = JsonConvert.DeserializeObject(WRDStatusDl);
             bool IsWRDPatched = WRDStatusFormat.patched;
             WRDStatusTextFromWe.Text = $"Message from WRD: {WRDStatusFormat.serverMessage}";
