@@ -20,6 +20,7 @@ Changelog: see [Changelog.txt](https://raw.githubusercontent.com/Avaluate/MainDa
 ## Support warning
 * **I no longer exploit on Roblox -- I only resurrected MainDab to help myself with Roblox game development.** Do not expect frequent fixes or any additional things that benefit exploiting.
 * **The script hub has not been updated since 2023.** Again, I resurrected MainDab to assist myself with game development, *not* to exploit. You will have to find your own scripts.
+* **Overall, MainDab is poorly programmed in many aspects.** Not all web requests are in try catch clauses, I use the registry to keep data as opposed to some json file (in fact look at how I write to json files), ...
 ## Download
 Go to [releases](https://github.com/Avaluate/MainDab/releases) or compile MainDab yourself. Please [read the instructions](https://maindab.gitbook.io/maindabdocs/downloading-maindab) first.
 ## Is MainDab a virus?
