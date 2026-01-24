@@ -1,6 +1,6 @@
 == MainDab 15.2 SP2 Released ==
 Build number: 176
-Release date: 22 January 2025
+Release date: 22 January 2026
 
 Update information
 This update is a major bug fix in regards to the WRD key bypass.
@@ -15,7 +15,7 @@ None
 
 == MainDab 15.2 SP1 Released ==
 Build number: 175
-Release date: 20 January 2025
+Release date: 20 January 2026
 
 Update information
 This update is just a minor hotfix in regards to downloading a needed library.
