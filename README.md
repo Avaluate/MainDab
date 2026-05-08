@@ -10,9 +10,9 @@
     <a title="Telegram" href="https://t.me/maindabnow"><img alt="Telegram" src="https://raw.githubusercontent.com/Avaluate/MainDab/refs/heads/main/Cover/Telegram.png" width=200 height=53></a>
   </p>
 
-**MainDab is a Roblox exploit that bypasses key systems implemented in Roblox exploit APIs. MainDab works as of April 2026.** 
+**MainDab is a Roblox exploit that bypasses key systems implemented in Roblox exploit APIs. MainDab works as of May 2026.** 
 
-At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). As such, MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit).
+At the moment, MainDab solely utilises the [WeAreDevs API](https://wearedevs.net/d/Exploit%20API). As such, MainDab is essentially a more functional version of WRD's [JJSploit](https://wearedevs.net/d/JJSploit). WRD's API has very limited exploiting capability which makes it barely okay for personal game testing. Decompilation works on small scripts at best, no hook functions for remotes.
 
 MainDab was previously discontinued on April 2023, before a partial resurrection on June 2025. 
 
